@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="{{asset('css/admin/admin-view.css')}}">
 </head>
 
-<body>
+<body class="navbar-body">
   @include('components.admin-navbar')
   <!-- sort function -->
   <div class="sort-section">
