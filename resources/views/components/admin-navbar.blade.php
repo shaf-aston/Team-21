@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Navbar</title>
+  <link rel="stylesheet" href="{{asset('css/admin/admin-navbar.css')}}">
 </head>
 
 <body>
-
   <header id="main-header">
     <a href="{{ url('/home') }}"><img src="{{ asset('Images/logo.png') }}" alt="Gadget Grads Logo" class="logo" width="98" height="48"></a>
     <h1>GADGET GRADS</h1>
