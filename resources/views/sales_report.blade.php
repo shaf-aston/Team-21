@@ -11,7 +11,7 @@
 
 <body>
   @include('components.admin-navbar')
-  <h2 style="text-align: center; margin-top: 20px;">Sales Report</h2>
+  <h1>Sales Report</h1>
   <!-- Sales Report Table -->
   <table class="sales-table">
     <thead>

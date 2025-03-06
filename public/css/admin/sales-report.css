@@ -5,13 +5,13 @@ body {
   padding: 0;
 }
 
-h2 {
+body > h1 {  /* Target only direct child h2 of body */
   font-family: 'Dela Gothic One', cursive;
   color: #2D4059;
   text-align: center;
   margin-top: 30px;
   margin-bottom: 20px;
-}
+  }
 
 .sales-table {
   width: 80%;
