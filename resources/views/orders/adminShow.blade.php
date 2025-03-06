@@ -9,6 +9,7 @@
 </head>
 
 <body>
+  @include('components.admin-navbar')
   <div class="container">
     <h2>Order Details</h2>
     <table class="table table-bordered">
