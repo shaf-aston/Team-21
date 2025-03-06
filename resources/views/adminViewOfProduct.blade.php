@@ -30,7 +30,7 @@
       <button type="submit">Sort!</button>
     </form>
   </div>
-  <button class="view-button" type="submit" id="viewprod" onclick="window.location='{{url('/products/create')}}'"> Add product</button>
+  <button class="view-button add-product-button" type="submit" id="viewprod" onclick="window.location='{{url('/products/create')}}'"> Add product</button>
 
 
   <!-- product display -->
