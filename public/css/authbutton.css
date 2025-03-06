@@ -1,0 +1,207 @@
+.auth-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(45, 64, 89, 0.8);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.auth-popup.active {
+    opacity: 1;
+}
+
+.auth-popup-content {
+    position: relative;
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(45, 64, 89, 0.2);
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: all 0.3s ease-out;
+}
+
+.auth-popup.active .auth-popup-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.login-box {
+    text-align: center;
+}
+
+.login-title {
+    color: #2D4059;
+    font-family: 'Dela Gothic One', sans-serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.input-container {
+  position: relative;  /* Add this */
+  background-color: #f5f7fa;
+  border-radius: 10px;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.input-container:focus-within {
+    box-shadow: 0 0 0 2px #2D4059;
+}
+
+.input-container .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.input-container input {
+  border: none;
+  background: none;
+  font-size: 16px;
+  color: #2D4059;
+  width: 100%;
+  padding-right: 35px;
+}
+
+
+.input-container input:focus {
+    outline: none;
+}
+
+.eye-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  position: absolute; 
+  right: 15px;
+  top: 50%;  
+  transform: translateY(-50%); 
+}
+
+.eye-icon:hover {
+  transform: translateY(-50%) scale(1.1); 
+}
+
+/* Login button styling */
+.login-btn {
+    padding: 12px 25px;
+    background-color: #2D4059;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #3d5a7c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(45, 64, 89, 0.2);
+}
+
+.login-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #2D4059;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.login-submit:hover {
+    background-color: #3d5a7c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(45, 64, 89, 0.2);
+}
+
+/* Close button styling */
+.close-btn {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 24px;
+    color: #2D4059;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.close-btn:hover {
+    background-color: #f5f7fa;
+    transform: rotate(90deg);
+}
+
+/* Links styling */
+.signup-link, .forgot-password, .back-to-login {
+    color: #2D4059;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.signup-link:hover, .forgot-password:hover, .back-to-login:hover {
+    color: #3d5a7c;
+    text-decoration: underline;
+}
+
+/* Remember me checkbox */
+.remember-me {
+    background: none !important;
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.remember-me input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #2D4059;
+}
+
+/* Error messages */
+.text-danger {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
+
+.alert-danger {
+    background-color: #fff5f5;
+    color: #dc3545;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #dc3545;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .auth-popup-content {
+        width: 95%;
+        margin: 5% auto;
+        padding: 20px;
+    }
+}

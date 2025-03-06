@@ -1,0 +1,119 @@
+/* Dark mode styles for products page */
+.dark-mode body {
+background: #1a1a1a;
+color: #e1e8ff;
+}
+
+/* Product section styles */
+.dark-mode .product-section {
+background-color: #2c3e50;
+border: 2px solid #34495e;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .product-info {
+background: #2c3e50;
+}
+
+.dark-mode .product-title {
+color: #e1e8ff;
+font-family: 'inter', sans-serif;
+}
+
+.dark-mode .product-price {
+color: #8ca9f2;
+font-family: 'inter', sans-serif;
+}
+
+/* Sort section styles */
+.dark-mode .sort-section {
+background: #2c3e50;
+color: #e1e8ff;
+}
+
+.dark-mode #sort {
+background: #34495e;
+color: #e1e8ff;
+border-color: #8ca9f2;
+padding: 10px;
+border-radius: 5px;
+}
+
+.dark-mode .sort-section button {
+background: #8ca9f2;
+color: #1a1a1a;
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.dark-mode .sort-section button:hover {
+background: #6384e4;
+transform: translateY(-2px);
+}
+
+/* Button styles */
+.dark-mode .view-button {
+background: #8ca9f2;
+color: #1a1a1a;
+border: 2px solid #8ca9f2;
+transition: all 0.3s ease;
+}
+
+.dark-mode .add-button {
+background: transparent;
+color: #8ca9f2;
+border: 2px solid #8ca9f2;
+transition: all 0.3s ease;
+}
+
+.dark-mode .view-button:hover {
+background: transparent;
+color: #8ca9f2;
+}
+
+.dark-mode .add-button:hover {
+background: #8ca9f2;
+color: #1a1a1a;
+}
+
+/* Product image styles */
+.dark-mode .product img {
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Login button styles */
+.dark-mode .btn-primary {
+background: #8ca9f2;
+color: #1a1a1a;
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+text-decoration: none;
+transition: all 0.3s ease;
+}
+
+.dark-mode .btn-primary:hover {
+background: #6384e4;
+transform: translateY(-2px);
+}
+
+/* Empty state styles */
+.dark-mode .empty-products {
+color: #8ca9f2;
+text-align: center;
+padding: 40px;
+background: rgba(44, 62, 80, 0.5);
+border-radius: 8px;
+}
+
+/* Transitions */
+.dark-mode * {
+transition: background-color 0.3s ease, 
+        color 0.3s ease, 
+        border-color 0.3s ease, 
+        transform 0.3s ease;
+}

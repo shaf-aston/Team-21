@@ -1,0 +1,58 @@
+/* Dark mode styles for laptops page */
+body.dark-mode {
+  background: #1a1a1a;
+}
+
+.dark-mode .product-section {
+  background-color: #2c3e50;
+  border-color: #34495e;
+}
+
+.dark-mode .product-title {
+  color: #e1e8ff;
+}
+
+.dark-mode .product-price {
+  color: #8CA9F2;
+}
+
+.dark-mode .view-button {
+  background-color: #8CA9F2;
+  color: #1a1a1a;
+  border-color: #8CA9F2;
+}
+
+.dark-mode .add-button {
+  background-color: transparent;
+  color: #8CA9F2;
+  border-color: #8CA9F2;
+}
+
+.dark-mode .sort-section {
+  background-color: #2c3e50;
+  color: #e1e8ff;
+}
+
+/* Card footer styles for dark mode */
+.dark-mode .card-footer {
+  background-color: #2c3e50;
+  color: #e1e8ff;
+  border-top: 1px solid #34495e;
+  padding: 10px;
+  border-radius: 0 0 8px 8px;
+}
+
+.dark-mode .text-center {
+  text-align: center;
+}
+
+.dark-mode .card-footer a {
+  color: #8CA9F2;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.dark-mode .card-footer a:hover {
+  color: #6384e4;
+  text-decoration: underline;
+}

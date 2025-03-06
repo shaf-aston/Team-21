@@ -1,0 +1,146 @@
+:root {
+  /* Define custom CSS variables for primary and secondary colors, and font */
+  --primary-color: #0b59a2;
+  --secondary-color: #d9d9d9;
+  --font-family: "Dela Gothic One", sans-serif;
+}
+
+body {
+  /* Apply base font family and background color */
+  font-family: Arial, sans-serif;
+  background-color: white;
+}
+
+header {
+  /* Style for the header section */
+  background-color: transparent;
+  padding: 20px;
+  position: relative;
+}
+
+.header-content {
+  /* Layout for header content */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+}
+
+.logo-container {
+  /* Flex container for logo and text */
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+}
+
+.logo-container img {
+  /* Styling for the logo image */
+  width: 100px; /* Adjust size as needed */
+  height: auto;
+  margin-right: 20px; /* Space between the image and text */
+}
+
+.logo-text h1,
+.logo-text p {
+  /* Remove default margin and apply custom font */
+  margin: 0;
+  font-family: var(--font-family);
+}
+
+.search-container {
+  /* Layout for search bar container */
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  /* Position and style for search icon */
+  position: absolute;
+  left: 10px; /* Adjust position as needed */
+  width: 20px; /* Adjust size as needed */
+  height: auto;
+}
+
+.search-bar {
+  /* Style for search input field */
+  width: 521px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  opacity: 0.75;
+  background: var(--secondary-color);
+  border: none;
+  padding: 5px 10px 5px 40px; /* Adjust padding to make room for the icon */
+  color: #9a9a9a;
+}
+
+.search-bar::placeholder {
+  /* Style for search input placeholder */
+  color: #a0a0a0;
+}
+
+.nav-bar {
+  /* Layout for navigation bar */
+  width: 1280px;
+  height: 41px;
+  flex-shrink: 0;
+  background: transparent;
+  margin: 20px auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.nav-bar ul {
+  /* Style for navigation list */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-bar li {
+  /* Inline display for list items */
+  display: inline;
+}
+
+.nav-bar a {
+  /* Style for navigation links */
+  text-decoration: none;
+  color: #000;
+}
+
+.nav-bar a:hover {
+  /* Change color on hover */
+  color: var(--primary-color);
+}
+
+.icon-container {
+  /* Layout for icon container */
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between the icons */
+}
+
+.icon-btn {
+  /* Style for icon buttons */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.icon-btn img {
+  /* Style for icon button images */
+  width: 20px; /* Adjust size as needed */
+  height: auto;
+}
+
+.icon {
+  /* Style for icons */
+  width: 20px; /* Adjust size as needed */
+  height: auto;
+}

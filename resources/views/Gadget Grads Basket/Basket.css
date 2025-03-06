@@ -1,0 +1,136 @@
+:root { 
+    /* Define custom CSS variables for primary, secondary, and navy colors, and font */
+    --primary-color: #0B59A2; 
+    --secondary-color: #D9D9D9; 
+    --font-family: 'Dela Gothic One', sans-serif; 
+    --navy-color: #1D4056; /* Updated navy color */ 
+} 
+
+.basket-content { 
+    display: flex; 
+    justify-content: space-between; /* Aligns total-box to the right */ 
+    margin-top: 20px; 
+} 
+
+.basket-container { 
+    width: 65%; /* Adjust width as needed to allow space for the total box */ 
+    height: 35%; /* Adjust height as needed */
+    background-color: var(--navy-color); /* Updated navy color */ 
+    color: white; 
+    padding: 20px; 
+    border-radius: 10px; 
+} 
+
+.basket-item { 
+    display: flex; 
+    align-items: flex-start; 
+    margin-bottom: 20px; 
+} 
+
+.product-info { 
+    display: flex; 
+    align-items: center; 
+} 
+
+.product-image { 
+    width: 150px; /* Adjust size as needed */ 
+    height: auto; 
+    margin-right: 20px; /* Space between the image and text */ 
+} 
+
+.product-details { 
+    display: flex; 
+    flex-direction: column; 
+    width: 100%; 
+} 
+
+.product-name { 
+    font-size: 1.2em; 
+    font-weight: bold; 
+    margin-bottom: 10px; 
+} 
+
+.product-details-row { 
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 10px; 
+} 
+
+.quantity-section { 
+    display: flex; 
+    align-items: center; 
+    margin-right: 10px; 
+} 
+
+.quantity-section label { 
+    margin-right: 10px; 
+} 
+
+.product-details input[type="number"] { 
+    width: 50px; 
+    padding: 5px; 
+    margin-right: 10px; 
+} 
+
+.remove-link { 
+    color: #3678B6; 
+    text-decoration: none; 
+    margin-right: 10px; 
+} 
+
+.remove-link:hover { 
+    text-decoration: underline; 
+} 
+
+.product-details .price { 
+    font-size: 1.1em; 
+    margin-left: auto; /* Pushes the price to the right end of the row */ 
+} 
+
+.white-box { 
+    background-color: white; 
+    color: black; 
+    padding: 10px; 
+    border-radius: 5px; 
+    margin-top: 10px; 
+} 
+
+.availability p { 
+    margin-bottom: 10px; 
+} 
+
+.availability-item { 
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 10px; 
+} 
+
+.availability-icon { 
+    width: 20px; /* Adjust size as needed */ 
+    height: auto; 
+    margin-right: 10px; 
+} 
+
+.empty-basket { 
+    text-align: center; 
+    margin-top: 50px; 
+    width: 100%; 
+} 
+
+.empty-basket p { 
+    font-size: 1.2em; 
+    margin-bottom: 20px; 
+    color: var(--navy-color); 
+} 
+
+.empty-basket .continue-shopping { 
+    color: #3678B6; 
+    text-decoration: none; 
+    font-size: 1em; 
+    display: inline-block; 
+    margin-top: 20px; 
+} 
+
+.empty-basket .continue-shopping:hover { 
+    text-decoration: underline; 
+}

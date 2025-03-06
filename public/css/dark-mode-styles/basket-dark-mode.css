@@ -1,0 +1,47 @@
+.dark-mode body {
+    background: #1a1a1a;
+    color: #e1e8ff;
+}
+
+.dark-mode .basket-item {
+    background: #2c3e50;
+    border-color: #34495e;
+}
+
+.dark-mode .product-name {
+    color: #e1e8ff;
+}
+
+.dark-mode .price {
+    color: #8CA9F2;
+}
+
+.dark-mode .quantity {
+    background: #34495e;
+    color: #e1e8ff;
+    border-color: #8CA9F2;
+}
+
+.dark-mode .total-box-container {
+    background: #2c3e50;
+    border-color: #34495e;
+}
+
+.dark-mode .availability {
+    background: #34495e;
+    color: #e1e8ff;
+}
+
+.dark-mode .payment-checkbox {
+    accent-color: #8CA9F2;
+}
+
+.dark-mode .btn-success {
+    background: #8CA9F2;
+    color: #1a1a1a;
+    border: none;
+}
+
+.dark-mode .disclaimer {
+    color: #999;
+}
