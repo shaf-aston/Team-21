@@ -1,0 +1,142 @@
+/* Admin Orders Styles */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Headers */
+h2 {
+    font-family: 'Dela Gothic One', cursive;
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+h3 {
+    font-family: 'Inter', sans-serif;
+    color: #444;
+    margin: 2rem 0 1rem;
+    font-size: 1.4rem;
+}
+
+/* Tables */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table th,
+.table td {
+    padding: 1rem;
+    vertical-align: middle;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    text-align: left;
+    color: #333;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
+
+/* First table specific styles */
+.table-bordered tr:first-child th {
+    border-top-left-radius: 8px;
+}
+
+.table-bordered tr:first-child td {
+    border-top-right-radius: 8px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+    margin-right: 0.5rem;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Status colors */
+.status-pending {
+    color: #ffc107;
+}
+
+.status-processing {
+    color: #17a2b8;
+}
+
+.status-completed {
+    color: #28a745;
+}
+
+.status-cancelled {
+    color: #dc3545;
+}
+
+/* Debug section */
+.debug-info {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+    font-size: 0.875rem;
+}
