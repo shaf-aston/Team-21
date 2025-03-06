@@ -21,6 +21,16 @@
       </form>
     </div>
   </header>
+
+  <nav class="navigation">
+    <ul>
+      <li><a href="{{ url('/admin') }}">Admin Dashboard</a></li>
+      <li><a href="{{ url('/admin/products') }}">Products</a></li>
+      <li><a href="{{ url('/orders/admin') }}">Orders</a></li>
+      <li><a href="{{ url('/admin/reports') }}">Reports</a></li>
+      <li><a href="{{ url('/logout') }}">Logout</a></li>
+    </ul>
+  </nav>
 </body>
 
 </html>
