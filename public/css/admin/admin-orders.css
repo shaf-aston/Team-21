@@ -1,142 +1,107 @@
-/* Admin Orders Styles */
+/* General Styles */
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
 .container {
     max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-    font-family: 'Inter', sans-serif;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-/* Headers */
 h2 {
-    font-family: 'Dela Gothic One', cursive;
-    color: #333;
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
+    font-family: "Dela Gothic One", cursive;
+    color: #2d4059;
+    margin-bottom: 20px;
 }
 
-h3 {
-    font-family: 'Inter', sans-serif;
-    color: #444;
-    margin: 2rem 0 1rem;
-    font-size: 1.4rem;
-}
-
-/* Tables */
+/* Table Styles */
 .table {
     width: 100%;
-    margin-bottom: 1rem;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     border-collapse: separate;
     border-spacing: 0;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .table th,
 .table td {
-    padding: 1rem;
-    vertical-align: middle;
-    border-bottom: 1px solid #dee2e6;
+    padding: 12px;
+    border: 1px solid #dee2e6;
+    text-align: left;
 }
 
 .table th {
-    background-color: #f8f9fa;
-    font-weight: 600;
-    text-align: left;
-    color: #333;
+    background-color: #2d4059;
+    color: #fff;
 }
 
-.table tbody tr:last-child td {
-    border-bottom: none;
+.table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
 
-.table-bordered {
-    border: 1px solid #dee2e6;
-}
-
-/* First table specific styles */
-.table-bordered tr:first-child th {
-    border-top-left-radius: 8px;
-}
-
-.table-bordered tr:first-child td {
-    border-top-right-radius: 8px;
-}
-
-/* Buttons */
+/* Button Styles */
 .btn {
     display: inline-block;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
     text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.3s;
-    border: none;
-    cursor: pointer;
-    margin-right: 0.5rem;
-}
-
-.btn-primary {
-    background-color: #007bff;
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-.btn-warning {
-    background-color: #ffc107;
-    color: #000;
-}
-
-.btn-warning:hover {
-    background-color: #e0a800;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
 }
 
 .btn-info {
-    background-color: #17a2b8;
-    color: white;
+    background-color: #2d4059;
+    color: #fff;
 }
 
 .btn-info:hover {
-    background-color: #138496;
+    background-color: #1b2838;
 }
 
-.btn-sm {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
+.btn-primary {
+    background-color: #2d4059;
+    color: #fff;
 }
 
-/* Status colors */
-.status-pending {
-    color: #ffc107;
+.btn-primary:hover {
+    background-color: #1b2838;
 }
 
-.status-processing {
-    color: #17a2b8;
+.btn-warning {
+    background-color: #6c757d;
+    color: #fff;
 }
 
-.status-completed {
-    color: #28a745;
+.btn-warning:hover {
+    background-color: #5a6268;
 }
 
-.status-cancelled {
-    color: #dc3545;
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-/* Debug section */
-.debug-info {
-    margin-top: 2rem;
-    padding: 1rem;
-    background-color: #f8f9fa;
-    border-radius: 4px;
-    font-family: monospace;
+.container {
+    animation: fadeIn 0.5s ease-in-out;
 }
 
-pre {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    margin: 0;
-    font-size: 0.875rem;
+.table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #e9ecef;
 }
