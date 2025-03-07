@@ -25,7 +25,7 @@
   <nav class="navigation">
     <ul>
       <li><a href="{{ url('/admin') }}">Admin Dashboard</a></li>
-      <li><a href="{{ url('/admin/adminproducts') }}">Products</a></li>
+      <li><a href="{{ url('/adminproducts') }}">Products</a></li>
       <li><a href="{{ url('/adminorders') }}">Orders</a></li>
       <li><a href="{{ url('/sales-report') }}">Reports</a></li>
       <li><a href="{{ url('/logout') }}">Logout</a></li>

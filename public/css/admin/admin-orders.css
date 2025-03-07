@@ -13,7 +13,7 @@ body {
     padding: 20px;
 }
 
-h2 {
+body > h2 {
     font-family: "Dela Gothic One", cursive;
     color: #2d4059;
     margin-bottom: 20px;
