@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
   <title>Contact Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{{ asset('css/contact_page.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
   <link rel="stylesheet" href="{{ asset('css/dark-mode-styles/contact-dark-mode.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
