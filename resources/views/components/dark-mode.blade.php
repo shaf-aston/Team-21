@@ -14,6 +14,10 @@
   </button>
 
   <script>
+    //Flash prevention by running before DOM loads
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      document.documentElement.classList.add('dark-mode');
+    }
     // Initialize dark mode on page load
     document.addEventListener('DOMContentLoaded', function() {
       const darkModeIcon = document.getElementById('darkModeIcon');
