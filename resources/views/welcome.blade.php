@@ -2,6 +2,10 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
+          <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon/favicon.ico') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>

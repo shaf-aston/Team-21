@@ -100,5 +100,17 @@ public function returnItem($itemId)
     return redirect()->back()->with('success', 'Item returned successfully. Stock updated.');
 }
 
+public function sortResults(Request $request)
+{
+    // Get sorting parameters
+    $sortBy = $request->query('sort_by', 'order_id');
+    $sortOrder = $request->query('sort_order', 'asc');
+
+    // Retrieve and sort all orders
+    $orders = Order::orderBy($sortBy, $sortOrder)->get();
+
+    return view('adminsort.result', compact('orders', 'sortBy', 'sortOrder'));
+}
+
 
 }

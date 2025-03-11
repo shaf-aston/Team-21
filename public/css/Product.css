@@ -1,0 +1,21 @@
+.product-container {
+    position: relative;
+    width: 50%;
+}
+
+#product-image {
+    width: 50%;
+    height: auto;
+}
+
+#zoom-result {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    width: 300px;
+    height: 300px;
+    top: 0;
+    left: 100%;
+    background-repeat: no-repeat;
+    background-size: 400%;
+    display: none;
+}

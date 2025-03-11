@@ -17,7 +17,7 @@ class RegistrationController extends Controller
         if($request ->isMethod('post')){
             $validInput = $request->validate([
                 'name' => 'required|string',
-                'email' => 'required|string|email',
+                'email' => 'required|string|email|unique:users,email',
                 'password' => 'required|string|min:8',
             ]);
         

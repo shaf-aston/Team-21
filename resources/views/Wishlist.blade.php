@@ -1,95 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wishlist - Gadget Grads</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ asset('/css/navbar.css') }}">
-  <link rel="stylesheet" href="{{ asset('/css/wishlist/Wishlist.css') }}">
-  <link rel="stylesheet" href="{{ asset('/css/wishlist/RemoveItem.css') }}">
-  <link rel="stylesheet" href="{{ asset('/css/wishlist/TotalBox.css') }}">
-  <link rel="stylesheet" href="{{ asset('/css/wishlist/UserReview.css') }}">
-  <link rel="stylesheet" href="{{ asset('/css/dark-mode-styles/Wishlist-dark-mode.css') }}">
+    <!-- Character set and viewport settings for responsive design -->
+       <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon/favicon.ico') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gadget Grads - Wishlist</title>
+    <!-- Links to external CSS stylesheets -->
+    <link rel="stylesheet" href="{{ asset('css/LoginPopUp.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/Basket.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/PaymentMethods.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/RemoveItem.css') }}">
+    <!-- Link to Google Fonts for custom font -->
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
 </head>
-
-
-
 <body>
-  @include('components.navbar')
+<header>
+        <div class="header-content">
+        <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="{{asset('images/GG_higher-resolution.png')}}" alt="Logo" height="50">
+                </a>
+                <div class="site-info">
+                    <h1 class="title">GADGET GRADS</h1>
+                    <h2 class="subheading">Graduate with better tech!</h2>
+                </div>
 
-  <main>
-    <h2>Your Wishlist (<span id="item-count-header">0</span> <span id="item-label">items</span>)</h2>
-    <div class="wishlist-content">
-      <div class="wishlist-container">
-        <div class="wishlist-item">
-          <div class="product-info">
-            <img src="{{ asset('images/Laptop.svg') }}" alt="Product Image" class="product-image">
-            <div class="product-details">
-              <div class="product-name">Product Name</div>
-              <div class="product-details-row">
-                <div class="quantity-section">
-                  <label for="quantity">Quantity:</label>
-                  <input type="number" id="quantity" value="1" min="1" class="quantity">
-                </div>
-                <a href="#" class="remove-link" onclick="showRemovePopup(this)">Remove item</a>
-                <div class="price">£10.00</div>
-              </div>
-              <div class="availability white-box">
-                <p>You can choose your delivery or collection preferences at checkout</p>
-                <div class="availability-item">
-                  <img src="{{ asset('images/truck.svg') }}" alt="Delivery Icon" class="availability-icon">
-                  <span>Delivery available</span>
-                </div>
-                <div class="availability-item">
-                  <img src="{{ asset('images/shop.svg') }}" alt="Collection Icon" class="availability-icon">
-                  <span>Collection unavailable</span>
-                </div>
-              </div>
             </div>
-          </div>
+            <div class="icons">
+                <a href="{{url('/nav')}}" class="user-icon" title="Sign in"><img src="{{asset('images/user.svg')}}" height="30"></a>
+                <a href="wishlist.html" class="wishlist-icon" title="Wishlist"><img src="{{asset('images/heart.svg')}}" height="30"></a>
+                <a href="{{url('/basket')}}"class="cart-icon" title="Basket"><img src="{{asset('images/basket.svg')}}" height="30"></a>
+        </div>      
         </div>
-      </div>
-      <div class="total-box-container">
-        <div class="total-box">
-          <p>Total: £<span id="wishlist-total">10.00</span></p>
-          <button class="basket-btn">Go to Basket</button>
-          <a href="{{ url('/home') }}" class="continue-shopping">Continue shopping</a>
+        <!-- Navigation bar with links to various sections -->
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="{{url('/home')}}">Home</a></li>
+                <li><a href="{{url('/products')}}">Products</a></li>
+                <li><a href="{{url('/about')}}">About Us</a></li>
+                <li><a href="{{url('/basket')}}">Basket</a></li>
+                <li><a href="{{url('/contact')}}">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Main content area for the wishlist -->
+        <h2>Your Wishlist (<span id="item-count-header">0</span> <span id="item-label">items</span>)</h2>
+        <div class="wishlist-content">
+            <div class="wishlist-container">
+                <div class="wishlist-item">
+                    <div class="product-info">
+                        <!-- Product image and details -->
+                        <img src="Laptop.svg" alt="Product Image" class="product-image">
+                        <div class="product-details">
+                            <div class="product-name">Product Name</div>
+                            <div class="product-details-row">
+                                <div class="quantity-section">
+                                    <!-- Quantity input for products -->
+                                    <label for="quantity">Quantity:</label>
+                                    <input type="number" id="quantity" value="1" min="1" class="quantity">
+                                </div>
+                                <!-- Link to remove item from wishlist -->
+                                <a href="#" class="remove-link" onclick="showRemovePopup(this)">Remove item</a>
+                                <div class="price">£10.00</div>
+                            </div>
+                            <!-- Availability information for delivery and collection -->
+                            <div class="availability white-box">
+                                <p>You can choose your delivery or collection preferences at checkout</p>
+                                <div class="availability-item">
+                                    <img src="truck.svg" alt="Delivery Icon" class="availability-icon">
+                                    <span>Delivery available</span>
+                                </div>
+                                <div class="availability-item">
+                                    <img src="shop.svg" alt="Collection Icon" class="availability-icon">
+                                    <span>Collection unavailable</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="total-box-container">
+                <div class="total-box">
+                    <!-- Total price -->
+                    <p>Total: £<span id="wishlist-total">10.00</span></p>
+                    <!-- Button to go to basket -->
+                    <button class="basket-btn">Go to Basket</button>
+                    <!-- Link to continue shopping -->
+                    <a href="HomePage.html" class="continue-shopping">Continue shopping</a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div id="remove-popup" class="popup">
-      <div class="popup-content">
-        <p>Are you sure you want to remove this item?</p>
-        <button onclick="removeItem()">Yes</button>
-        <button onclick="closePopup()">No</button>
-      </div>
-    </div>
-    <!-- User Review Section -->
-    <div class="review-section">
-      <h3>Leave a Review</h3>
-      {{-- <form action="{{ route('submit.review') }}" method="POST" class="review-form"> --}}
-      @csrf
-      <div class="rating">
-        <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars">★</label>
-        <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars">★</label>
-        <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars">★</label>
-        <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars">★</label>
-        <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star">★</label>
-      </div>
-      <textarea name="review" placeholder="Write your review here..." required></textarea>
-      <button type="submit">Submit Review</button>
-      </form>
-    </div>
-  </main>
-
-  @include('components.footer')
-
-  <script src="{{ asset('js/Wishlist.js') }}"></script>
-  <script src="{{ asset('js/TotalBox.js') }}"></script>
+        <!-- Remove Item Popup -->
+        <div id="remove-popup" class="popup">
+            <div class="popup-content">
+                <p>Are you sure you want to remove this item?</p>
+                <!-- Buttons to confirm or cancel item removal -->
+                <button onclick="removeItem()">Yes</button>
+                <button onclick="closePopup()">No</button>
+            </div>
+        </div>
+    </main>
+    <!-- External JavaScript files for wishlist and total functionalities -->
+    <script src="Wishlist.js"></script>
+    <script src="TotalBox.js"></script>
 </body>
-
 </html>

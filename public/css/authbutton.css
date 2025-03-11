@@ -8,11 +8,13 @@
     background-color: rgba(45, 64, 89, 0.8);
     z-index: 1000;
     opacity: 0;
+    visibility: hidden;
     transition: opacity 0.3s ease-in-out;
 }
 
 .auth-popup.active {
     opacity: 1;
+    visibility: visible;
 }
 
 .auth-popup-content {
@@ -26,7 +28,7 @@
     box-shadow: 0 8px 20px rgba(45, 64, 89, 0.2);
     transform: translateY(-20px);
     opacity: 0;
-    transition: all 0.3s ease-out;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 
 .auth-popup.active .auth-popup-content {
@@ -39,25 +41,30 @@
 }
 
 .login-title {
-    color: #2D4059;
-    font-family: 'Dela Gothic One', sans-serif;
+    color: #2d4059;
+    font-family: "Dela Gothic One", sans-serif;
     font-size: 24px;
     margin-bottom: 20px;
 }
 
 .input-container {
-  position: relative;  /* Add this */
-  background-color: #f5f7fa;
-  border-radius: 10px;
-  padding: 12px 15px;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  transition: all 0.3s ease;
+    position: relative; /* Add this */
+    background-color: #f5f7fa;
+    border-radius: 10px;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.input-container label {
+    white-space: nowrap;
+    margin-right: 10px;
 }
 
 .input-container:focus-within {
-    box-shadow: 0 0 0 2px #2D4059;
+    box-shadow: 0 0 0 2px #2d4059;
 }
 
 .input-container .icon {
@@ -67,38 +74,60 @@
 }
 
 .input-container input {
-  border: none;
-  background: none;
-  font-size: 16px;
-  color: #2D4059;
-  width: 100%;
-  padding-right: 35px;
+    border: none;
+    background: none;
+    font-size: 16px;
+    color: #2d4059;
+    width: 100%;
+    padding-right: 35px;
 }
-
 
 .input-container input:focus {
     outline: none;
 }
 
 .eye-icon {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  position: absolute; 
-  right: 15px;
-  top: 50%;  
-  transform: translateY(-50%); 
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .eye-icon:hover {
-  transform: translateY(-50%) scale(1.1); 
+    transform: translateY(-50%) scale(1.1);
+}
+
+.input-container select {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    appearance: none;
+}
+
+.input-container select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(45, 64, 89, 0.2);
+}
+
+.input-container select:hover {
+    background-color: #edf0f5;
+}
+
+.input-container select option {
+    padding: 8px;
+    background: white;
 }
 
 /* Login button styling */
 .login-btn {
     padding: 12px 25px;
-    background-color: #2D4059;
+    background-color: #2d4059;
     color: white;
     border: none;
     border-radius: 8px;
@@ -116,7 +145,7 @@
 .login-submit {
     width: 100%;
     padding: 12px;
-    background-color: #2D4059;
+    background-color: #2d4059;
     color: white;
     border: none;
     border-radius: 8px;
@@ -139,7 +168,7 @@
     right: 15px;
     top: 15px;
     font-size: 24px;
-    color: #2D4059;
+    color: #2d4059;
     cursor: pointer;
     transition: all 0.3s ease;
     width: 30px;
@@ -156,13 +185,17 @@
 }
 
 /* Links styling */
-.signup-link, .forgot-password, .back-to-login {
-    color: #2D4059;
+.signup-link,
+.forgot-password,
+.back-to-login {
+    color: #2d4059;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
-.signup-link:hover, .forgot-password:hover, .back-to-login:hover {
+.signup-link:hover,
+.forgot-password:hover,
+.back-to-login:hover {
     color: #3d5a7c;
     text-decoration: underline;
 }
@@ -177,7 +210,7 @@
 .remember-me input[type="checkbox"] {
     width: 16px;
     height: 16px;
-    accent-color: #2D4059;
+    accent-color: #2d4059;
 }
 
 /* Error messages */

@@ -56,4 +56,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
+
+    public function basketItems(){
+        return $this->hasMany(BasketItem::class, 'user_id');
+    }
 }

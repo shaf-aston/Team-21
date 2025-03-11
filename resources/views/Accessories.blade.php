@@ -3,6 +3,9 @@
 
 <head>
   <meta charset="utf-8" />
+  <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon/favicon.ico') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
   <title> Tablet Page </title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,6 +62,19 @@
             @else
             <a href="{{ route('login') }}" class="btn btn-primary">Log in to Add to Basket</a>
             @endif
+          </div>
+          <!-- Add to Wishlist -->
+          <div class="card-footer text-center">
+              @if(Auth::check())
+                <form method="POST" action="{{ route('wishlist.add') }}">
+                  @csrf
+                  <input type="hidden" name="product_id" value="{{ $product->product_id }}">
+                  <input type="hidden" name="quantity" value="1">
+                  <button type="submit" class="add-button btn-primary">Add to Wishlist</button>
+                </form>
+              @else
+                <a href="{{ route('login') }}" class="btn btn-primary">Log in to Add to Wishlist</a>
+              @endif
           </div>
         </div>
       </div>

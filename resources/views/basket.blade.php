@@ -2,9 +2,12 @@
 <html lang="en">
 
 <head>
-  <!-- Character set and viewport settings for responsive design -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon/favicon.ico') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
   <title>Gadget Grads - Basket</title>
   <!-- Links to external CSS stylesheets -->
   <link rel="stylesheet" href="{{ asset('css/LoginPopUp.css') }}">
@@ -15,6 +18,7 @@
   <!-- Link to Google Fonts for custom font -->
   <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
 </head>
+
 
 <body>
   @include('components.navbar')

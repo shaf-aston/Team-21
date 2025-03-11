@@ -3,17 +3,22 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Admin- Products</title>
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon/favicon.ico') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
+  <title> Tablet Page </title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{asset('css/admin/admin-view.css')}}">
-</head>
+  <link rel="stylesheet" href="{{ asset('css/admin/admin-view.css') }}">
+  </head>
 
-<body class="navbar-body">
+<body>
   @include('components.admin-navbar')
   <!-- sort function -->
   <div class="sort-section">
@@ -30,7 +35,7 @@
       <button type="submit">Sort!</button>
     </form>
   </div>
-  <button class="view-button add-product-button" type="submit" id="viewprod" onclick="window.location='{{url('/products/create')}}'"> Add product</button>
+  <button class="view-button" type="submit" id="viewprod" onclick="window.location='{{url('/products/create')}}'"> Add product</button>
 
 
   <!-- product display -->
@@ -40,7 +45,7 @@
       <img src="Images\{{$product->img_id}}.jpg" alt="Product" class="iPadAir">
       <div class="product-info">
         <h3 class="product-title"> {{$product->product_name}}</h3>
-        <p class="product-price">{{$product->product_price}}</p>
+        <p class="product-price">£{{$product->product_price}}</p>
         <p class="product-stock">Stock Quantity: {{$product->stock_quantity}}</p>
         <!-- Low stock alert message -->
         @if($product->stock_quantity <= 5 && $product->stock_quantity > 0)

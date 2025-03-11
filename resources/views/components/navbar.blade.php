@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
   <link rel="stylesheet" href="{{ asset('/css/dark-mode-styles/navbar-dark-mode.css') }}">
   <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <header id="main-header">
     <div class="header-left">
@@ -33,20 +35,21 @@
           <img src="{{ asset('images/user-1.svg') }}" height="30" alt="User icon">
         </a>
         <div class="dropdown-content">
+
           @auth
-            <a href="{{ url('/profile') }}">My Profile</a>
-            <a href="{{ url('/orders') }}">My Orders</a>
-            <a href="{{ url('/settings') }}">Settings</a>
-            <a href="{{ route('logout') }}" 
-               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-              Logout
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              @csrf
-            </form>
+          <a href="{{ url('/customer-dash') }}">My Profile</a>
+          <a href="{{ url('/orders') }}">My Orders</a>
+          <a href="{{ url('/settings') }}">Settings</a>
+          <a href="{{ route('logout') }}"
+            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            Logout
+          </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+          </form>
           @else
-            <a href="{{ route('login') }}">Login</a>
-            <a href="{{ route('register') }}">Register</a>
+          <a href="#" id="navbar-login-btn">Login</a>
+          <a href="{{ route('register') }}" id="navbar-register-btn">Register</a> 
           @endauth
         </div>
       </div>
@@ -79,5 +82,7 @@
     </div>
   </nav>
   @include('components.dark-mode')
+  @include('components.authbutton')
 </body>
+
 </html>

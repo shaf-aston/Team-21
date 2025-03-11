@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Auth Button - Gadget Grads</title>
   <link rel="stylesheet" href="{{ asset('css/authbutton.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/dark-mode-styles/authbutton-dark-mode.css') }}">
+  <script src="{{ asset('js/JavaScript_pop-up.js') }}"></script>
 </head>
 
 <body>
-  <!-- Main Login Button -->
-  <button id="login-btn" class="login-btn">Log In</button>
 
   <!-- Login Pop-up -->
   <div id="auth-popup" class="auth-popup">
@@ -44,8 +38,18 @@
             <img src="{{ asset('images/lock-on.svg') }}" class="icon" alt="Password Icon">
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
-            <img src="{{ asset('images/eye-open.svg') }}" class="eye-icon" alt="Show Password">
+            <img src="{{ asset('images/eye-open.svg') }}" class="eye-icon" data-target="password" alt="Toggle password">
             @error('password')
+            <span class="text-danger">{{ $message }}</span>
+            @enderror
+          </div>
+          <div class="input-container">
+            <label for="user_type">User Type:</label>
+            <select id="user_type" name="user_type" required>
+              <option value="customer" {{ old('user_type') == 'customer' ? 'selected' : '' }}>Customer</option>
+              <option value="admin" {{ old('user_type') == 'admin' ? 'selected' : '' }}>Admin</option>
+            </select>
+            @error('user_type')
             <span class="text-danger">{{ $message }}</span>
             @enderror
           </div>
@@ -66,25 +70,45 @@
       <span class="close-btn">&times;</span>
       <div class="login-box">
         <h2 class="login-title">Sign Up</h2>
+
+        @if ($errors->any())
+        <div class="alert alert-danger">
+          <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
+        @endif
+
         <form action="{{ route('register.post') }}" method="POST">
           @csrf
           <div class="input-container">
             <img src="{{ asset('images/user.svg') }}" class="icon" alt="Username Icon">
-            <label for="signup-name">Username:</label>
-            <input type="text" id="signup-name" name="name" value="{{ old('name') }}" required>
+            <label for="name">Username:</label>
+            <input type="text" id="name" name="name" value="{{ old('name') }}" required>
+            @error('name')
+            <span class="text-danger">{{ $message }}</span>
+            @enderror
           </div>
           <div class="input-container">
             <img src="{{ asset('images/mail.svg') }}" class="icon" alt="Email Icon">
-            <label for="signup-email">Email:</label>
-            <input type="email" id="signup-email" name="email" value="{{ old('email') }}" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{ old('email') }}" required>
+            @error('email')
+            <span class="text-danger">{{ $message }}</span>
+            @enderror
           </div>
           <div class="input-container">
             <img src="{{ asset('images/lock-on.svg') }}" class="icon" alt="Password Icon">
-            <label for="signup-password">Password:</label>
-            <input type="password" id="signup-password" name="password" required>
-            <img src="{{ asset('images/eye-open.svg') }}" class="eye-icon" alt="Show Password">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <img src="{{ asset('images/eye-open.svg') }}" class="eye-icon" data-target="signup-password" alt="Toggle password">
+            @error('password')
+            <span class="text-danger">{{ $message }}</span>
+            @enderror
           </div>
-          <a href="#" class="back-to-login" id="back-to-login-signup">Back to Log In</a>
+          <a href="#" class="back-to-login" id="back-to-login-signup">Already have an account? Login here</a>
           <button type="submit" class="login-submit">Sign Up</button>
         </form>
       </div>
@@ -101,29 +125,26 @@
           @csrf
           <div class="input-container">
             <img src="{{ asset('images/mail.svg') }}" class="icon" alt="Email Icon">
-            <label for="reset-email">Email:</label>
-            <input type="email" id="reset-email" name="email" required>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
           </div>
           <div class="input-container">
             <img src="{{ asset('images/lock-on.svg') }}" class="icon" alt="Password Icon">
             <label for="new_password">New Password:</label>
             <input type="password" id="new_password" name="new_password" required>
-            <img src="{{ asset('images/eye-open.svg') }}" class="eye-icon" alt="Show Password">
+            <img src="{{ asset('images/eye-open.svg') }}" class="eye-icon" data-target="new_password" alt="Toggle password">
           </div>
           <div class="input-container">
             <img src="{{ asset('images/lock-on.svg') }}" class="icon" alt="Password Icon">
-            <label for="new_password_confirmation">Confirm New Password:</label>
+            <label for="new_password_confirmation">Confirm Password:</label>
             <input type="password" id="new_password_confirmation" name="new_password_confirmation" required>
-            <img src="{{ asset('images/eye-open.svg') }}" class="eye-icon" alt="Show Password">
+            <img src="{{ asset('images/eye-open.svg') }}" class="eye-icon" data-target="new_password_confirmation" alt="Toggle password">
           </div>
           <a href="#" class="back-to-login" id="back-to-login-forgot">Back to Log In</a>
-          <button type="submit" class="login-submit">Reset Password</button>
+          <button type="submit" class="login-submit" id="reset-password-btn">Reset Password</button>
         </form>
       </div>
     </div>
   </div>
 
-  <script src="{{ asset('js/JavaScript_pop-up.js') }}"></script>
 </body>
-
-</html>
