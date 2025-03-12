@@ -169,7 +169,7 @@
         const chatDisplay = document.getElementById('chat-display');
         if (!chatDisplay) return;
       
-        const maxHeight = 200;
+        const maxHeight = 300;
         const minHeight = 100;
         const naturalHeight = chatDisplay.scrollHeight;
       
@@ -190,5 +190,6 @@
         adjustChatHeight();
         chatDisplay.scrollTop = chatDisplay.scrollHeight;
       }
+
     </script>
   </foot>

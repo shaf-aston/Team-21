@@ -48,11 +48,12 @@
 }
 
 .chat-display {
-    padding: 15px;
-    overflow-y: hidden;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+  padding: 15px;
+  overflow-y: hidden;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-height: 300px;
 }
 
 .chat-message {
