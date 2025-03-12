@@ -1,5 +1,6 @@
   <link rel="stylesheet" href="{{ asset('css/chat-support.css') }}">
   <link rel="stylesheet" href="{{ asset('css/dark-mode-styles/chat-support-dark-mode.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <div class="chat-container" id="chat-container">
     <div class="chat-header">
       <span class="chat-title">Chat Support</span>
@@ -30,10 +31,6 @@
       const toggleBtn = document.getElementById('toggle-chat');
       const chatContent = document.querySelector('.chat-content');
       const chatHeader = document.querySelector('.chat-header');
-      
-      // Set initial size
-      chatDisplay.style.minHeight = '300px';
-      chatDisplay.style.width = '320px';
       
       // Minimize functionality
       minimizeBtn.addEventListener('click', () => {
@@ -171,10 +168,10 @@
     function adjustChatHeight() {
       const chatDisplay = document.getElementById('chat-display');
       const currentHeight = chatDisplay.scrollHeight;
-      if (currentHeight <= 800) {
+      if (currentHeight <= 300) {
         chatDisplay.style.height = Math.max(300, currentHeight) + 'px';
       } else {
-        chatDisplay.style.height = '800px';
+        chatDisplay.style.height = '100px';
         chatDisplay.style.overflowY = 'scroll';
       }
     }
