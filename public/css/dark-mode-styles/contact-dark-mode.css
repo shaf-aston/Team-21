@@ -1,103 +1,102 @@
-
-body.dark-mode{
-  background-color: #2D4059;
+body.dark-mode {
+    background-color: #1a1a1a;
 }
 
-.contact-page .container {
-  background-color: #2D4059;
-  color: #f9f9f9;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+.dark-mode .contact-page .container {
+    background-color: #2d4059;
+    color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Mail icon container */
-.contact-page .mail-icon-container {
-  background-color: #1a2a3a;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+.dark-mode .contact-page .mail-icon-container {
+    background-color: #1a2a3a;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-.contact-page .mail-icon-container img {
-  filter: invert(1);
+.dark-mode .contact-page .mail-icon-container img {
+    filter: invert(1);
 }
 
 /* Form elements */
-.contact-page h2 {
-  color: #f9f9f9;
+.dark-mode .contact-page h2 {
+    color: #f9f9f9;
 }
 
-.contact-page label {
-  color: #f9f9f9;
+.dark-mode .contact-page label {
+    color: #f9f9f9;
 }
 
-.contact-page input[type="text"],
-.contact-page input[type="email"],
-.contact-page textarea,
-.contact-page select {
-  background-color: #1a2a3a;
-  color: #f9f9f9;
-  border: 1px solid #555;
+.dark-mode .contact-page input[type="text"],
+.dark-mode .contact-page input[type="email"],
+.dark-mode .contact-page textarea,
+.dark-mode .contact-page select {
+    background-color: #1a2a3a;
+    color: #f9f9f9;
+    border: 1px solid #555;
 }
 
-.contact-page input[type="text"]:focus,
-.contact-page input[type="email"]:focus,
-.contact-page textarea:focus,
-.contact-page select:focus {
-  border-color: #f9f9f9;
-  box-shadow: 0 0 5px rgba(249, 249, 249, 0.5);
+.dark-mode .contact-page input[type="text"]:focus,
+.dark-mode .contact-page input[type="email"]:focus,
+.dark-mode .contact-page textarea:focus,
+.dark-mode .contact-page select:focus {
+    border-color: #f9f9f9;
+    box-shadow: 0 0 5px rgba(249, 249, 249, 0.5);
 }
 
-.contact-page input[type="submit"] {
-  background-color: #f9f9f9;
-  color: #2D4059;
+.dark-mode .contact-page input[type="submit"] {
+    background-color: #f9f9f9;
+    color: #2d4059;
 }
 
-.contact-page input[type="submit"]:hover {
-  background-color: #ccc;
+.dark-mode .contact-page input[type="submit"]:hover {
+    background-color: #ccc;
 }
 
 /* Error messages */
-.contact-page .error {
-  color: #ff6b6b;
+.dark-mode .contact-page .error {
+    color: #ff6b6b;
 }
 
 /* Chat container */
-.chat-container {
-  background: #2D4059;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+.dark-mode .chat-container {
+    background: #2d4059;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
 }
 
-.chat-header {
-  background: #1a2a3a;
+.dark-mode .chat-header {
+    background: #1a2a3a;
 }
 
-.chat-controls button {
-  color: #f9f9f9;
+.dark-mode .chat-controls button {
+    color: #f9f9f9;
 }
 
-.chat-content {
-  background: #2D4059;
+.dark-mode .chat-content {
+    background: #2d4059;
 }
 
-.chat-display {
-  background: #1a2a3a;
-  color: #f9f9f9;
+.dark-mode .chat-display {
+    background: #1a2a3a;
+    color: #f9f9f9;
 }
 
-.chat-input input {
-  background: #1a2a3a;
-  color: #f9f9f9;
-  border: 1px solid #555;
+.dark-mode .chat-input input {
+    background: #1a2a3a;
+    color: #f9f9f9;
+    border: 1px solid #555;
 }
 
-.chat-input button {
-  background: #f9f9f9;
-  color: #2D4059;
+.dark-mode .chat-input button {
+    background: #f9f9f9;
+    color: #2d4059;
 }
 
-.chat-input button:hover {
-  background: #ccc;
+.dark-mode .chat-input button:hover {
+    background: #ccc;
 }
 
-.chat-toggle {
-  background: #1a2a3a;
-  color: #f9f9f9;
+.dark-mode .chat-toggle {
+    background: #1a2a3a;
+    color: #f9f9f9;
 }
