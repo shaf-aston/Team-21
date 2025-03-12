@@ -1,11 +1,4 @@
-/* Remove default transitions to prevent flash */
-body:not(.dark-mode-transitioning),
-body:not(.dark-mode-transitioning) * {
-    transition: none !important;
-}
-
-/* Only enable transitions when explicitly toggling */
 body.dark-mode-transitioning,
 body.dark-mode-transitioning * {
-    transition: background-color 0.3s ease, color 0.3s ease !important;
+    transition: background-color 0.5s ease, color 0.5s ease !important;
 }
