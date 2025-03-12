@@ -1,3 +1,5 @@
+  <link rel="stylesheet" href="{{ asset('css/chat-support.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/dark-mode-styles/chat-support-dark-mode.css') }}">
 <div class="chat-container" id="chat-container">
   <div class="chat-header">
     <span class="chat-title">Chat Support</span>
