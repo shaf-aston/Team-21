@@ -71,8 +71,8 @@
       </div>
     </div>
   </div>
-@include('components.chat-support')
+  @include('components.chat-support')
   <script src="{{ asset('js/chatbot.js') }}"></script>
 </body>
-
+@include('components.footer')
 </html>
