@@ -15,6 +15,7 @@
 
   <link rel="stylesheet" href="{{ asset('/css/UserReview.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/Product.css') }}">
+  <link rel="stylesheet" href="{{ asset('/css/dark-mode-styles/productdesc-dark-mode.css') }}">
 </head>
 
 <body>
@@ -31,7 +32,6 @@
     <div class="product-info">
       <h3 class="product-title">{{$product->product_name}}</h3>
       <div class="product-price">£{{$product->product_price}}</div>
-      <p class="product-description">{{$product->product_description}}</p>
 
       <!-- Action Buttons -->
       <div class="button-container">
@@ -59,7 +59,8 @@
         <a href="#" class="login-btn add-button">Log in to Add to Wishlist</a>
         @endif
       </div>
-    </div>
+      <p class="product-description">{{$product->product_description}}</p>
+      </div>
 
     <!-- Reviews Section -->
     <div class="reviews-section">

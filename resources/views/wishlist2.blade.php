@@ -98,7 +98,7 @@
       </div>
     </div>
   </main>
-
+  @include('components.footer')
   <!-- External JavaScript files -->
   <script src="{{asset('js/Wishlist.js')}}"></script>
   <script src="{{asset('js/TotalBox.js')}}"></script>
