@@ -124,8 +124,8 @@
     background: white;
 }
 
-/* Login button styling */
-.login-btn {
+/* Login button styling
+.login-btn-popup {
     padding: 12px 25px;
     background-color: #2d4059;
     color: white;
@@ -136,11 +136,11 @@
     transition: all 0.3s ease;
 }
 
-.login-btn:hover {
+.login-btn-popup:hover {
     background-color: #3d5a7c;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(45, 64, 89, 0.2);
-}
+} */
 
 .login-submit {
     width: 100%;

@@ -15,7 +15,6 @@
 
   <link rel="stylesheet" href="{{ asset('/css/UserReview.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/Product.css') }}">
-  @include('components.authbutton')
 </head>
 
 <body>
@@ -45,7 +44,7 @@
           <button type="submit" class="add-button">Add to Basket</button>
         </form>
         @else
-        <a href="#" id="login-btn" class="add-button">Log in to Add to Basket</a>
+        <a href="#" class="login-btn add-button">Log in to Add to Basket</a>
         @endif
 
         <!-- Add to Wishlist -->
@@ -57,7 +56,7 @@
           <button type="submit" class="add-button">Add to Wishlist</button>
         </form>
         @else
-        <a href="#" id="login-btn" class="add-button">Log in to Add to Wishlist</a>
+        <a href="#" class="login-btn add-button">Log in to Add to Wishlist</a>
         @endif
       </div>
     </div>
@@ -106,8 +105,10 @@
     </div>
   </div>
 
-  <script src="{{asset('js/Product.js')}}"></script>
   @include('components.footer')
-</body>
+  @include('components.authbutton')
+  <script src="{{asset('js/Product.js')}}"></script>
+  <script src="{{asset('js/JavaScript_pop-up.js')}}"></script>
+  </body>
 
 </html>

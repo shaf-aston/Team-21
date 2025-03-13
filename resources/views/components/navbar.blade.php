@@ -48,8 +48,8 @@
             @csrf
           </form>
           @else
-          <a href="#" id="login-btn">Login</a>
-          <a href="#" id="register-btn">Register</a>
+          <a href="#" class="login-btn">Login</a>
+          <a href="#" class="register-btn">Register</a>
           @endauth
         </div>
       </div>

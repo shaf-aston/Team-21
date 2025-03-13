@@ -33,11 +33,10 @@
         <input type="text" class="search-bar" name="query" placeholder="Search for products by name or description" required>
         <button class="search-button" type="submit">Search</button>
       </form>
-      <!-- logout button -->
-      <button id="login-btn" class="login-btn">Log In</button>
+      <button class="login-btn">Log In</button>
       <form action="{{route('logout')}}" method="POST">
         @csrf
-        <button id="logout-btn" class="login-btn">Logout</button>
+        <button id="logout-btn" class="logout-btn">Logout</button>
       </form>
     </div>
     <!-- nav-bar -->
