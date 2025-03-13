@@ -60,6 +60,7 @@
       <li><a href="{{ url('/sales-report') }}">Reports</a></li>
       <li><a href="{{ url('/supplier-orders')}}">Supplier Orders</a></li>
       <li><a href="{{ url('/adminusers') }}">Manage Customers</a></li>
+      
       <li><a href="{{ url('/logout') }}">Logout</a></li>
     </ul>
   </nav>
