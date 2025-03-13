@@ -100,8 +100,7 @@
       <button type="submit">Submit Review</button>
     </form>
   </div>
-
-  </header>
+@include('components.footer')
 </body>
 
 </html>

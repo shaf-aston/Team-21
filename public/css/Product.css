@@ -1,11 +1,15 @@
 .product-container {
     position: relative;
     width: 50%;
+    float: left;
+    margin-bottom: 30px;
 }
 
 #product-image {
-    width: 50%;
+    width: 100%;
     height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #zoom-result {
@@ -18,4 +22,102 @@
     background-repeat: no-repeat;
     background-size: 400%;
     display: none;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.product-details {
+    float: right;
+    width: 45%;
+    padding: 0 20px;
+}
+
+.product-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1d4056;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 22px;
+    font-weight: bold;
+    color: #0a7be5;
+    margin-bottom: 20px;
+}
+
+.product-description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.add-button {
+    background-color: #0a7be5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-button:hover {
+    background-color: #0b59a2;
+}
+
+/* Clear floats after the columns */
+.product-page-container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Reviews section styling */
+.reviews-container {
+    clear: both;
+    padding-top: 40px;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 20px;
+}
+
+.review-item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.review-rating {
+    color: #ffcc00;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .product-container,
+    .product-details {
+        width: 100%;
+        float: none;
+    }
+
+    .product-container {
+        margin-bottom: 20px;
+    }
+
+    #zoom-result {
+        display: none !important;
+    }
 }
