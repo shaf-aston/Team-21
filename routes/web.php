@@ -20,7 +20,7 @@ use App\Http\Controllers\WebsiteReviewController;
 
 
 Route::get('/', function () {
-  return redirect('/nav');
+  return redirect('/home');
 });
 
 //return search bar form
