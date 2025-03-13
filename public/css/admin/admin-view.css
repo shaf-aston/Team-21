@@ -1,5 +1,5 @@
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     background-color: #f5f5f5;
 }
 
@@ -29,7 +29,7 @@ body {
     padding: 1.5rem;
     display: flex;
     gap: 2rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .product img {
@@ -50,7 +50,7 @@ body {
 
 .product-price {
     font-size: 1.2rem;
-    color: #2D4059;
+    color: #2d4059;
     font-weight: bold;
     margin-bottom: 1rem;
 }
@@ -73,7 +73,7 @@ body {
 
 /* Buttons */
 .view-button {
-    background-color: #2D4059;
+    background-color: #2d4059;
     color: white;
     border: none;
     padding: 0.5rem 1rem;

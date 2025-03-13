@@ -1,41 +1,41 @@
 .dark-mode .chat-container {
-  background: #2d4059;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+    background: #2d4059;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
 }
 
 .dark-mode .chat-header {
-  background: #1a2a3a;
+    background: #1a2a3a;
 }
 
 .dark-mode .chat-controls button {
-  color: #f9f9f9;
+    color: #f9f9f9;
 }
 
 .dark-mode .chat-content {
-  background: #2d4059;
+    background: #2d4059;
 }
 
 .dark-mode .chat-display {
-  background: #1a2a3a;
-  color: #f9f9f9;
+    background: #1a2a3a;
+    color: #f9f9f9;
 }
 
 .dark-mode .chat-input input {
-  background: #1a2a3a;
-  color: #f9f9f9;
-  border: 1px solid #555;
+    background: #1a2a3a;
+    color: #f9f9f9;
+    border: 1px solid #555;
 }
 
 .dark-mode .chat-input button {
-  background: #f9f9f9;
-  color: #2d4059;
+    background: #f9f9f9;
+    color: #2d4059;
 }
 
 .dark-mode .chat-input button:hover {
-  background: #ccc;
+    background: #ccc;
 }
 
 .dark-mode .chat-toggle {
-  background: #1a2a3a;
-  color: #f9f9f9;
+    background: #1a2a3a;
+    color: #f9f9f9;
 }

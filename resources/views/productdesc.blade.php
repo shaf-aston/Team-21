@@ -3,19 +3,25 @@
 
 <head>
   <meta charset="utf-8" />
-    <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon/favicon.ico') }}">
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon/favicon.ico') }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
-  <title>Product View</title>
+
+  <title>Product Description</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="{{ asset('/css/UserReview.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/Product.css') }}">
+
+
 </head>
 
 
@@ -75,6 +81,9 @@
   <p>No reviews yet. Be the first to leave a review!</p>
   @endif
 
+
+
+
   <!-- User Review Section -->
   <div class="review-section">
     <h3>Leave a Review</h3>
@@ -92,6 +101,7 @@
     </form>
   </div>
 
+  </header>
 </body>
 
 </html>

@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     background: #f5f7ff;
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
 .MacbookAir2 {
@@ -116,7 +116,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    padding: 0 10px; 
+    padding: 0 10px;
     box-sizing: border-box;
 }
 
@@ -175,15 +175,16 @@ body {
     .MacbookAir2 {
         width: 95%;
     }
-    
-    .DashboardContents, .DashboardContentsInner {
+
+    .DashboardContents,
+    .DashboardContentsInner {
         width: calc(100% - 300px);
     }
-    
+
     .menu-container {
         flex-wrap: wrap;
     }
-    
+
     .menu-item {
         flex: 1 1 auto;
         margin: 5px;
@@ -191,32 +192,32 @@ body {
 }
 
 .section-container {
-  padding: 20px;
-  margin-top: 10px;
-  position: relative;
-  min-height: 400px;
+    padding: 20px;
+    margin-top: 10px;
+    position: relative;
+    min-height: 400px;
 }
 .section-content {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 25px 0 25px 25px;
-  border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-  position: absolute;
-  width: calc(100% - 65px);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px 0 25px 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    position: absolute;
+    width: calc(100% - 65px);
 }
 
 .section-content h2 {
-  color: #6384e4;
-  margin-bottom: 20px;
-  font-size: 24px;
-  font-weight: 600;
+    color: #6384e4;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
 }
 
 .hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .form-group {
@@ -271,28 +272,29 @@ body {
     padding: 15px 0;
 }
 
-
 .form-row .form-group {
     flex: 1;
     margin-bottom: 0;
 }
 
-.submit-btn, .save-btn {
-  background: #6384e4;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  margin-top: 15px;
-  display: block;
+.submit-btn,
+.save-btn {
+    background: #6384e4;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    display: block;
 }
 
-.submit-btn:hover, .save-btn:hover {
-  background: #4a6cd0;
-  transform: translateY(-1px);
+.submit-btn:hover,
+.save-btn:hover {
+    background: #4a6cd0;
+    transform: translateY(-1px);
 }
 
 .info-container {
@@ -313,20 +315,20 @@ body {
 }
 
 .checkbox-label input[type="checkbox"] {
-  margin: 0;
-  width: auto;
-  flex-shrink: 0;
+    margin: 0;
+    width: auto;
+    flex-shrink: 0;
 }
 
 .checkbox-label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;  
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
 }
 
 .checkbox-label span {
-  cursor: pointer; 
+    cursor: pointer;
 }
 
 .empty-message {

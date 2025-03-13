@@ -1,6 +1,5 @@
   --primary-color: #2d4059;
   --secondary-color: #D9D9D9;
-  --tertiary-color: #EA5455;
   --font-family: 'Dela Gothic One', sans-serif;
 
   

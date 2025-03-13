@@ -1,0 +1,212 @@
+/* Global Styles */
+body {
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1,
+h2,
+h3 {
+    color: #2d4059;
+    margin: 0;
+}
+
+h1 {
+    font-size: 24px;
+    font-family: "Dela Gothic One", sans-serif;
+}
+h2 {
+    font-size: 10px;
+    font-family: "Dela Gothic One", sans-serif;
+}
+h3 {
+    font-size: 15px;
+    font-family: sans-serif;
+}
+
+/* Header */
+#main-header {
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.logo {
+    width: 98px;
+    height: 48px;
+    float: left;
+    margin-right: 13px;
+}
+
+/* Navigation Bar */
+.topnav {
+    background-color: #2d4059;
+    overflow: hidden;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.topnav a {
+    float: left;
+    color: #ffffff;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 14px;
+    margin: 0 73px;
+    font-family: "Inter", sans-serif;
+}
+
+.topnav a:hover {
+    background-color: #ffffff;
+    color: black;
+}
+
+.icons {
+    position: static;
+    top: 30px;
+    right: 100px;
+    display: flex;
+    gap: 10px;
+}
+
+/* Buttons */
+button {
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 40px;
+    width: 190px;
+    height: 40px;
+}
+
+.view-button {
+    background-color: #2d4059;
+    color: #ffffff;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.view-button:hover,
+.add-button:hover {
+    background-color: white;
+    color: black;
+}
+
+.add-button {
+    background-color: white;
+    border: 2px solid #2d4059;
+}
+
+/* Review Section */
+.reviews {
+    margin: 20px;
+}
+
+.review {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.review-header {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.user {
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.user-profile {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.rating {
+    color: #f39c12;
+}
+
+textarea {
+    width: 40%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Star Rating */
+.star-rating {
+    display: flex;
+    cursor: pointer;
+}
+
+.star-rating span {
+    font-size: 30px;
+    color: #ccc;
+}
+
+.star-rating span.active,
+.star-rating span:hover,
+.star-rating span:hover ~ span {
+    color: #f39c12;
+}
+
+/* Order History */
+#order-history {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

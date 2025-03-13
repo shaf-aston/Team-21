@@ -1,89 +1,90 @@
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: #f8f9fa;
-  margin: 0;
-  padding: 0;
+    font-family: "Inter", sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
 }
 
-body > h1 {  /* Target only direct child h2 of body */
-  font-family: 'Dela Gothic One', cursive;
-  color: #2D4059;
-  text-align: center;
-  margin-top: 30px;
-  margin-bottom: 20px;
-  }
+body > h1 {
+    /* Target only direct child h2 of body */
+    font-family: "Dela Gothic One", cursive;
+    color: #2d4059;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
 
 .sales-table {
-  width: 80%;
-  margin: 0 auto 30px;
-  border-collapse: separate;
-  border-spacing: 0;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 80%;
+    margin: 0 auto 30px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .sales-table th {
-  background-color: #2D4059;
-  color: white;
-  padding: 15px;
-  text-align: left;
+    background-color: #2d4059;
+    color: white;
+    padding: 15px;
+    text-align: left;
 }
 
 .sales-table td {
-  padding: 12px 15px;
-  border-bottom: 1px solid #dee2e6;
+    padding: 12px 15px;
+    border-bottom: 1px solid #dee2e6;
 }
 
 .sales-table tbody tr {
-  background-color: white;
-  transition: background-color 0.2s ease;
+    background-color: white;
+    transition: background-color 0.2s ease;
 }
 
 .sales-table tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
+    background-color: #f2f2f2;
 }
 
 .sales-table tbody tr:hover {
-  background-color: #e9ecef;
+    background-color: #e9ecef;
 }
 
 .card {
-  background-color: white;
-  border-radius: 8px;
-  padding: 20px;
-  width: 300px;
-  margin: 15px auto;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    margin: 15px auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .card h3 {
-  font-family: 'Dela Gothic One', cursive;
-  color: #2D4059;
-  margin-top: 0;
-  font-size: 1.2rem;
-  border-bottom: 2px solid #f2f2f2;
-  padding-bottom: 10px;
+    font-family: "Dela Gothic One", cursive;
+    color: #2d4059;
+    margin-top: 0;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #f2f2f2;
+    padding-bottom: 10px;
 }
 
 .card p {
-  margin: 8px 0;
-  color: #333;
+    margin: 8px 0;
+    color: #333;
 }
 
 .card strong {
-  color: #2D4059;
+    color: #2d4059;
 }
 
 @media screen and (min-width: 768px) {
-  .cards-container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
-  }
-  
-  .card {
-    margin: 0;
-  }
+    .cards-container {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 30px;
+    }
+
+    .card {
+        margin: 0;
+    }
 }

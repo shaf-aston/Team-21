@@ -19,29 +19,30 @@ use App\Http\Controllers\WebsiteReviewController;
 
 
 
-Route::get('/', function(){
-    return redirect('/nav');
+Route::get('/', function () {
+  return redirect('/nav');
 });
 
 //return search bar form
-Route::get('/searchbar', function(){
-    return view('search.form');
+Route::get('/searchbar', function () {
+  return view('search.form');
 });
 
 //return search value
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+Route::get('/admin/productsearch', [SearchController::class, 'productSearch'])->name('adminproductsearch');
 
 //return order search value
 Route::get('/admin/search', [SearchController::class, 'searchOrders'])->name('adminsearch');
 
 //return the main page
-Route::get('/nav', function(){
-    return view('signup');
+Route::get('/nav', function () {
+  return view('signup');
 });
 
 // Show the login form
 Route::get('/login', function () {
-    return view('signup');  // Using 'signup' as the view for login
+  return view('signup');  // Using 'signup' as the view for login
 })->name('login');
 
 // Process the login request
@@ -52,7 +53,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Show the registration form
 Route::get('/register', function () {
-    return view('signup');  // Show 'signup' for the registration view
+  return view('signup');  // Show 'signup' for the registration view
 })->name('register');
 
 // Process the registration request
@@ -62,20 +63,20 @@ Route::post('/register', [RegistrationController::class, 'register'])->name('reg
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //return basket view
-Route::get('/basket', function(){
-    return view('basket');
+Route::get('/basket', function () {
+  return view('basket');
 });
 
 
 //return about view
-Route::get('/about',  function(){
-    return view('about');
+Route::get('/about',  function () {
+  return view('about');
 });
 
 
 //return checkout view 
-Route::get('/checkout2', function(){
-    return view('checkout2');
+Route::get('/checkout2', function () {
+  return view('checkout2');
 });
 
 
@@ -111,33 +112,38 @@ Route::delete('/basket/{item}', [BasketController::class, 'remove'])->name('bask
 Route::delete('/basket/clear', [BasketController::class, 'clear'])->name('basket.clear');
 
 
-Route::get('/home',  function(){
-    return view('home');
+Route::get('/home',  function () {
+  return view('home');
 });
 
 
 
-Route::get('/products', function(){
-    $products = DB::table('products')->get();
-    return view('products',['products' => $products]);
+Route::get('/products', function () {
+  $products = DB::table('products')->get();
+  return view('products', ['products' => $products]);
 });
-Route::get('/productdesc', function(){
 
-    return view('productdesc');
+Route::get('/productdesc', function () {
+
+  return view('productdesc');
 })->name("productdesc");
 
-Route::post('products', [ProductController::class, 'index']
+
+
+Route::post(
+  'products',
+  [ProductController::class, 'index']
 )->name("products.index");
 
 
 
 
-Route::get('/adminproducts', function(){
-    $products = DB::table('products')->get();
-    return view('adminViewOfProduct',['products' => $products]);
+Route::get('/adminproducts', function () {
+  $products = DB::table('products')->get();
+  return view('adminViewOfProduct', ['products' => $products]);
 });
 
-// Route::post('adminproducts', [ProductController::class, 'adminIndex'])->name('adminproducts.index');
+Route::post('adminproducts', [ProductController::class, 'adminIndex'])->name('adminproducts.index');
 
 // Remove Product from Basket
 Route::delete('/adminproducts/{item}', [ProductController::class, 'remove'])->name('admin.remove');
@@ -145,7 +151,7 @@ Route::delete('/adminproducts/{item}', [ProductController::class, 'remove'])->na
 
 Route::get('/adminusers', [CustomerDetailsController::class, 'index'])->name('adminusers.index');
 
-Route::get('/adminusers/{user_id}',[CustomerDetailsController::class, 'show'])->name('adminusers.show');
+Route::get('/adminusers/{user_id}', [CustomerDetailsController::class, 'show'])->name('adminusers.show');
 
 Route::delete('/adminusers/{user_id}', [CustomerDetailsController::class, 'remove'])->name('adminusers.remove');
 
@@ -155,70 +161,96 @@ Route::delete('/adminusers/{user_id}', [CustomerDetailsController::class, 'remov
 
 
 // Route for Laptops
-Route::get('/Laptops', function(){
-    $products = DB::table('products')->get();
-    #$products = $products::where('category_id',1)->get();
-    return view('Laptops', ['products' => $products]);
+Route::get('/Laptops', function () {
+  $products = DB::table('products')->get();
+  #$products = $products::where('category_id',1)->get();
+  return view('Laptops', ['products' => $products]);
 })->name("Laptops");
 // Route for Smartwatches
-Route::get('/Smartwatches', function(){
-    $products = DB::table('products')->get();
-    #$products = $products::where('category_id',1)->get();
-    return view('Smartwatches', ['products' => $products]);
+Route::get('/Smartwatches', function () {
+  $products = DB::table('products')->get();
+  #$products = $products::where('category_id',1)->get();
+  return view('Smartwatches', ['products' => $products]);
 })->name("Smartwatches");
 //Route for hpones
-Route::get('/Phones', function(){
-    $products = DB::table('products')->get();
-    #$products = $products::where('category_id',1)->get();
-    return view('Phones', ['products' => $products]);
+Route::get('/Phones', function () {
+  $products = DB::table('products')->get();
+  #$products = $products::where('category_id',1)->get();
+  return view('Phones', ['products' => $products]);
 })->name("Phones");
 //Route for Tablets
-Route::get('/Tablets', function(){
-    $products = DB::table('products')->get();
-    #$products = $products::where('category_id',1)->get();
-    return view('Tablets', ['products' => $products]);
+Route::get('/Tablets', function () {
+  $products = DB::table('products')->get();
+  #$products = $products::where('category_id',1)->get();
+  return view('Tablets', ['products' => $products]);
 })->name("Tablets");
 //Route for Accessories
-Route::get('/Accessories', function(){
-    $products = DB::table('products')->get();
-    #$products = $products::where('category_id',1)->get();
-    return view('Accessories', ['products' => $products]);
+Route::get('/Accessories', function () {
+  $products = DB::table('products')->get();
+  #$products = $products::where('category_id',1)->get();
+  return view('Accessories', ['products' => $products]);
 })->name("Accessories");
 
-Route::post('/productssort',function() {
-    $products = DB::table('products')->get();
-    $sortby = request('sort');
-    echo $sortby;
-    if($sortby == 'priceasc'){
-        $productsorted = $products->sortBy('product_price');
-    }
-    if($sortby == 'pricedesc'){
-        $productsorted  = $products->sortByDesc('product_price');
-    }
-    if($sortby == 'nameasc'){
-        $productsorted  = $products->sortBy('product_name');
-    }
-    if($sortby == 'namedesc'){
-        $productsorted  = $products->sortByDesc('product_name');
-    }
-    if($sortby == 'default'){
-        $productsorted = $products;
-    }
+Route::post('/productssort', function () {
+  $products = DB::table('products')->get();
+  $sortby = request('sort');
+  echo $sortby;
+  if ($sortby == 'priceasc') {
+    $productsorted = $products->sortBy('product_price');
+  }
+  if ($sortby == 'pricedesc') {
+    $productsorted  = $products->sortByDesc('product_price');
+  }
+  if ($sortby == 'nameasc') {
+    $productsorted  = $products->sortBy('product_name');
+  }
+  if ($sortby == 'namedesc') {
+    $productsorted  = $products->sortByDesc('product_name');
+  }
+  if ($sortby == 'default') {
+    $productsorted = $products;
+  }
 
-    return view('products', ['products' => $productsorted ]);
+  return view('products', ['products' => $productsorted]);
+});
+
+
+
+Route::post('/adminproductssort', function () {
+  $products = DB::table('products')->get();
+  $sortby = request('sort');
+  echo $sortby;
+  if ($sortby == 'priceasc') {
+    $productsorted = $products->sortBy('product_price');
+  }
+  if ($sortby == 'pricedesc') {
+    $productsorted  = $products->sortByDesc('product_price');
+  }
+  if ($sortby == 'nameasc') {
+    $productsorted  = $products->sortBy('product_name');
+  }
+  if ($sortby == 'namedesc') {
+    $productsorted  = $products->sortByDesc('product_name');
+  }
+  if ($sortby == 'default') {
+    $productsorted = $products;
+  }
+
+  return view('adminViewOfProduct', ['products' => $productsorted]);
 });
 
 
 #Route::get('/Laptops', [ProductController::class, 'showlap']);
-Route::get('/productdesc/{product_id}', [ProductController::class, 'show'] );
+Route::get('/productdesc/{product_id}', [ProductController::class, 'show']);
+
+Route::get('/adminproductshow/{product_id}', [ProductController::class, 'adminShow']);
+
 
 
 
 Route::post('/reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('forgot.password.reset');
 
-Route::get('/customer-dash', function(){
-  return view('customer-dash');
-});
+
 
 // Basket Page
 Route::get('/wishlist', [WishListController::class, 'index'])->name('wishlist.index');
@@ -276,13 +308,13 @@ Route::get('/sales-report', [SalesReportController::class, 'report']);
 //Displays the orders 
 Route::get('/adminorders', [OrderController::class, 'adminIndex'])->name('orders.adminIndex');
 
-Route::get('/order',[OrderController::class, 'index'])
-    ->middleware('auth')
-    ->name('orders.index');
+Route::get('/order', [OrderController::class, 'index'])
+  ->middleware('auth')
+  ->name('orders.index');
 
-Route::get('/orders/{order_id}',[OrderController::class, 'show'])->name('orders.show');
+Route::get('/orders/{order_id}', [OrderController::class, 'show'])->name('orders.show');
 
-Route::get('/adminorders/{order_id}',[OrderController::class, 'adminShow'])->name('orders.adminShow');
+Route::get('/adminorders/{order_id}', [OrderController::class, 'adminShow'])->name('orders.adminShow');
 
 Route::get('/adminorders/{order}/editstatus', [OrderController::class, 'editStatus'])->name('orders.adminEditStatus');
 
@@ -312,4 +344,4 @@ Route::put('/supplier-orders/{supplierOrder}', [SupplierOrderController::class, 
 Route::delete('/supplier-orders/{supplierOrder}', [SupplierOrderController::class, 'destroy'])->name('supplier-orders.destroy');
 
 
-Route::get('/adminsort/result',[OrderController::class, 'sortResults'])->name('adminsort.result');
+Route::get('/adminsort/result', [OrderController::class, 'sortResults'])->name('adminsort.result');

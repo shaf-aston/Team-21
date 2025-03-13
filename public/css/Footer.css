@@ -2,7 +2,6 @@
 .footer {
   background-color: #2D4059;
   color: #ffffff;
-  font-family: 'Inter', sans-serif;
   padding-top: 60px;
 }
 
@@ -33,7 +32,6 @@
 .logo-placeholder {
   width: 50px;
   height: 50px;
-  background-color: #EA5455;
   border-radius: 8px;
   display: flex;
   justify-content: center;
@@ -82,8 +80,8 @@
   left: 0;
   bottom: -8px;
   height: 2px;
-  width: 40px;
-  background-color: #EA5455;
+  width: 60px;
+  background-color: #e1e8ff;
 }
 
 .footer-links, 
@@ -114,7 +112,7 @@
 .footer-menu a:hover,
 .footer-legal a:hover {
   opacity: 1;
-  color: #EA5455;
+  color: #e1e8ff;
 }
 
 address {
@@ -141,7 +139,7 @@ address {
 }
 
 .social-icon:hover {
-  background-color: #EA5455;
+  background-color: #e1e8ff;
 }
 
 /* Simple CSS icons using pseudo-elements */

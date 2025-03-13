@@ -168,19 +168,19 @@
       function adjustChatHeight() {
         const chatDisplay = document.getElementById('chat-display');
         if (!chatDisplay) return;
-      
+
         const maxHeight = 300;
         const minHeight = 100;
         const naturalHeight = chatDisplay.scrollHeight;
-      
+
         let newHeight = Math.max(minHeight, naturalHeight);
         newHeight = Math.min(newHeight, maxHeight);
-      
+
         chatDisplay.style.height = newHeight + 'px';
         chatDisplay.style.overflowY = naturalHeight > maxHeight ? 'auto' : 'hidden';
         chatDisplay.scrollTop = chatDisplay.scrollHeight;
       }
-      
+
       function addMessage(message, isUser = false) {
         const chatDisplay = document.getElementById('chat-display');
         const messageDiv = document.createElement('div');
@@ -190,6 +190,5 @@
         adjustChatHeight();
         chatDisplay.scrollTop = chatDisplay.scrollHeight;
       }
-
     </script>
   </foot>

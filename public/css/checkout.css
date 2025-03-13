@@ -7,38 +7,33 @@
 
 body {
     background-color: white;
-    margin:0;
-    padding:0;
-    height: 100vh; 
+    margin: 0;
+    padding: 0;
+    height: 100vh;
 }
 
 .header {
-
     padding: 20px 50px;
-    background-color: white; 
-    justify-content:space-between;
-    
+    background-color: white;
+    justify-content: space-between;
 }
 
 .logo-container {
-    display:flex;
-    align-items: center; 
-    gap: 10px; 
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
-
 
 .logo img {
-    display: block; 
+    display: block;
 }
 
-
-
 .search-container {
-    display: flex; 
-    justify-content: center; 
-    width: 100%; 
+    display: flex;
+    justify-content: center;
+    width: 100%;
     max-width: 600px;
-    position: relative; 
+    position: relative;
 }
 
 /* .search-bar {
@@ -66,50 +61,49 @@ body {
 
 .search-icon {
     position: absolute;
-    top: 50%; 
-    right: 15px; 
+    top: 50%;
+    right: 15px;
     transform: translateY(-50%);
-    width: 20px; 
-    height: 20px; 
+    width: 20px;
+    height: 20px;
     cursor: pointer;
-    pointer-events: none; 
+    pointer-events: none;
 }
 
 .site-info {
     display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    text-align: center; 
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .title {
-    font-family: "Dela Gothic One", sans-serif; 
-    font-size: 20px; 
-    color: #2D4059; 
+    font-family: "Dela Gothic One", sans-serif;
+    font-size: 20px;
+    color: #2d4059;
 }
 
 .subheading {
     font-family: "Dela Gothic One", sans-serif;
-    font-size: 10px; 
-    color: #2D4059; 
-    margin: 0; 
-    margin-top: 5px; 
+    font-size: 10px;
+    color: #2d4059;
+    margin: 0;
+    margin-top: 5px;
 }
 
-
 .dela-gothic-one-regular {
-        font-family: "Dela Gothic One", sans-serif;
-        font-weight: 400;
-        font-style: normal;
-        color:#2D4059;
-        font-size:20px;
-      }
-      
+    font-family: "Dela Gothic One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #2d4059;
+    font-size: 20px;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color:#1f3c88;
+    background-color: #1f3c88;
     padding: 1rem 2rem;
 }
 
@@ -118,11 +112,10 @@ body {
     text-decoration: none;
     margin: 0 10px;
     margin-right: 100px;
-    
 }
 
 .navbar a:hover {
-    color:black;
+    color: black;
 }
 
 .icons i {
@@ -131,21 +124,21 @@ body {
 }
 
 .icons {
-    position: absolute; 
-    top: 10px; 
-    right: 20px; 
+    position: absolute;
+    top: 10px;
+    right: 20px;
     display: flex;
-    gap: 10px; 
+    gap: 10px;
 }
 
 .icons .icon {
-    text-decoration: none; 
-    font-size: 30px; 
-    color: #2D4059; 
+    text-decoration: none;
+    font-size: 30px;
+    color: #2d4059;
 }
 
 .checkout-container {
-    background-color: #2D4059;
+    background-color: #2d4059;
     color: white;
     max-width: 400px;
     margin: 3rem auto;
@@ -211,5 +204,3 @@ input:focus {
     text-decoration: none;
     margin: 0 10px;
 }
-
-

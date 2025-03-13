@@ -1,33 +1,38 @@
-.popup { 
-    display: none; /* Hidden by default */ 
-    position: fixed; /* Fixed position to cover the entire screen */ 
-    top: 0; /* Align to the top of the screen */ 
-    left: 0; /* Align to the left of the screen */ 
-    width: 100%; /* Full width of the viewport */ 
-    height: 100%; /* Full height of the viewport */ 
-    background-color: rgba(0,0,0,0.5); /* Black background with opacity for overlay effect */ 
-    justify-content: center; /* Center content horizontally */ 
-    align-items: center; /* Center content vertically */ 
-    z-index: 1000; /* Ensure it appears above all other elements */ 
-} 
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position to cover the entire screen */
+    top: 0; /* Align to the top of the screen */
+    left: 0; /* Align to the left of the screen */
+    width: 100%; /* Full width of the viewport */
+    height: 100%; /* Full height of the viewport */
+    background-color: rgba(
+        0,
+        0,
+        0,
+        0.5
+    ); /* Black background with opacity for overlay effect */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    z-index: 1000; /* Ensure it appears above all other elements */
+}
 
-.popup-content { 
-    background-color: white; /* Background color for the popup content */ 
-    padding: 20px; /* Padding inside the popup content */ 
-    border-radius: 10px; /* Rounded corners */ 
-    text-align: center; /* Centered text alignment */ 
-} 
+.popup-content {
+    background-color: white; /* Background color for the popup content */
+    padding: 20px; /* Padding inside the popup content */
+    border-radius: 10px; /* Rounded corners */
+    text-align: center; /* Centered text alignment */
+}
 
-.popup-content button { 
-    background-color: #0A7BE5; /* Match the color of the Proceed to Checkout button */ 
-    color: white; /* White text color */ 
-    border: none; /* Remove default border */ 
-    padding: 10px 20px; /* Padding inside the button */ 
-    cursor: pointer; /* Pointer cursor on hover */ 
-    border-radius: 5px; /* Rounded corners */ 
-    margin: 10px; /* Margin around the buttons */ 
-} 
+.popup-content button {
+    background-color: #0a7be5; /* Match the color of the Proceed to Checkout button */
+    color: white; /* White text color */
+    border: none; /* Remove default border */
+    padding: 10px 20px; /* Padding inside the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+    margin: 10px; /* Margin around the buttons */
+}
 
-.popup-content button:hover { 
-    background-color: #0B59A2; /* Darker background color on hover */ 
+.popup-content button:hover {
+    background-color: #0b59a2; /* Darker background color on hover */
 }

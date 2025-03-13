@@ -13,13 +13,13 @@
 }
 
 .dark-mode .price {
-    color: #8CA9F2;
+    color: #8ca9f2;
 }
 
 .dark-mode .quantity {
     background: #34495e;
     color: #e1e8ff;
-    border-color: #8CA9F2;
+    border-color: #8ca9f2;
 }
 
 .dark-mode .total-box-container {
@@ -33,11 +33,11 @@
 }
 
 .dark-mode .payment-checkbox {
-    accent-color: #8CA9F2;
+    accent-color: #8ca9f2;
 }
 
 .dark-mode .btn-success {
-    background: #8CA9F2;
+    background: #8ca9f2;
     color: #1a1a1a;
     border: none;
 }

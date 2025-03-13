@@ -29,7 +29,7 @@
 }
 
 .login-box {
-    background-color: #1D4056;
+    background-color: #1d4056;
     border-radius: 15px;
     padding: 20px;
     margin-top: 20px;
@@ -50,11 +50,11 @@
 }
 
 .signup-link {
-    color: #3678B6;
+    color: #3678b6;
 }
 
 .back-to-login {
-    color: #3678B6;
+    color: #3678b6;
     display: block;
     margin-top: 10px;
     text-align: left;
@@ -91,7 +91,7 @@
     display: inline-block;
     margin-right: 10px;
     vertical-align: middle; /* Align label and input in the middle */
-    color: #000
+    color: #000;
 }
 
 .input-container input {
@@ -119,12 +119,12 @@
 }
 
 .input-container.remember-me label {
-    color: #3678B6; /* Same color as forgot password */
+    color: #3678b6; /* Same color as forgot password */
 }
 
 .login-submit {
     width: 100%;
-    background-color: #0A7BE5;
+    background-color: #0a7be5;
     color: white; /* Set text color to white */
     border: none;
     border-radius: 10px;
@@ -149,7 +149,7 @@
 }
 
 .forgot-password {
-    color: #3678B6;
+    color: #3678b6;
     display: block;
     margin-top: 10px;
     text-align: left;

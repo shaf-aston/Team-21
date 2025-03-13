@@ -1,8 +1,8 @@
-const image = document.getElementById('product-image');
-const zoomResult = document.getElementById('zoom-result');
+const image = document.getElementById("product-image");
+const zoomResult = document.getElementById("zoom-result");
 
-image.addEventListener('mousemove', (e) => {
-    zoomResult.style.display = 'block';
+image.addEventListener("mousemove", (e) => {
+    zoomResult.style.display = "block";
     const rect = image.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -12,6 +12,6 @@ image.addEventListener('mousemove', (e) => {
     zoomResult.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
 });
 
-image.addEventListener('mouseleave', () => {
-    zoomResult.style.display = 'none';
+image.addEventListener("mouseleave", () => {
+    zoomResult.style.display = "none";
 });

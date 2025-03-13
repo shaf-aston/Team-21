@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Navbar Preview</title>
-  <link rel="stylesheet" href="{{ asset('/css/navbar.css') }}">
+  <link rel="stylesheet" href="{{ asset('/css/NavBar.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/dark-mode-styles/navbar-dark-mode.css') }}">
   <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -49,7 +49,7 @@
           </form>
           @else
           <a href="#" id="navbar-login-btn">Login</a>
-          <a href="{{ route('register') }}" id="navbar-register-btn">Register</a> 
+          <a href="{{ route('register') }}" id="navbar-register-btn">Register</a>
           @endauth
         </div>
       </div>
@@ -69,6 +69,7 @@
       <li><a href="{{ url('/about') }}">About Us</a></li>
       <li><a href="{{ url('/basket') }}">Basket</a></li>
       <li><a href="{{ url('/contact') }}">Contact Us</a></li>
+      <li><a href="{{url('/websitereviews')}}">Review</a></li>
     </ul>
   </nav>
 

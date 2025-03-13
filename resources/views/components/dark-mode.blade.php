@@ -14,7 +14,6 @@
   </button>
 
   <script>
-
     // Initialize dark mode on page load
     document.addEventListener('DOMContentLoaded', function() {
       const darkModeIcon = document.getElementById('darkModeIcon');

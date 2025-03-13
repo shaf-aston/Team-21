@@ -3,203 +3,248 @@ body {
     background-color: #ffffff;
     margin: 0;
     padding: 0;
-    font-family: 'inter', sans-serif;
-  } 
-  
-  /* Sort section */
-  .sort-section {
+    font-family: "inter", sans-serif;
+}
+/* Sort section styling */
+
+.sort-section {
     margin: 20px 40px;
     padding: 10px;
     text-align: left;
     font-family: "Dela Gothic One", sans-serif;
     font-size: 12px;
-  }
-  
-  #sort {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #2D4059;
-    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#sort {
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: 2px solid #2d4059;
+    font-size: 14px;
     background-color: #ffffff;
     cursor: pointer;
-    margin-right: 10px;
-  }
-  
-  /* Product Grid Layout */
-  /* Product Grid Layout */
-  .product-section {
+    color: #2d4059;
+    transition: all 0.3s ease;
+    font-family: "Inter", sans-serif;
+    box-shadow: 0 2px 4px rgba(45, 64, 89, 0.1);
+}
+
+#sort:hover {
+    background-color: #2d4059;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(45, 64, 89, 0.2);
+    transform: translateY(-1px);
+}
+
+#sort:focus {
+  outline: none;
+  border-color: #2D4059;
+  box-shadow: 0 0 0 3px rgba(45, 64, 89, 0.2);
+}
+
+/* Sort button styling */
+.sort-section button[type="submit"] {
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: 2px solid #2D4059;
+  background-color: #213145;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(45, 64, 89, 0.2);
+}
+
+.sort-section button[type="submit"]:hover {
+  background-color: #ffffff;
+  color: #2D4059;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(45, 64, 89, 0.3);
+}
+
+.sort-section button[type="submit"]:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(45, 64, 89, 0.2);
+}
+
+/* Product Grid Layout */
+.product-section {
     display: inline-block;
     width: calc(30% - 20px); /* Changed from 33.33% to 30% */
     margin: 10px 1.65%; /* Added horizontal margin to space out items evenly */
-    border: 2px solid #2D4059;
+    border: 2px solid #2d4059;
     background-color: #ffffff;
     border-radius: 10px;
     padding: 20px;
     box-sizing: border-box;
     position: relative;
     vertical-align: top;
-  }
-  
-  .product {
+}
+
+.product {
     display: flex;
     flex-direction: column;
     height: 100%;
-  }
-  
-  .product img {
+}
+
+.product img {
     width: 100%;
     height: auto;
     max-width: 200px;
     margin: 0 auto;
     display: block;
-  }
-  
-  .product-info {
+}
+
+.product-info {
     margin-top: 15px;
     text-align: left;
     flex-grow: 1;
-  }
-  
-  .product-title {
-    font-family: 'inter', sans-serif;
+}
+
+.product-title {
+    font-family: "inter", sans-serif;
     font-size: 18px;
-    color: #2D4059;
+    color: #2d4059;
     margin-bottom: 10px;
-  }
-  
-  .product-price {
-    font-family: 'inter', sans-serif;
-    color: #2D4059;
+}
+
+.product-price {
+    font-family: "inter", sans-serif;
+    color: #2d4059;
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 15px;
-  }
-  
-  /* Product Buttons */
-  .product-buttons {
+}
+
+/* Product Buttons */
+.product-buttons {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-top: auto;
-  }
-  
-  .product-buttons button {
+}
+
+.product-buttons button {
     width: 100%;
     padding: 10px;
     border-radius: 40px;
     cursor: pointer;
     font-size: 14px;
     transition: all 0.3s ease;
-  }
-  
-  .view-button {
-    background-color: #2D4059;
+}
+
+.view-button {
+    background-color: #2d4059;
     color: #ffffff;
-    border: 2px solid #2D4059;
-  }
-  
-  .add-button {
+    border: 2px solid #2d4059;
+}
+
+.add-button {
     background-color: #ffffff;
-    color: #2D4059;
-    border: 2px solid #2D4059;
-  }
-  
-  .view-button:hover {
+    color: #2d4059;
+    border: 2px solid #2d4059;
+}
+
+.view-button:hover {
     background-color: #ffffff;
-    color: #2D4059;
-  }
-  
-  .add-button:hover {
-    background-color: #2D4059;
+    color: #2d4059;
+}
+
+.add-button:hover {
+    background-color: #2d4059;
     color: #ffffff;
-  }
-  
-  /* Links */
-  .view-button a {
+}
+
+/* Links */
+.view-button a {
     text-decoration: none;
     color: inherit;
     display: block;
     width: 100%;
     height: 100%;
-  }
-  
-  /* Product View Page */
-  .view-product-page {
+}
+
+/* Product View Page */
+.view-product-page {
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
-  }
-  
-  .view-product-page .product-main {
+}
+
+.view-product-page .product-main {
     display: flex;
     gap: 40px;
     align-items: flex-start;
-  }
-  
-  .view-product-page .product-image {
+}
+
+.view-product-page .product-image {
     flex: 0 0 40%;
     max-width: 500px;
-  }
-  
-  .view-product-page .product-details {
+}
+
+.view-product-page .product-details {
     flex: 1;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 1200px) {
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
     .product-section {
-      width: calc(50% - 20px);
+        width: calc(50% - 20px);
     }
-  }
-  
-  @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     .product-section {
-      width: calc(100% - 20px);
+        width: calc(100% - 20px);
     }
-    
+
     .view-product-page .product-main {
-      flex-direction: column;
+        flex-direction: column;
     }
-  }
-  
-  /* Card footer styles */
-  .card-footer {
+}
+
+/* Card footer styles */
+.card-footer {
     background-color: #f8f9fa;
-    color: #2D4059;
+    color: #2d4059;
     border-top: 1px solid #dee2e6;
     padding: 10px;
     border-radius: 0 0 8px 8px;
     margin-top: 10px;
-  }
-  
-  .text-center {
+}
+
+.text-center {
     text-align: center;
-  }
-  
-  .card-footer a {
-    color: #2D4059;
+}
+
+.card-footer a {
+    color: #2d4059;
     text-decoration: none;
     transition: color 0.3s ease;
     font-weight: 500;
-  }
-  
-  .card-footer a:hover {
-    color: #EA5455;
+}
+
+.card-footer a:hover {
+    color: #ea5455;
     text-decoration: underline;
-  }
-  
-  .card-footer button {
-    background-color: #2D4059;
+}
+
+.card-footer button {
+    background-color: #2d4059;
     color: #ffffff;
-    border: 2px solid #2D4059;
+    border: 2px solid #2d4059;
     border-radius: 40px;
     padding: 8px 16px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 14px;
-  }
-  
-  .card-footer button:hover {
+}
+
+.card-footer button:hover {
     background-color: #ffffff;
-    color: #2D4059;
-  }
+    color: #2d4059;
+}

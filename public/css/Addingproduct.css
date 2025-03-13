@@ -26,7 +26,8 @@ body {
     font-weight: bold;
     width: 40%;
 }
-.form-group input, .form-group select {
+.form-group input,
+.form-group select {
     width: 55%;
     padding: 8px;
     border: 1px solid #ccc;

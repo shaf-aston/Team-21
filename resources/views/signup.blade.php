@@ -4,13 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon/favicon.ico') }}">
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon/favicon.ico') }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
+
   <title>Gadget Grads - Login/Sign Up</title>
 
-  <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/NavBar.css') }}">
   <link rel="stylesheet" href="{{ asset('css/LoginPopUp.css') }}">
   <link rel="stylesheet" href="{{asset('css/Home.css')}}">
   <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
@@ -47,6 +48,8 @@
         <li><a href="{{url('/about')}}">About Us</a></li>
         <li><a href="{{url('/basket')}}">Basket</a></li>
         <li><a href="{{url('/contact')}}">Contact Us</a></li>
+
+
       </ul>
     </nav>
 
@@ -200,7 +203,12 @@
   <p>
     <a href="{{ route('orders.index') }}" class="btn btn-primary">My Orders</a>
   </p>
+
   @endauth
+
+
+
+
 
   <!-- Use Laravel's asset helper for JavaScript -->
   <script src="{{ asset('js/JavaScript_pop-up.js') }}"></script>

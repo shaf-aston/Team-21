@@ -9,26 +9,26 @@ use Illuminate\Notifications\Notifiable;
 
 class Admin extends Authenticatable
 {
-    //
-    use HasFactory, Notifiable;
+  //
+  use HasFactory, Notifiable;
 
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
+  protected $fillable = [
+    'name',
+    'email',
+    'password',
 
+  ];
+
+  protected $hidden = [
+    'password',
+    'remember_token',
+  ];
+
+
+  protected function casts(): array
+  {
+    return [
+      'password' => 'hashed',
     ];
-
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-
-    protected function casts(): array{
-        return [
-            'password' => 'hashed',
-        ];
-    }
-
+  }
 }
