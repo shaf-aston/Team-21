@@ -49,7 +49,7 @@
           </form>
           @else
           <a href="#" id="navbar-login-btn">Login</a>
-          <a href="{{ route('register') }}" id="navbar-register-btn">Register</a>
+          <a href="#" id="navbar-register-btn">Register</a>
           @endauth
         </div>
       </div>

@@ -9,8 +9,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
   <title>Admin Navbar</title>
-  <link rel="stylesheet" href="{{asset('css/admin/admin-navbar.css')}}">
   <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Lobster&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/admin/admin-navbar.css') }}">
 </head>
 
 <body>
@@ -60,10 +60,23 @@
       <li><a href="{{ url('/sales-report') }}">Reports</a></li>
       <li><a href="{{ url('/supplier-orders')}}">Supplier Orders</a></li>
       <li><a href="{{ url('/adminusers') }}">Manage Customers</a></li>
-      
-      <li><a href="{{ url('/logout') }}">Logout</a></li>
+      <li><a href="{{ url('/home') }}">Return to Homepage</a></li>
+      @if(Auth::check())
+      <li>
+        <a href="{{ route('logout') }}"
+          onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+          Logout
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+          @csrf
+        </form>
+      </li>
+      @else
+      <li><a href="#" id="navbar-login-btn">Login</a></li>
+      @endif
     </ul>
   </nav>
+  @include('components.authbutton')
 </body>
 
 </html>
