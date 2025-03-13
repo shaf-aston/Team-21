@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   const closeBtns = document.querySelectorAll(".close-btn");
   const loginBtn = document.getElementById("login-btn");
-  const navbarLoginBtn = document.getElementById("navbar-login-btn");
-  const navbarRegisterBtn = document.getElementById("navbar-register-btn");
+  const registerBtn = document.getElementById("register-btn");
+
   const signupLink = document.getElementById("signup-link");
   const forgotPasswordLink = document.getElementById("forgot-password-link");
   const backToLoginSignup = document.getElementById("back-to-login-signup");
@@ -60,24 +60,17 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
 
-  // Main login button
+  // Login button
   if (loginBtn) {
-      loginBtn.addEventListener("click", () => {
-          togglePopup(authPopup);
-      });
-  }
-
-  // Navbar login button
-  if (navbarLoginBtn) {
-      navbarLoginBtn.addEventListener("click", (e) => {
+      loginBtn.addEventListener("click", (e) => {
           e.preventDefault();
           togglePopup(authPopup);
       });
   }
 
-  // Navbar register button
-  if (navbarRegisterBtn) {
-      navbarRegisterBtn.addEventListener("click", (e) => {
+  // Register button
+  if (registerBtn) {
+      registerBtn.addEventListener("click", (e) => {
           e.preventDefault();
           togglePopup(signupPopup);
       });

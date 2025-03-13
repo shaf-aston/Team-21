@@ -1,15 +1,35 @@
+body {
+    background-color: #f5f5f7;
+    color: #333;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}
+
+.product-page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
 .product-container {
     position: relative;
-    width: 50%;
-    float: left;
+    width: 45%;
     margin-bottom: 30px;
 }
 
 #product-image {
     width: 100%;
     height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+#product-image:hover {
+    transform: scale(1.02);
 }
 
 #zoom-result {
@@ -18,105 +38,128 @@
     width: 300px;
     height: 300px;
     top: 0;
-    left: 100%;
+    left: 105%;
     background-repeat: no-repeat;
     background-size: 400%;
     display: none;
     z-index: 100;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
 }
 
-.product-details {
-    float: right;
+.product-info {
     width: 45%;
-    padding: 0 20px;
+    padding: 10px 20px;
 }
 
 .product-title {
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 28px;
+    font-weight: 700;
     color: #1d4056;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .product-price {
-    font-size: 22px;
+    display: inline-block;
+    font-size: 24px;
     font-weight: bold;
     color: #0a7be5;
     margin-bottom: 20px;
+    background-color: rgba(10, 123, 229, 0.1);
+    padding: 5px 15px;
+    border-radius: 20px;
 }
 
 .product-description {
     font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 25px;
-    color: #333;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    color: #444;
 }
 
-.action-buttons {
+.button-container {
     display: flex;
     gap: 15px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .add-button {
     background-color: #0a7be5;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 12px 25px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(10, 123, 229, 0.2);
 }
 
 .add-button:hover {
     background-color: #0b59a2;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(10, 123, 229, 0.3);
 }
 
-/* Clear floats after the columns */
-.product-page-container::after {
-    content: "";
-    display: table;
-    clear: both;
+.add-button:active {
+    transform: translateY(1px);
 }
 
-/* Reviews section styling */
-.reviews-container {
-    clear: both;
-    padding-top: 40px;
-    border-top: 1px solid #e0e0e0;
-    margin-top: 20px;
+/* Reviews styling */
+.reviews-section {
+    width: 100%;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid #e0e0e0;
 }
 
-.review-item {
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 15px;
+.reviews-header {
+    font-size: 24px;
+    color: #1d4056;
+    margin-bottom: 20px;
+    font-weight: 600;
 }
 
-.review-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
+.review {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.review-user {
+    font-weight: 600;
+    color: #1d4056;
+    margin-bottom: 5px;
 }
 
 .review-rating {
     color: #ffcc00;
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
+.no-reviews {
+    font-style: italic;
+    color: #666;
+}
+
+/* Clear floats and responsive adjustments */
+@media (max-width: 900px) {
     .product-container,
-    .product-details {
+    .product-info {
         width: 100%;
-        float: none;
     }
-
-    .product-container {
-        margin-bottom: 20px;
+    
+    .product-info {
+        padding: 10px 0;
     }
-
+    
+    .button-container {
+        flex-direction: column;
+    }
+    
     #zoom-result {
         display: none !important;
     }

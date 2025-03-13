@@ -72,7 +72,7 @@
         </form>
       </li>
       @else
-      <li><a href="#" id="navbar-login-btn">Login</a></li>
+      <li><a href="#" id="login-btn">Login</a></li>
       @endif
     </ul>
   </nav>
