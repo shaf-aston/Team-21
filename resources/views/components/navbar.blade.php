@@ -65,7 +65,8 @@
   <nav class="nav-bar">
     <ul>
       <li><a href="{{ url('/home') }}">Home</a></li>
-      <li><a href="{{ url('/products') }}">Products</a></li>
+      <li class="has-dropdown">
+        <a href="{{ url('/products') }}">Products</a>
       <li><a href="{{ url('/about') }}">About Us</a></li>
       <li><a href="{{ url('/basket') }}">Basket</a></li>
       <li><a href="{{ url('/contact') }}">Contact Us</a></li>
@@ -73,15 +74,7 @@
     </ul>
   </nav>
 
-  <nav id="gadgetGrads">
-    <div class="topnav">
-      <a class="active" href="{{ url('Tablets') }}">Tablets</a>
-      <a href="{{ url('Laptops') }}">Laptops</a>
-      <a href="{{ url('Accessories') }}">Accessories</a>
-      <a href="{{ url('Phones') }}">Phones</a>
-      <a href="{{ url('Smartwatches') }}">Smartwatches</a>
-    </div>
-  </nav>
+
   @include('components.dark-mode')
   @include('components.authbutton')
 </body>

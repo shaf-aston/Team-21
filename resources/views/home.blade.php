@@ -134,7 +134,7 @@
 
         <div class="brand-carousel__items">
           <div class="brand-carousel__item">
-            <img src="{{ asset('images/samsung_logo.jpg') }}" alt="Samsung">
+            <img src="{{ asset('Images/samsung_logo.jpg') }}" alt="Samsung">
             <h3>Samsung</h3>
           </div>
           <div class="brand-carousel__item">
