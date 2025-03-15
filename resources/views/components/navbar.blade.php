@@ -38,7 +38,7 @@
 
           @auth
           <a href="{{ url('/customer-dash') }}">My Profile</a>
-          <a href="{{ url('/orders') }}">My Orders</a>
+          <a href="{{ url('/order') }}">My Orders</a>
           <a href="{{ url('/settings') }}">Settings</a>
           <a href="{{ route('logout') }}"
             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

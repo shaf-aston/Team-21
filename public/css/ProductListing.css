@@ -39,36 +39,36 @@ body {
 }
 
 #sort:focus {
-  outline: none;
-  border-color: #2D4059;
-  box-shadow: 0 0 0 3px rgba(45, 64, 89, 0.2);
+    outline: none;
+    border-color: #2d4059;
+    box-shadow: 0 0 0 3px rgba(45, 64, 89, 0.2);
 }
 
 /* Sort button styling */
 .sort-section button[type="submit"] {
-  padding: 8px 20px;
-  border-radius: 8px;
-  border: 2px solid #2D4059;
-  background-color: #213145;
-  color: #ffffff;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: "Inter", sans-serif;
-  font-weight: 500;
-  box-shadow: 0 2px 4px rgba(45, 64, 89, 0.2);
+    padding: 8px 20px;
+    border-radius: 8px;
+    border: 2px solid #2d4059;
+    background-color: #213145;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(45, 64, 89, 0.2);
 }
 
 .sort-section button[type="submit"]:hover {
-  background-color: #ffffff;
-  color: #2D4059;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(45, 64, 89, 0.3);
+    background-color: #ffffff;
+    color: #2d4059;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(45, 64, 89, 0.3);
 }
 
 .sort-section button[type="submit"]:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(45, 64, 89, 0.2);
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(45, 64, 89, 0.2);
 }
 
 /* Product Grid Layout */
@@ -118,6 +118,32 @@ body {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 15px;
+}
+
+/* Stock status messages */
+.text-warning {
+    color: #ffc107;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 5px 0;
+    margin: 5px 0;
+    font-style: italic;
+}
+
+.text-danger {
+    color: #dc3545;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 5px 0;
+    margin: 5px 0;
+}
+
+.text-warning:before {
+    content: "⚠️ ";
+}
+
+.text-danger:before {
+    content: "❗ ";
 }
 
 /* Product Buttons */

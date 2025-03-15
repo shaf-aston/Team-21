@@ -1,0 +1,128 @@
+/* Container for the entire content */
+.admin-product-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+}
+
+/* Header actions container */
+.admin-actions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  width: 100%;
+}
+
+/* Sort section styling */
+.sort-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Add product button container */
+.add-product-container {
+  text-align: right;
+}
+
+/* Add product button styling */
+.add-product-button {
+  background-color: #2d4059;
+  color: #ffffff;
+  border: 2px solid #2d4059;
+  border-radius: 40px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.add-product-button:hover {
+  background-color: #ffffff;
+  color: #2d4059;
+}
+
+/* Products grid layout */
+.products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -10px; /* Negative margin to offset the padding on product-section */
+}
+
+/* Product section layout */
+.product-section {
+  width: calc(33.33% - 20px); /* Exactly one-third width minus margins */
+  margin: 10px;
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+
+/* Danger text */
+.text-danger {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* Warning text */
+.text-warning {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+/* Remove link button */
+.remove-link {
+  background-color: #fff;
+  color: #dc3545 !important;
+  border: 2px solid #dc3545;
+  border-radius: 40px;
+  padding: 10px;
+  text-align: center;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.remove-link:hover {
+  background-color: #dc3545;
+  color: #fff !important;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 1100px) {
+  .product-section {
+    width: calc(50% - 20px); /* Two products per row on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-actions-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .add-product-container {
+    text-align: left;
+    width: 100%;
+  }
+  
+  .add-product-button {
+    width: 100%;
+  }
+  
+  .product-section {
+    width: calc(100% - 20px); /* One product per row on small screens */
+  }
+}
+
+
