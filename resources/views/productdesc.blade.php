@@ -20,19 +20,18 @@
 
 <body>
   @include('components.navbar')
-  
-  <div class="product-page-container">
+    <div class="product-page-container">
     <!-- Product Image Side -->
     <div class="product-container">
       <img id="product-image" src="/Images\{{$product->img_id}}.jpg" alt="{{$product->product_name}}">
       <div id="zoom-result"></div>
     </div>
-
+  
     <!-- Product Info Side -->
     <div class="product-info">
       <h3 class="product-title">{{$product->product_name}}</h3>
       <div class="product-price">£{{$product->product_price}}</div>
-
+  
       <!-- Action Buttons -->
       <div class="button-container">
         <!-- Add to Basket -->
@@ -46,7 +45,7 @@
         @else
         <a href="#" class="login-btn add-button">Log in to Add to Basket</a>
         @endif
-
+  
         <!-- Add to Wishlist -->
         @if(Auth::check())
         <form method="POST" action="{{ route('wishlist.add') }}">
@@ -59,9 +58,13 @@
         <a href="#" class="login-btn add-button">Log in to Add to Wishlist</a>
         @endif
       </div>
+    </div>
+      <!-- Full-width Product Description -->
+    <div class="product-description-container">
+      <h3>Product Description</h3>
       <p class="product-description">{{$product->product_description}}</p>
-      </div>
-
+    </div>
+  
     <!-- Reviews Section -->
     <div class="reviews-section">
       <h3 class="reviews-header">Customer Reviews</h3>
@@ -105,7 +108,7 @@
       </div>
     </div>
   </div>
-
+  
   @include('components.footer')
   <script src="{{asset('js/Product.js')}}"></script>
   <script src="{{asset('js/JavaScript_pop-up.js')}}"></script>

@@ -138,35 +138,35 @@
             <h3>Samsung</h3>
           </div>
           <div class="brand-carousel__item">
-            <img src="{{ asset('images/apple_logo.jpg') }}" alt="Apple">
+            <img src="{{ asset('images/apple_logo.png') }}" alt="Apple">
             <h3>Apple</h3>
           </div>
           <div class="brand-carousel__item">
-            <img src="{{ asset('images/dell_laptop.jpg') }}" alt="Dell">
+            <img src="{{ asset('images/dell_logo.png') }}" alt="Dell">
             <h3>Dell</h3>
           </div>
           <div class="brand-carousel__item">
-            <img src="{{ asset('images/sony_headphones.jpg') }}" alt="Sony">
+            <img src="{{ asset('images/sony_logo.png') }}" alt="Sony">
             <h3>Sony</h3>
           </div>
           <div class="brand-carousel__item">
-            <img src="{{ asset('images/alienware.jpg') }}" alt="Alienware">
+            <img src="{{ asset('images/alienware_logo.png') }}" alt="Alienware">
             <h3>Alienware</h3>
           </div>
           <div class="brand-carousel__item">
-            <img src="{{ asset('images/playstation.jpg') }}" alt="PlayStation">
+            <img src="{{ asset('images/playstation_logo.png') }}" alt="PlayStation">
             <h3>PlayStation</h3>
           </div>
           <div class="brand-carousel__item">
-            <img src="{{ asset('images/drdre.jpg') }}" alt="Dr. Dre">
+            <img src="{{ asset('images/drdre_logo.png') }}" alt="Dr. Dre">
             <h3>Dr. Dre</h3>
           </div>
           <div class="brand-carousel__item">
-            <img src="{{ asset('images/oneplus.jpg') }}" alt="OnePlus">
+            <img src="{{ asset('images/oneplus_logo.png') }}" alt="OnePlus">
             <h3>OnePlus</h3>
           </div>
           <div class="brand-carousel__item">
-            <img src="{{ asset('images/asus.jpg') }}" alt="Asus">
+            <img src="{{ asset('images/asus_logo.png') }}" alt="Asus">
             <h3>Asus</h3>
           </div>
         </div>
@@ -237,8 +237,8 @@
           loading="lazy">
       </section>
     </section>
+  @include('components.Footer')
   </main>
-
 
   <!-- <script src="{{ asset('js/JavaScript_pop-up.js') }}"></script> -->
   <script>
@@ -306,4 +306,5 @@
     });
   </script>
 </body>
+
 </html>
