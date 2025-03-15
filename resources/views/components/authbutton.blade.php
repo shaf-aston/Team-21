@@ -43,16 +43,7 @@
             <span class="text-danger">{{ $message }}</span>
             @enderror
           </div>
-          <div class="input-container">
-            <label for="user_type">User Type:</label>
-            <select id="user_type" name="user_type" required>
-              <option value="customer" {{ old('user_type') == 'customer' ? 'selected' : '' }}>Customer</option>
-              <option value="admin" {{ old('user_type') == 'admin' ? 'selected' : '' }}>Admin</option>
-            </select>
-            @error('user_type')
-            <span class="text-danger">{{ $message }}</span>
-            @enderror
-          </div>
+         
           <div class="input-container remember-me">
             <input type="checkbox" id="remember-me" name="remember-me">
             <label for="remember-me">Remember me</label>

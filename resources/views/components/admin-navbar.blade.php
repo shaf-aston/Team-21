@@ -15,39 +15,47 @@
 
 <body>
   <header id="main-header">
-    <a href="{{ url('/home') }}"><img src="{{ asset('Images/logo.png') }}" alt="Gadget Grads Logo" class="logo" width="98" height="48"></a>
-    <h1 class="h1">GADGET GRADS</h1>
-    <h2>Graduate with better tech!</h2>
-
-    <div class="searchnav">
-      <form action="{{ route('adminproductsearch') }}" method="GET">
-        <input type="text" class="search-bar" name="query" placeholder="Search for products by name or description" required>
-        <button class="search-button" type="submit">Search</button>
-      </form>
+    <div class="logo-section">
+      <a href="{{ url('/home') }}"><img src="{{ asset('Images/logo.png') }}" alt="Gadget Grads Logo" class="logo" width="98" height="48"></a>
+      <div>
+        <h1 class="h1">GADGET GRADS</h1>
+        <h2>Graduate with better tech!</h2>
+      </div>
     </div>
+    <div class="search-section">
+      <h3 class="search-heading">Search Orders</h3>
+      <div class="search-forms-container">
+        <div class="searchnav">
+          <form action="{{ route('adminproductsearch') }}" method="GET">
+            <input type="text" class="search-bar" name="query" placeholder="Search for products by name or description" required>
+            <button class="search-button" type="submit">Search</button>
+          </form>
+        </div>
 
-    <div class="searchnav">
-      <form action="{{route('adminsearch')}}" method="GET">
-        <input type="text" class="search-bar" name="query" placeholder="Search for orders by id or status" required>
-        <button class="search-button" type="submit">Search</button>
-      </form>
+        <div class="searchnav">
+          <form action="{{route('adminsearch')}}" method="GET">
+            <input type="text" class="search-bar" name="query" placeholder="Search for orders by id or status" required>
+            <button class="search-button" type="submit">Search</button>
+          </form>
+        </div>
 
-      <div class="searchnav">
-        <form method="GET" action="{{ route('adminsort.result') }}" class="mb-3">
-          <label for="sort_by">Sort by:</label>
-          <select name="sort_by" id="sort_by" class="form-control d-inline-block w-auto">
-            <option value="order_id" {{ request('sort_by') == 'order_id' ? 'selected' : '' }}>Order ID</option>
-            <option value="total_amount" {{ request('sort_by') == 'total_amount' ? 'selected' : '' }}>Price</option>
-            <option value="order_status" {{ request('sort_by') == 'order_status' ? 'selected' : '' }}>Alphabetical (Order Status)</option>
-          </select>
+        <div class="searchnav">
+          <form method="GET" action="{{ route('adminsort.result') }}" class="sort-controls">
+            <label for="sort_by">Sort by:</label>
+            <select name="sort_by" id="sort_by">
+              <option value="order_id" {{ request('sort_by') == 'order_id' ? 'selected' : '' }}>Order ID</option>
+              <option value="total_amount" {{ request('sort_by') == 'total_amount' ? 'selected' : '' }}>Price</option>
+              <option value="order_status" {{ request('sort_by') == 'order_status' ? 'selected' : '' }}>Alphabetical (Order Status)</option>
+            </select>
 
-          <select name="sort_order" id="sort_order" class="form-control d-inline-block w-auto">
-            <option value="asc" {{ request('sort_order') == 'asc' ? 'selected' : '' }}>Ascending</option>
-            <option value="desc" {{ request('sort_order') == 'desc' ? 'selected' : '' }}>Descending</option>
-          </select>
+            <select name="sort_order" id="sort_order">
+              <option value="asc" {{ request('sort_order') == 'asc' ? 'selected' : '' }}>Ascending</option>
+              <option value="desc" {{ request('sort_order') == 'desc' ? 'selected' : '' }}>Descending</option>
+            </select>
 
-          <button type="submit" class="btn btn-primary">Sort</button>
-        </form>
+            <button type="submit" class="search-button">Sort</button>
+          </form>
+        </div>
       </div>
     </div>
   </header>

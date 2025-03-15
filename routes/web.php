@@ -28,6 +28,10 @@ Route::get('/searchbar', function () {
   return view('search.form');
 });
 
+Route::get('/customer-dash', function () {
+  return view('customer-dash');
+});
+
 //return search value
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/admin/productsearch', [SearchController::class, 'productSearch'])->name('adminproductsearch');
@@ -345,3 +349,4 @@ Route::delete('/supplier-orders/{supplierOrder}', [SupplierOrderController::clas
 
 
 Route::get('/adminsort/result', [OrderController::class, 'sortResults'])->name('adminsort.result');
+

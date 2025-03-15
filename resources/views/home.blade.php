@@ -237,7 +237,6 @@
           loading="lazy">
       </section>
     </section>
-    @include('components.Feedback')
   </main>
 
 
@@ -307,5 +306,4 @@
     });
   </script>
 </body>
-
 </html>

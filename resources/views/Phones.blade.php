@@ -21,7 +21,15 @@
 
 <body>
   @include('components.navbar')
-
+  <nav id="gadgetGrads">
+    <div class="topnav">
+      <a href="{{ url('Tablets') }}">Tablets</a>
+      <a href="{{ url('Laptops') }}">Laptops</a>
+      <a href="{{ url('Accessories') }}">Accessories</a>
+      <a class="active" href="{{ url('Phones') }}">Phones</a>
+      <a href="{{ url('Smartwatches') }}">Smartwatches</a>
+    </div>
+  </nav>
   <!-- sort -->
   <div class="sort-section">
     <label for="sort">Sort by:</label>

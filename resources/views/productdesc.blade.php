@@ -107,7 +107,6 @@
   </div>
 
   @include('components.footer')
-  @include('components.authbutton')
   <script src="{{asset('js/Product.js')}}"></script>
   <script src="{{asset('js/JavaScript_pop-up.js')}}"></script>
   </body>

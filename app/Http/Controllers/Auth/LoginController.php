@@ -17,47 +17,37 @@ class LoginController extends Controller
     return view('auth.login');
   }
 
-  //taking the credentials and checking against the database
-  public function login(Request $request)
-  {
-    //validate the inputs
-    $request->validate([
-      'email' => ['required', 'email'],
-      'password' => ['required'],
-      'user_type' => ['required', 'in:customer,admin']
-    ]);
-
-    $hashedPassword = Hash::make($request->password);
-
-    //checking if it is a customer or admin
-    if ($request->user_type === 'customer') {
-
-      if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
-        $user = Auth::guard('web')->user();
-        // Start session and store user info
-        Session::put('user_id', $user->user_id);
-        Session::put('user_type', 'customer');
-        Session::put('email', $user->email);
-
-        return redirect('/home')->with('success', 'Logged in successfully');
-      }
-    } else {
-      $admin = DB::table('admins')->where('email', $request->email)->first();
-      if ($admin && Hash::check($request->password, $admin->user_password)) {
-        // Start session and store admin info
-        Session::put('user_id', $admin->admin_id);
-        Session::put('user_type', 'admin');
-        Session::put('email', $admin->email);
-
-        return redirect('/adminproducts')->with('success', 'Logged in successfully');
-      }
+    //taking the credentials and checking against the database
+    public function login(Request $request)
+    {
+        // Validate the inputs
+        $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+    
+        // Attempt login with the default guard
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            $user = Auth::user(); // Get authenticated user
+    
+            // Start session and store user info
+            Session::put('user_id', $user->user_id);
+            Session::put('user_type', $user->user_type); // Fetch user_type from Auth
+            Session::put('email', $user->email);
+    
+            // Redirect based on user type
+            if ($user->user_type === 'admin') {
+                return redirect('/adminproducts')->with('success', 'Logged in successfully as Admin');
+            } else {
+                return redirect('/home')->with('success', 'Logged in successfully');
+            }
+        }
+    
+        // Authentication failed
+        return back()->withErrors(['email' => 'Invalid credentials'])->withInput();
     }
 
-    //return with the errors
-    return back()->withErrors([
-      'email' => 'The provided credentials do not match our records.',
-    ]);
-  }
+    
 
 
   //logout the current user logged in
