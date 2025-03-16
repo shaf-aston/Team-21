@@ -19,7 +19,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="{{ asset('/css/websitereview.css') }}">
-  <link rel="stylesheet" href="{{ asset('/css/navbar.css') }}">
 </head>
 
 @include('components.navbar')
