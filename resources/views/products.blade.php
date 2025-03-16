@@ -136,12 +136,12 @@
       const listButton = document.querySelector('.toggle-button.list-view');
       const productsWrapper = document.querySelector('.products-wrapper');
       
+      // Apply no-animation class to prevent initial transitions
+      productsWrapper.classList.add('no-animation');
+      
       // Helper function for layout changes with transition
       function changeLayout(newLayout, oldLayout) {
-        // Add a transitioning class first
-        productsWrapper.classList.add('layout-transitioning');
-        
-        // Update the buttons immediately
+        // Update buttons immediately
         if (newLayout === 'grid-layout') {
           gridButton.classList.add('active');
           listButton.classList.remove('active');
@@ -150,31 +150,40 @@
           gridButton.classList.remove('active');
         }
         
-        // Small delay before changing layout to allow transition to start
-        setTimeout(() => {
+        // Add changing class
+        productsWrapper.classList.add('changing-layout');
+        
+        // Change layout after a minimal delay
+        requestAnimationFrame(() => {
           productsWrapper.classList.remove(oldLayout);
           productsWrapper.classList.add(newLayout);
           
-          // Remove transitioning class after animation completes
+          // Remove changing class after transition completes
           setTimeout(() => {
-            productsWrapper.classList.remove('layout-transitioning');
-          }, 400); // Match your CSS transition duration
-        }, 50);
+            productsWrapper.classList.remove('changing-layout');
+          }, 300); // Slightly shorter than CSS transition
+        });
         
         // Save preference
         localStorage.setItem('productViewPreference', newLayout === 'grid-layout' ? 'grid' : 'list');
       }
       
-      // Set up event listeners
+      // Set up event listeners with debounce to prevent rapid clicking
+      let isTransitioning = false;
+      
       gridButton.addEventListener('click', function() {
-        if (!productsWrapper.classList.contains('grid-layout')) {
+        if (!productsWrapper.classList.contains('grid-layout') && !isTransitioning) {
+          isTransitioning = true;
           changeLayout('grid-layout', 'list-layout');
+          setTimeout(() => { isTransitioning = false; }, 400);
         }
       });
       
       listButton.addEventListener('click', function() {
-        if (!productsWrapper.classList.contains('list-layout')) {
+        if (!productsWrapper.classList.contains('list-layout') && !isTransitioning) {
+          isTransitioning = true;
           changeLayout('list-layout', 'grid-layout');
+          setTimeout(() => { isTransitioning = false; }, 400);
         }
       });
       
@@ -186,9 +195,12 @@
         gridButton.classList.remove('active');
         productsWrapper.classList.remove('grid-layout');
         productsWrapper.classList.add('list-layout');
-      } else {
-        // Grid view is already set by default
       }
+      
+      // Remove no-animation class after initial layout is set
+      setTimeout(() => {
+        productsWrapper.classList.remove('no-animation');
+      }, 50);
     });
   </script>
 </body>

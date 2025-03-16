@@ -60,22 +60,22 @@
 }
 
 /* Navigation bar in Middle */
-.dark-mode .nav-bar {
+.dark-mode .navigation-banner {
     background-color: #0d1724;
     box-shadow: 0 2px 12px rgba(28, 36, 52, 0.3);
     border-top: 1px solid rgba(140, 169, 242, 0.1);
     border-bottom: 1px solid rgba(140, 169, 242, 0.1);
 }
 
-.dark-mode .nav-bar a {
+.dark-mode .navigation-banner a {
     color: #e1e8ff;
 }
 
-.dark-mode .nav-bar a::after {
+.dark-mode .navigation-banner a::after {
     background-color: #8ca9f2;
 }
 
-.dark-mode .nav-bar a:hover {
+.dark-mode .navigation-banner a:hover {
     color: #8ca9f2;
 }
 
