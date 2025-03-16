@@ -20,18 +20,18 @@
 
 <body>
   @include('components.navbar')
-    <div class="product-page-container">
+  <div class="product-page-container">
     <!-- Product Image Side -->
     <div class="product-container">
       <img id="product-image" src="/Images\{{$product->img_id}}.jpg" alt="{{$product->product_name}}">
       <div id="zoom-result"></div>
     </div>
-  
+
     <!-- Product Info Side -->
     <div class="product-info">
       <h3 class="product-title">{{$product->product_name}}</h3>
       <div class="product-price">£{{$product->product_price}}</div>
-  
+
       <!-- Action Buttons -->
       <div class="button-container">
         <!-- Add to Basket -->
@@ -45,7 +45,7 @@
         @else
         <a href="#" class="login-btn add-button">Log in to Add to Basket</a>
         @endif
-  
+
         <!-- Add to Wishlist -->
         @if(Auth::check())
         <form method="POST" action="{{ route('wishlist.add') }}">
@@ -59,35 +59,35 @@
         @endif
       </div>
     </div>
-      <!-- Full-width Product Description -->
+    <!-- Full-width Product Description -->
     <div class="product-description-container">
       <h3>Product Description</h3>
       <p class="product-description">{{$product->product_description}}</p>
     </div>
-  
+
     <!-- Reviews Section -->
     <div class="reviews-section">
       <h3 class="reviews-header">Customer Reviews</h3>
-      
+
       @if ($product->reviews->count() > 0)
-        @foreach ($product->reviews as $review)
-        <div class="review">
-          <p class="review-user">User: {{ $review->user->email }}</p>
-          <p class="review-rating">
-            @for($i = 1; $i <= 5; $i++)
-              @if($i <= $review->rating)
-                ★
-              @else
-                ☆
-              @endif
+      @foreach ($product->reviews as $review)
+      <div class="review">
+        <p class="review-user">User: {{ $review->user->email }}</p>
+        <p class="review-rating">
+          @for($i = 1; $i <= 5; $i++)
+            @if($i <=$review->rating)
+            ★
+            @else
+            ☆
+            @endif
             @endfor
             ({{ $review->rating }}/5)
-          </p>
-          <p>{{ $review->review }}</p>
-        </div>
-        @endforeach
+        </p>
+        <p>{{ $review->review }}</p>
+      </div>
+      @endforeach
       @else
-        <p class="no-reviews">No reviews yet. Be the first to leave a review!</p>
+      <p class="no-reviews">No reviews yet. Be the first to leave a review!</p>
       @endif
 
       <!-- User Review Form -->
@@ -108,10 +108,10 @@
       </div>
     </div>
   </div>
-  
+
   @include('components.footer')
   <script src="{{asset('js/Product.js')}}"></script>
   <script src="{{asset('js/JavaScript_pop-up.js')}}"></script>
-  </body>
+</body>
 
 </html>

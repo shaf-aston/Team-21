@@ -44,6 +44,7 @@
       </div>
     </section>
   </main>
+  @include('components.Footer')
 </body>
 
 </html>

@@ -96,6 +96,6 @@
     @endforeach
   </div>
   @include('components.Footer')
-  </body>
+</body>
 
 </html>

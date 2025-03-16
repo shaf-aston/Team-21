@@ -237,7 +237,7 @@
           loading="lazy">
       </section>
     </section>
-  @include('components.Footer')
+    @include('components.Footer')
   </main>
 
   <!-- <script src="{{ asset('js/JavaScript_pop-up.js') }}"></script> -->

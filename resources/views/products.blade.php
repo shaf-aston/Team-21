@@ -84,15 +84,15 @@
               <!-- Low stock alert message -->
               @if(isset($product->stock_quantity) && $product->stock_quantity <= 5 && $product->stock_quantity > 0)
                 <p class="text-warning">Hurry! Only {{$product->stock_quantity}} left in stock.</p>
-              @elseif(isset($product->stock_quantity) && $product->stock_quantity == 0)
+                @elseif(isset($product->stock_quantity) && $product->stock_quantity == 0)
                 <p class="text-danger">Out of stock</p>
-              @endif
+                @endif
             </div>
-            
+
             <div class="product-buttons">
               <!-- view button -->
               <button class="view-button" type="submit" id="viewprod" onclick="window.location='{{ url('productdesc', $product->product_id) }}'">View Product</button>
-    
+
               <!-- Add to Basket -->
               <div class="card-footer text-center">
                 @if(Auth::check())
@@ -106,7 +106,7 @@
                 <a href="{{ route('login') }}" class="btn btn-primary">Log in to Add to Basket</a>
                 @endif
               </div>
-    
+
               <!-- Add to Wishlist -->
               <div class="card-footer text-center">
                 @if(Auth::check())
@@ -135,10 +135,10 @@
       const gridButton = document.querySelector('.toggle-button.grid-view');
       const listButton = document.querySelector('.toggle-button.list-view');
       const productsWrapper = document.querySelector('.products-wrapper');
-      
+
       // Apply no-animation class to prevent initial transitions
       productsWrapper.classList.add('no-animation');
-      
+
       // Helper function for layout changes with transition
       function changeLayout(newLayout, oldLayout) {
         // Update buttons immediately
@@ -149,44 +149,48 @@
           listButton.classList.add('active');
           gridButton.classList.remove('active');
         }
-        
+
         // Add changing class
         productsWrapper.classList.add('changing-layout');
-        
+
         // Change layout after a minimal delay
         requestAnimationFrame(() => {
           productsWrapper.classList.remove(oldLayout);
           productsWrapper.classList.add(newLayout);
-          
+
           // Remove changing class after transition completes
           setTimeout(() => {
             productsWrapper.classList.remove('changing-layout');
           }, 300); // Slightly shorter than CSS transition
         });
-        
+
         // Save preference
         localStorage.setItem('productViewPreference', newLayout === 'grid-layout' ? 'grid' : 'list');
       }
-      
+
       // Set up event listeners with debounce to prevent rapid clicking
       let isTransitioning = false;
-      
+
       gridButton.addEventListener('click', function() {
         if (!productsWrapper.classList.contains('grid-layout') && !isTransitioning) {
           isTransitioning = true;
           changeLayout('grid-layout', 'list-layout');
-          setTimeout(() => { isTransitioning = false; }, 400);
+          setTimeout(() => {
+            isTransitioning = false;
+          }, 400);
         }
       });
-      
+
       listButton.addEventListener('click', function() {
         if (!productsWrapper.classList.contains('list-layout') && !isTransitioning) {
           isTransitioning = true;
           changeLayout('list-layout', 'grid-layout');
-          setTimeout(() => { isTransitioning = false; }, 400);
+          setTimeout(() => {
+            isTransitioning = false;
+          }, 400);
         }
       });
-      
+
       // Check if there's a saved preference
       const viewPreference = localStorage.getItem('productViewPreference');
       if (viewPreference === 'list') {
@@ -196,7 +200,7 @@
         productsWrapper.classList.remove('grid-layout');
         productsWrapper.classList.add('list-layout');
       }
-      
+
       // Remove no-animation class after initial layout is set
       setTimeout(() => {
         productsWrapper.classList.remove('no-animation');

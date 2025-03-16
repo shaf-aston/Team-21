@@ -25,7 +25,7 @@
 
 <body>
   @include('components.admin-navbar')
-  
+
   <div class="product-container">
     <div class="actions-header">
       <!-- sort function -->
@@ -43,7 +43,7 @@
           <button type="submit">Sort!</button>
         </form>
       </div>
-      
+
       <div class="add-product-container">
         <button class="add-product-button" onclick="window.location='{{url('/products/create')}}'">Add product</button>
       </div>
@@ -62,24 +62,24 @@
             <!-- Low stock messages -->
             @if($product->stock_quantity <= 5 && $product->stock_quantity > 0)
               <p class="text-warning">Make an order to the supplier for this product. Only {{$product->stock_quantity}} left in stock.</p>
-            @elseif($product->stock_quantity == 0)
+              @elseif($product->stock_quantity == 0)
               <p class="text-danger">Out of stock</p>
-            @endif
-            <div class="product-buttons">
-              <!-- view button -->
-              <button class="view-button" type="submit" onclick="window.location='{{url('adminproductshow',$product->product_id)}}'">View Product</button>
-              <button class="view-button" type="submit" onclick="window.location='{{route('products.update', $product->product_id)}}'">Update Product Info</button>
-
-              @if(Auth::check())
-              <form action="{{ route('admin.remove', $product->product_id) }}" method="POST" class="d-inline-block">
-                @csrf
-                @method('DELETE')
-                <button type='submit' class="remove-link text-danger">Remove item</button>
-              </form>
-              @else
-              <a href="{{ route('login') }}" class="btn btn-primary">Log in to remove product</a>
               @endif
-            </div>
+              <div class="product-buttons">
+                <!-- view button -->
+                <button class="view-button" type="submit" onclick="window.location='{{url('adminproductshow',$product->product_id)}}'">View Product</button>
+                <button class="view-button" type="submit" onclick="window.location='{{route('products.update', $product->product_id)}}'">Update Product Info</button>
+
+                @if(Auth::check())
+                <form action="{{ route('admin.remove', $product->product_id) }}" method="POST" class="d-inline-block">
+                  @csrf
+                  @method('DELETE')
+                  <button type='submit' class="remove-link text-danger">Remove item</button>
+                </form>
+                @else
+                <a href="{{ route('login') }}" class="btn btn-primary">Log in to remove product</a>
+                @endif
+              </div>
           </div>
         </div>
       </div>

@@ -43,7 +43,7 @@
             <span class="text-danger">{{ $message }}</span>
             @enderror
           </div>
-         
+
           <div class="input-container remember-me">
             <input type="checkbox" id="remember-me" name="remember-me">
             <label for="remember-me">Remember me</label>

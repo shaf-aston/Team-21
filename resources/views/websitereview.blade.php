@@ -86,19 +86,19 @@
   </div>
 
   <script>
-        document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
       // Get toggle buttons and products container
       const gridButton = document.querySelector('.toggle-button.grid-view');
       const listButton = document.querySelector('.toggle-button.list-view');
       const productsWrapper = document.querySelector('.products-wrapper');
-      
+
       // Helper function for layout changes with transition
       function changeLayout(newLayout, oldLayout, animate = true) {
         if (animate) {
           // Add transitioning class
           productsWrapper.classList.add('changing-layout');
         }
-        
+
         // Update the buttons
         if (newLayout === 'grid-layout') {
           gridButton.classList.add('active');
@@ -107,44 +107,44 @@
           listButton.classList.add('active');
           gridButton.classList.remove('active');
         }
-        
+
         // Apply the new layout
         productsWrapper.classList.remove(oldLayout);
         productsWrapper.classList.add(newLayout);
-        
+
         if (animate) {
           // Remove transitioning class after animation completes
           setTimeout(() => {
             productsWrapper.classList.remove('changing-layout');
           }, 400);
         }
-        
+
         // Save preference
         localStorage.setItem('productViewPreference', newLayout === 'grid-layout' ? 'grid' : 'list');
       }
-      
+
       // Set up event listeners for toggle buttons
       gridButton.addEventListener('click', function() {
         if (!productsWrapper.classList.contains('grid-layout')) {
           changeLayout('grid-layout', 'list-layout', true);
         }
       });
-      
+
       listButton.addEventListener('click', function() {
         if (!productsWrapper.classList.contains('list-layout')) {
           changeLayout('list-layout', 'grid-layout', true);
         }
       });
-      
+
       // Check for saved preference and apply without animation on initial load
       const viewPreference = localStorage.getItem('productViewPreference');
       if (viewPreference === 'list' && productsWrapper.classList.contains('grid-layout')) {
         // Remove any animations that might be defined in CSS
         productsWrapper.classList.add('no-animation');
-        
+
         // Apply list view without animation
         changeLayout('list-layout', 'grid-layout', false);
-        
+
         // Allow animations after initial setup
         setTimeout(() => {
           productsWrapper.classList.remove('no-animation');
