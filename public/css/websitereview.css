@@ -1,4 +1,3 @@
-/* Website Review Styles */
 body {
   font-family: "Inter", sans-serif;
   background-color: #f5f7fa;
@@ -8,19 +7,30 @@ body {
   padding: 0;
 }
 
-.review-container {
-  max-width: 1000px;
-  margin: 3rem auto;
+/* ── LAYOUT AND CONTAINERS ── */
+.main-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.review-container, 
+.review-section {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
   padding: 2rem;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
 }
 
+/* >>> HEADINGS <<< */
 h3 {
   font-family: "Dela Gothic One", cursive;
   color: #2d4059;
-  margin: 2rem 0 1.5rem;
+  margin: 1rem 0 2rem;
   font-size: 1.8rem;
   font-weight: 600;
   text-align: center;
@@ -37,20 +47,38 @@ h3:after {
   border-radius: 2px;
 }
 
-/* Individual review styling */
+/* [ INDIVIDUAL REVIEW STYLING ] */
 .review-item {
   padding: 1.5rem;
   margin-bottom: 1.5rem;
-  background-color: #ffffff;
+  background-color: #f8f9fa;
   border-left: 4px solid #2d4059;
   border-radius: 0 8px 8px 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.review-item:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #2d4059, #ea5455);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .review-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.review-item:hover:before {
+  opacity: 1;
 }
 
 .review-user {
@@ -90,23 +118,10 @@ h3:after {
   font-style: italic;
 }
 
+/*-------------------------*/
 /* Review form section */
 .review-section {
   margin-top: 3rem;
-  padding: 2rem;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.review-section h3 {
-  text-align: left;
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-}
-
-.review-section h3:after {
-  margin: 0.8rem 0 0;
 }
 
 .review-form {
@@ -115,7 +130,7 @@ h3:after {
   gap: 1.5rem;
 }
 
-/* Star rating styling */
+/***** STAR RATING *****/ 
 .rating {
   display: flex;
   flex-direction: row-reverse;
@@ -141,7 +156,7 @@ h3:after {
   color: #ffaa00;
 }
 
-/* Review text area */
+/* Form Elements */
 textarea {
   width: 100%;
   min-height: 120px;
@@ -151,6 +166,7 @@ textarea {
   resize: vertical;
   font-family: "Inter", sans-serif;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
 }
 
 textarea:focus {
@@ -159,7 +175,6 @@ textarea:focus {
   box-shadow: 0 0 0 2px rgba(45, 64, 89, 0.2);
 }
 
-/* Submit button */
 button[type="submit"] {
   align-self: flex-start;
   background-color: #2d4059;
@@ -184,26 +199,9 @@ button[type="submit"]:active {
   transform: translateY(0);
 }
 
-/* Horizontal line */
 hr {
   border: 0;
   height: 1px;
   background: #eee;
   margin: 1.5rem 0;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  .review-container, .review-section {
-    padding: 1.5rem;
-    margin: 1.5rem;
-  }
-  
-  h3 {
-    font-size: 1.5rem;
-  }
-  
-  .rating label {
-    font-size: 1.8rem;
-  }
 }
