@@ -130,13 +130,13 @@ h3:after {
   gap: 1.5rem;
 }
 
+
 /***** STAR RATING *****/ 
 .rating {
-  display: flex;
+  display: inline-flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
-  gap: 0.3rem;
-  margin-bottom: 0.5rem;
+  position: relative;
 }
 
 .rating input {
@@ -145,15 +145,45 @@ h3:after {
 
 .rating label {
   cursor: pointer;
+  width: 1.1em;
   font-size: 2rem;
   color: #ddd;
   transition: color 0.2s ease;
 }
 
+/* Half stars */
+.rating label.half {
+  width: 0.6em;
+  z-index: 2; /* Make half stars appear on top */
+  overflow: hidden;
+  position: relative;
+  margin-right: -0.6em;
+}
+
+/* Fill color logic for hover and checked */
 .rating:hover label:hover,
 .rating:hover label:hover ~ label,
 .rating input:checked ~ label {
   color: #ffaa00;
+}
+
+.rating-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.rating-display {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2d4059;
+  min-width: 3rem;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
 }
 
 /* Form Elements */
