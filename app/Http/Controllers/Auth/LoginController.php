@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
-  //show the login form
-  public function showLoginForm()
-  {
-    return view('auth.login');
-  }
+    //show the login form
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
 
     //taking the credentials and checking against the database
     public function login(Request $request)
@@ -47,13 +47,11 @@ class LoginController extends Controller
         return back()->withErrors(['email' => 'Invalid credentials'])->withInput();
     }
 
-    
 
-
-  //logout the current user logged in
-  public function logout(Request $request)
-  {
-    Session::flush(); // Remove all session data
-    return redirect('/login')->with('success', 'Logged out successfully');
-  }
+    //logout the current user logged in
+    public function logout(Request $request)
+    {
+        Session::flush(); // Remove all session data
+        return redirect('/login')->with('success', 'Logged out successfully');
+    }
 }

@@ -17,7 +17,7 @@
   <header id="main-header">
     <div class="logo-section">
       <a href="{{ url('/home') }}"><img src="{{ asset('Images/logo.png') }}" alt="Gadget Grads Logo" class="logo" width="98" height="48"></a>
-      <div>
+      <div class="navbar-text">
         <h1 class="h1">GADGET GRADS</h1>
         <h2>Graduate with better tech!</h2>
       </div>

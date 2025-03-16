@@ -62,7 +62,7 @@
     </div>
   </header>
 
-  <nav class="nav-bar">
+  <nav class="navigation-banner">
     <ul>
       <li><a href="{{ url('/home') }}">Home</a></li>
       <li class="has-dropdown">

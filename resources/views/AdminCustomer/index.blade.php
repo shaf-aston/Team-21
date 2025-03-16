@@ -23,8 +23,6 @@
         <th>#</th>
         <th>Customer</th>
         <th>Email</th>
-
-
       </tr>
     </thead>
     <tbody>
@@ -45,13 +43,9 @@
             <button type='submit' class="remove-link text-danger" onclick="this.closest('form').submit()">Remove item</button>
           </form>
           @else
-          <a href="{{ route('login') }}" class="btn btn-primary">Log in to remove product</a>
+          <a href="{{ route('login') }}" class="btn btn-primary">Log in to Manage User</a>
           @endif
         </td>
-
-
-
-
       </tr>
       @endforeach
     </tbody>

@@ -32,22 +32,24 @@
       <a href="{{ url('Smartwatches') }}">Smartwatches</a>
     </div>
   </nav>
-  <!-- sort -->
-  <div class="sort-section">
-    <label for="sort">Sort by:</label>
-    <form method="POST" action="/productssort">
-      @csrf
-      <select id="sort" name="sort">
-        <option {{request()->sortby}} value="default">Default</option>
-        <option {{request()->sortby}} value="priceasc">Price: Low to High</option>
-        <option {{request()->sortby}} value="pricedesc">Price: High to Low</option>
-        <option {{request()->sortby}} value="nameasc">Name: A to Z</option>
-        <option {{request()->sortby}} value="namedesc">Name: Z to A</option>
-      </select>
-      <button type="submit">Sort!</button>
-    </form>
+  <div class="product-container">
+  <div class="actions-header">
+    <!-- sort function -->
+    <div class="sort-section">
+      <label for="sort">Sort by:</label>
+      <form method="POST" action="/productssort">
+        @csrf
+        <select id="sort" name="sort">
+          <option {{ request()->sortby }} value="default">Default</option>
+          <option {{ request()->sortby }} value="priceasc">Price: Low to High</option>
+          <option {{ request()->sortby }} value="pricedesc">Price: High to Low</option>
+          <option {{ request()->sortby }} value="nameasc">Name: A to Z</option>
+          <option {{ request()->sortby }} value="namedesc">Name: Z to A</option>
+        </select>
+        <button type="submit">Sort!</button>
+      </form>
+    </div>
   </div>
-
   <!-- product display -->
   @foreach ($products as $product)
   @if ($product->category_id != 1)
@@ -93,7 +95,8 @@
   </div>
   @endif
   @endforeach
-
-</body>
+</div>
+  @include('components.Footer')
+  </body>
 
 </html>

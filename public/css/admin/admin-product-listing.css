@@ -1,32 +1,6 @@
-/* Container for the entire content */
-.admin-product-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  position: relative;
-}
-
-/* Header actions container */
-.admin-actions-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px 0;
-  width: 100%;
-}
-
-/* Sort section styling */
-.sort-section {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-}
-
-/* Add product button container */
 .add-product-container {
   text-align: right;
+  margin: 20px 40px;
 }
 
 /* Add product button styling */
@@ -41,9 +15,34 @@
   transition: all 0.3s ease;
   font-weight: 500;
   display: inline-block;
+  margin-right: 40px;
+  clear: both;
 }
 
 .add-product-button:hover {
+  background-color: #ffffff;
+  color: #2d4059;
+}
+
+/* Reposition the standalone Add product button */
+button.view-button#viewprod[onclick*="products/create"] {
+  background-color: #2d4059;
+  color: #ffffff;
+  border: 2px solid #2d4059;
+  border-radius: 40px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  display: block;
+  margin: 0 40px 20px auto;
+  width: auto;
+  float: right;
+  clear: both;
+}
+
+button.view-button#viewprod[onclick*="products/create"]:hover {
   background-color: #ffffff;
   color: #2d4059;
 }
@@ -53,27 +52,35 @@
   display: flex;
   flex-wrap: wrap;
   margin: -10px; /* Negative margin to offset the padding on product-section */
+  clear: both;
 }
 
-/* Product section layout */
+/* Product section layout - force 3 columns */
 .product-section {
-  width: calc(33.33% - 20px); /* Exactly one-third width minus margins */
-  margin: 10px;
-  display: inline-block;
-  box-sizing: border-box;
-  vertical-align: top;
+  width: calc(33.33% - 30px);
+  margin: 10px 15px;
+  padding: 15px;
+  border-width: 1px;
 }
 
-/* Danger text */
-.text-danger {
-  color: #dc3545;
-  font-weight: bold;
+body .product-section {
+  width: calc(33.33% - 30px) !important;
 }
 
-/* Warning text */
-.text-warning {
-  color: #ffc107;
-  font-weight: bold;
+.product-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.view-button, .remove-link {
+  margin-bottom: 8px;
+}
+
+.product-info p.product-stock {
+  margin-top: 0px;
+  margin-bottom: 5px;
 }
 
 /* Remove link button */
@@ -99,8 +106,8 @@
 
 /* Media queries for responsive design */
 @media (max-width: 1100px) {
-  .product-section {
-    width: calc(50% - 20px); /* Two products per row on medium screens */
+  .product-section, body .product-section {
+    width: calc(50% - 40px) !important; /* Two products per row on medium screens */
   }
 }
 
@@ -114,15 +121,22 @@
   .add-product-container {
     text-align: left;
     width: 100%;
+    margin: 10px 40px;
   }
   
+  button.view-button#viewprod[onclick*="products/create"],
   .add-product-button {
-    width: 100%;
+    width: calc(100% - 80px);
+    margin: 10px 40px;
+    float: none;
   }
   
-  .product-section {
-    width: calc(100% - 20px); /* One product per row on small screens */
+  .product-section, body .product-section {
+    width: calc(100% - 40px) !important; /* One product per row on small screens */
+  }
+  
+  .sort-section {
+    margin: 15px 40px;
+    flex-wrap: wrap;
   }
 }
-
-
