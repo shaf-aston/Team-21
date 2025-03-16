@@ -62,7 +62,7 @@
         <img src="Images\{{$product->img_id}}.jpg" alt="Product" class="iPadAir">
         <div class="product-info">
           <h3 class="product-title"> {{$product->product_name}}</h3>
-          <p class="product-price">{{$product->product_price}}</p>
+          <p class="product-price">£{{$product->product_price}}</p>
           <div class="product-buttons">
             <button class="view-button" type="submit" id="viewprod" onclick="window.location='{{url('productdesc',$product->product_id)}}'">View Product</button>
             <!-- Add to Basket -->
