@@ -17,10 +17,9 @@
   background-color: #2d4059;
   color: #e1e8ff;
 }
-
 /* Categories section */
 .dark-mode .top-categories-section {
-    background-color: #2c3e50;
+  background-color: #2d4059;
 }
 
 .dark-mode .section-header__title {
@@ -31,12 +30,39 @@
     color: #8ca9f2;
 }
 
-.dark-mode .category-item {
-    background-color: #34495e;
+.dark-mode .view-all-link {
+    color: #8ca9f2;
 }
+
+.dark-mode .view-all-link:hover {
+    color: #a5beff;
+}
+
+.dark-mode .view-all-link svg {
+    stroke: #8ca9f2;
+}
+
+.dark-mode .categories-grid {
+    color: #e1e8ff;
+    background-color: transparent;
+}
+
+.dark-mode .categories-grid__list {
+    background-color: transparent;
+}
+
+
 
 .dark-mode .category-item__link {
     color: #e1e8ff;
+}
+
+.dark-mode .category-item__label {
+    color: #e1e8ff;
+}
+
+.dark-mode .category-item__icon-wrapper {
+    background-color: #2c3e50;
 }
 
 /* Brand carousel */

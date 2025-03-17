@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Auth\LoginController;
@@ -22,6 +23,10 @@ use App\Http\Middleware\RoleMiddleware;
 
 Route::get('/', function(){
     return redirect('/home');
+});
+
+Route::get('/customer-dash', function(){
+  return view('customer-dash');
 });
 
 //return search bar form

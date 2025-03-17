@@ -181,10 +181,7 @@
 
         <div class="popular-products-section__popular">
           <h2 class="popular-products-section__popular-title">Popular Right Now</h2>
-          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/cb869a391973a332dd739fbf7c4ac275ca22375a19af5dd6519748682a0063b0?placeholderIfAbsent=true&apiKey=3a437244a50945448f94b673144271db"
-            alt="Truck icon"
-            class="popular-products-section__header-icon"
-            loading="lazy">
+
         </div>
       </header>
 
