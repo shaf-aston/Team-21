@@ -3,21 +3,26 @@ body {
     margin: 0;
     padding: 0;
     font-family: "inter", sans-serif;
+    padding-top: 6rem; 
+
 }
+
 
 /* ==== Header Styles ==== */
 #main-header {
-    padding: 1rem 2rem;
-    background: #fff;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.5s ease-in-out;
+  padding: 1rem 2rem;
+  background: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 @keyframes fadeIn {
@@ -239,12 +244,18 @@ body {
 
 /* ==== Navigation Banner ==== */
 .navigation-banner {
-    height: 40px;
-    background: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
+  height: 40px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .navigation-banner ul {
@@ -285,11 +296,16 @@ body {
 
 /* ==== Categories Navigation ==== */
 .topnav {
-    background-color: #2d4059;
-    padding: 0.5rem;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
+  background-color: #2d4059;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  position: fixed; 
+  top: 140px; 
+  left: 0;
+  right: 0;
+  z-index: 998; 
 }
 
 .topnav a {

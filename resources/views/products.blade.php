@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="{{ asset('/css/dark-mode-styles/ProductListing-dark-mode.css') }}">
 </head>
 
-<body>
+<body style="padding-top: 15rem">
   @include('components.navbar')
   <nav id="gadgetGrads">
     <div class="topnav">
@@ -108,7 +108,6 @@
       @endforeach
     </div>
   </div>
-
   @include('components.Footer')
   @include('components.authbutton')
 </body>
