@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="{{asset('css/Home.css')}}">
   <link rel="stylesheet" href="{{asset('css/Footer.css')}}">
   <link rel="stylesheet" href="{{ asset('css/dark-mode-styles/home-dark-mode.css') }}">
-  <link rel="stylesheet" href="{{ asset('/css/dark-mode-styles/transition-dark-mode.css') }}">
 </head>
 
 <body>
@@ -306,5 +305,60 @@
     });
   </script>
 </body>
-
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Update images when dark mode state
+    function updateImagesForDarkMode() {
+      const isDarkMode = document.body.classList.contains('dark-mode');
+      
+      // Update brand logos
+      const brandImages = {
+        'samsung_logo.jpg': 'samsung_dark_mode.png',
+        'apple_logo.png': 'apple_dark_mode.png',
+        // 'dell_logo.png': 'dell_dark_mode.jpg',
+        'sony_logo.png': 'sony_dark_mode.png',
+        'alienware_logo.png': 'alienware_dark_mode.png',
+        'playstation_logo.png': 'playstation_dark_mode.png',
+        'drdre_logo.png': 'drdre_dark_mode.png',
+        // 'oneplus_logo.png': 'oneplus_dark_mode.png',
+        'asus_logo.png': 'asus_dark_mode.png'
+      };
+      
+      // Select all brand carousel images
+      document.querySelectorAll('.brand-carousel__item img').forEach(img => {
+        const src = img.src;
+        const filename = src.substring(src.lastIndexOf('/') + 1);
+        
+        if (isDarkMode && brandImages[filename]) {
+          // Switch to dark mode image
+          img.src = src.replace(filename, brandImages[filename]);
+        } else if (!isDarkMode) {
+          // Switch back to light mode image
+          for (const [light, dark] of Object.entries(brandImages)) {
+            if (filename === dark) {
+              img.src = src.replace(dark, light);
+              break;
+            }
+          }
+        }
+      });
+    }
+    
+    // Call once on page load to set correct state
+    updateImagesForDarkMode();
+    
+    // Listen for dark mode changes
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.attributeName === 'class' && 
+            mutation.target === document.body) {
+          updateImagesForDarkMode();
+        }
+      });
+    });
+    
+    // Start observing <body> for class changes
+    observer.observe(document.body, { attributes: true });
+  });
+</script>
 </html>

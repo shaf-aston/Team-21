@@ -17,8 +17,8 @@
   <link rel="stylesheet" href="{{ asset('/css/navbar.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/ProductListing.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/dark-mode-styles/ProductListing-dark-mode.css') }}">
+  <link rel="stylesheet" href="{{ asset('/css/list-toggle.css') }}">
 </head>
-
 
 <body>
   @include('components.navbar')
@@ -49,6 +49,9 @@
           <button type="submit">Sort!</button>
         </form>
       </div>
+
+      <!-- View toggle -->
+      @include('components.list-toggle')
     </div>
     <!-- product display -->
     @foreach ($products as $product)

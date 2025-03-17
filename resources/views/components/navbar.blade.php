@@ -62,24 +62,26 @@
   </header>
 
   <nav class="navigation-banner">
-    <ul>
-      <li><a href="{{ url('/home') }}">Home</a></li>
-      <li class="has-dropdown">
-        <a href="{{ url('/products') }}">Products</a>
-        <div class="dropdown-menu">
-          <a href="{{ url('Tablets') }}">Tablets</a>
-          <a href="{{ url('Laptops') }}">Laptops</a>
-          <a href="{{ url('Accessories') }}">Accessories</a>
-          <a href="{{ url('Phones') }}">Phones</a>
-          <a href="{{ url('Smartwatches') }}">Smartwatches</a>
-        </div>
-      </li>
-      <li><a href="{{ url('/about') }}">About Us</a></li>
-      <li><a href="{{ url('/basket') }}">Basket</a></li>
-      <li><a href="{{ url('/contact') }}">Contact Us</a></li>
-      <li><a href="{{ url('/websitereviews') }}">Review</a></li>
-    </ul>
-  </nav>
+      <ul>
+        <li><a href="{{ url('/home') }}">Home</a></li>
+        <li class="has-dropdown">
+          <a href="{{ url('/products') }}">Products</a>
+          @if (!in_array(request()->path(), ['products', 'Tablets', 'Laptops', 'Accessories', 'Phones', 'Smartwatches']))
+          <div class="dropdown-menu">
+            <a href="{{ url('Tablets') }}">Tablets</a>
+            <a href="{{ url('Laptops') }}">Laptops</a>
+            <a href="{{ url('Accessories') }}">Accessories</a>
+            <a href="{{ url('Phones') }}">Phones</a>
+            <a href="{{ url('Smartwatches') }}">Smartwatches</a>
+          </div>
+          @endif
+        </li>
+        <li><a href="{{ url('/about') }}">About Us</a></li>
+        <li><a href="{{ url('/basket') }}">Basket</a></li>
+        <li><a href="{{ url('/contact') }}">Contact Us</a></li>
+        <li><a href="{{ url('/websitereviews') }}">Review</a></li>
+      </ul>
+    </nav>
 
   @include('components.dark-mode')
   @include('components.authbutton')

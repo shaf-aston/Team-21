@@ -52,7 +52,7 @@ h2 {
   margin: 0.25rem 0 0 0;
   font-family: "Dela Gothic One"; 
   white-space: nowrap;
-  transform: translateX(50px);
+  transform: translateX(75px);
 }
 
 .search-forms-container {
@@ -101,6 +101,7 @@ h2 {
   padding: 0.4rem;
   border-radius: 4px;
   border: 1px solid #ddd;
+  width: 165px;
 }
 
 /* For navigation links */
