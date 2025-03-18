@@ -244,7 +244,7 @@ body {
 
 /* ==== Navigation Banner ==== */
 .navigation-banner {
-  height: 40px;
+  height: 50px;
   background: #fff;
   display: flex;
   justify-content: center;
@@ -298,6 +298,7 @@ body {
 .topnav {
   background-color: #2d4059;
   padding: 0.5rem;
+  padding-top: 1rem;
   display: flex;
   justify-content: center;
   gap: 2rem;

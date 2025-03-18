@@ -130,7 +130,6 @@ h3:after {
   gap: 1.5rem;
 }
 
-
 /***** STAR RATING *****/ 
 .rating {
   display: inline-flex;
@@ -154,10 +153,28 @@ h3:after {
 /* Half stars */
 .rating label.half {
   width: 0.6em;
-  z-index: 2; /* Make half stars appear on top */
+  z-index: 2; 
   overflow: hidden;
-  position: relative;
-  margin-right: -0.6em;
+  position: absolute;
+  margin-right: 0;
+  clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+}
+
+/* Position half stars next to their full stars */
+.rating label.half[for="star4-5"] {
+  margin-right: 1.1em;
+}
+.rating label.half[for="star3-5"] {
+  margin-right: 2.2em;
+}
+.rating label.half[for="star2-5"] {
+  margin-right: 3.3em;
+}
+.rating label.half[for="star1-5"] {
+  margin-right: 4.4em;
+}
+.rating label.half[for="star0-5"] {
+  margin-right: 5.5em;
 }
 
 /* Fill color logic for hover and checked */
@@ -185,7 +202,6 @@ h3:after {
   font-size: 0.9rem;
   margin-top: -0.5rem;
 }
-
 /* Form Elements */
 textarea {
   width: 100%;
@@ -235,3 +251,5 @@ hr {
   background: #eee;
   margin: 1.5rem 0;
 }
+
+
