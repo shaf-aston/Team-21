@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="{{ asset('css/dark-mode-styles/home-dark-mode.css') }}">
 </head>
 
-<body>
+<body style="padding-top: 7.5rem">
   <main>
     @include('components.navbar')
 

@@ -207,5 +207,5 @@
     });
   </script>
 </body>
-
+@include('components.Footer')
 </html>
