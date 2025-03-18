@@ -176,67 +176,63 @@
 
     <!-- Popular Products Section -->
     <section class="popular-products-section">
-      <!-- Header Section -->
       <header class="popular-products-section__header">
-
         <div class="popular-products-section__popular">
           <h2 class="popular-products-section__popular-title">Popular Right Now</h2>
-
         </div>
       </header>
-
-      <!-- Products Grid Section -->
-      <section class="products-grid" loading="lazy">
-        <!-- Product Card 1 -->
-        <article class="product-card">
-          <div class="product-card__image-placeholder"
-            role="img"
-            aria-label="Product image placeholder"><img src="{{asset('images/2.jpg')}}" alt=""></div>
-
-          <h3 class="product-card__title">Apple Watch Series 10 - 42mm</h3>
-          <p class="product-card__price">£399.00</p>
-        </article>
-
-        <!-- Product Card 2 -->
-        <article class="product-card">
-          <div class="product-card__image-placeholder"
-            role="img"
-            aria-label="Product image placeholder"><img src="{{asset('images/4.jpg')}}" alt=""></div>
-          <h3 class="product-card__title">Apple iPhone 16 Pro Max</h3>
-          <p class="product-card__price">£1199.00</p>
-        </article>
-
-        <!-- Product Card 3 -->
-        <article class="product-card">
-
-          <div class="product-card__image-placeholder"
-            role="img"
-            aria-label="Product image placeholder"><img src="{{asset('images/3.jpg')}}" alt=""></div>
-          <h3 class="product-card__title">Apple 11" iPad Air(2024)</h3>
-          <p class="product-card__price">£599.00</p>
-
-        </article>
-
-        <!-- Product Card 4 -->
-        <article class="product-card">
-          <div class="product-card__image-placeholder"
-            role="img"
-            aria-label="Product image placeholder"><img src="{{asset('images/7.jpg')}}" alt=""></div>
-          <h3 class="product-card__title">Lenovo Thinkpad IdeaPad Gaming</h3>
-          <p class="product-card__price">£799.00</p>
-        </article>
-
-        <!-- Navigation Icon -->
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2f9608223079bcf7e5f7696e37a9660cc9ef78b37e9f6d990bd1eed11a9294be?placeholderIfAbsent=true&apiKey=3a437244a50945448f94b673144271db"
-          alt="Navigation icon"
-          class="products-grid__navigation-icon"
-          loading="lazy">
-      </section>
+    
+      <div class="popular-products-carousel">
+        <button class="popular-products-carousel__button popular-products-carousel__button--left" aria-label="Previous slide">←</button>
+    
+        <div class="popular-products-carousel__container">
+          <div class="popular-products-carousel__items">
+            <!-- Product Card 1 -->
+            <article class="product-card">
+              <div class="product-card__image-placeholder">
+                <img src="{{asset('images/2.jpg')}}" alt="Apple Watch Series 10">
+              </div>
+              <h3 class="product-card__title">Apple Watch Series 10 - 42mm</h3>
+              <p class="product-card__price">£399.00</p>
+            </article>
+    
+            <!-- Product Card 2 -->
+            <article class="product-card">
+              <div class="product-card__image-placeholder">
+                <img src="{{asset('images/4.jpg')}}" alt="Apple iPhone 16 Pro Max">
+              </div>
+              <h3 class="product-card__title">Apple iPhone 16 Pro Max</h3>
+              <p class="product-card__price">£1199.00</p>
+            </article>
+    
+            <!-- Product Card 3 -->
+            <article class="product-card">
+              <div class="product-card__image-placeholder">
+                <img src="{{asset('images/3.jpg')}}" alt="Apple iPad Air">
+              </div>
+              <h3 class="product-card__title">Apple 11" iPad Air(2024)</h3>
+              <p class="product-card__price">£599.00</p>
+            </article>
+    
+            <!-- Product Card 4 -->
+            <article class="product-card">
+              <div class="product-card__image-placeholder">
+                <img src="{{asset('images/7.jpg')}}" alt="Lenovo Thinkpad">
+              </div>
+              <h3 class="product-card__title">Lenovo Thinkpad IdeaPad Gaming</h3>
+              <p class="product-card__price">£799.00</p>
+            </article>
+          </div>
+        </div>
+    
+        <button class="popular-products-carousel__button popular-products-carousel__button--right" aria-label="Next slide">→</button>
+      </div>
     </section>
+
+
     @include('components.Footer')
   </main>
 
-  <!-- <script src="{{ asset('js/JavaScript_pop-up.js') }}"></script> -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       try {
