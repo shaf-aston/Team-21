@@ -130,32 +130,6 @@ body {
     transform: translateY(-5px);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .top-deals-banner {
-        flex-direction: column;
-        height: auto;
-        gap: 15px;
-        padding: 15px;
-    }
-
-    .cta-banner,
-    .new-deals-banner {
-        width: 100%;
-        height: 300px;
-    }
-
-    .cta-banner__content,
-    .new-deals-banner__content {
-        left: 20px;
-    }
-
-    .cta-banner__shop-now {
-        left: 20px;
-        bottom: 30px;
-    }
-}
-
 /* Top Categories Section */
 .top-categories-section {
     max-width: 1200px;
@@ -272,24 +246,6 @@ body {
     color: var(--primary-color);
 }
 
-@media (max-width: 992px) {
-    .categories-grid__list {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 576px) {
-    .categories-grid__list {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-
-    .category-item__icon-wrapper {
-        width: 80px;
-        height: 80px;
-    }
-}
-
 /* Top Electronic Brands Section */
 .top-brands-section {
     max-width: 1200px;
@@ -392,30 +348,6 @@ body {
     pointer-events: none;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 992px) {
-    .brand-carousel__item {
-        flex: 0 0 calc(50% - 10px);
-        min-width: calc(50% - 10px);
-    }
-}
-
-@media (max-width: 576px) {
-    .brand-carousel__item {
-        flex: 0 0 calc(100% - 10px);
-        min-width: calc(100% - 10px);
-    }
-
-    .brand-carousel__container {
-        margin: 0 30px;
-    }
-
-    .brand-carousel__button {
-        width: 35px;
-        height: 35px;
-        font-size: 1.2rem;
-    }
-}
 /* Popular Products Section */
 .popular-products-section {
     background-color: #fff;
@@ -503,25 +435,6 @@ body {
     margin: auto 0;
 }
 
-@media (max-width: 991px) {
-    .popular-products-section__header {
-        max-width: 100%;
-        padding-left: 20px;
-    }
-
-    .popular-products-section__banner-image {
-        max-width: 100%;
-    }
-
-    .section-header {
-        margin: 40px 10px 0 0;
-    }
-
-    .products-grid {
-        max-width: 100%;
-        margin-top: 40px;
-    }
-}
 
 .visually-hidden {
     position: absolute;

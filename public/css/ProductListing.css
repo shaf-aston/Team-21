@@ -407,29 +407,3 @@ body {
     transition: none !important;
     animation: none !important;
 }
-
-/* ==== RESPONSIVE DESIGN ==== */
-@media (max-width: 1200px) {
-    .product-section {
-        width: calc(50% - 20px);
-    }
-}
-
-@media (max-width: 768px) {
-    .product-section {
-        width: calc(100% - 20px);
-    }
-
-    .products-wrapper.list-layout .product {
-        flex-direction: column;
-    }
-
-    .products-wrapper.list-layout .product img {
-        width: 100%;
-    }
-
-    .products-wrapper.list-layout .product-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
-}

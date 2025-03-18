@@ -50,7 +50,7 @@
     <section class="top-categories-section">
       <div class="section-header">
         <div class="section-header__title-wrapper">
-          <h2 class="section-header__title">Shop From <span class="highlight">Top Categories</span></h2>
+          <h2 class="section-header__title">Shop From <span class="highlight">Categories</span></h2>
           <div class="section-header__title-underline"></div>
         </div>
         <a href="{{url('/products')}}" class="view-all-link">

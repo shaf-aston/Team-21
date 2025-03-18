@@ -75,16 +75,3 @@ body > h1 {
 .card strong {
     color: #2d4059;
 }
-
-@media screen and (min-width: 768px) {
-    .cards-container {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        margin-top: 30px;
-    }
-
-    .card {
-        margin: 0;
-    }
-}

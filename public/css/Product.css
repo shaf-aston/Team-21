@@ -247,23 +247,3 @@ body {
 .rating label:hover ~ label {
     color: #ffcc00;
 }
-
-/* Clear floats and responsive adjustments */
-@media (max-width: 900px) {
-    .product-container,
-    .product-info {
-        width: 100%;
-    }
-
-    .product-info {
-        padding: 10px 0;
-    }
-
-    .button-container {
-        flex-direction: column;
-    }
-
-    #zoom-result {
-        display: none !important;
-    }
-}

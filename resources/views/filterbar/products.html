@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+
+  <title>Products Listing</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="productlisting.css">
+</head>
+
+<body>
+  <!-- Navigation bar -->
+  <header id="main-header">
+    <div class="header-left">
+      <a href="home.html">
+        <img src="images/logo.png" alt="Gadget Grads Logo" class="logo">
+      </a>
+      <div class="navbar-text">
+        <h1 class="navbar-title">GADGET GRADS</h1>
+        <p class="navbar-subtitle">Graduate with better tech!</p>
+      </div>
+    </div>
+
+    <div class="search-container">
+      <form class="search-form" action="search.html" method="GET">
+        <input type="text" class="search-input" name="query" placeholder="Search for products..." required>
+        <button class="search-button" type="submit">Search</button>
+      </form>
+    </div>
+
+    <div class="icons">
+      <div class="profile-dropdown">
+        <a href="#" class="user-icon" title="My Profile">
+          <img src="images/user-1.svg" height="30" alt="User icon">
+        </a>
+        <div class="dropdown-content">
+          <a href="login.html" class="login-btn">Login</a>
+          <a href="register.html" class="register-btn">Register</a>
+        </div>
+      </div>
+      <a href="wishlist.html" class="wishlist-icon" title="Wishlist">
+        <img src="images/heart.svg" height="30" alt="Wishlist icon">
+      </a>
+      <a href="basket.html" class="cart-icon" title="Basket">
+        <img src="images/basket.svg" height="30" alt="Basket icon">
+      </a>
+    </div>
+  </header>
+
+  <nav class="nav-bar">
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li class="has-dropdown">
+        <a href="products.html">Products</a>
+      </li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="basket.html">Basket</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="websitereviews.html">Review</a></li>
+    </ul>
+  </nav>
+  
+  <nav id="gadgetGrads">
+    <div class="topnav">
+      <a href="Tablets.html">Tablets</a>
+      <a href="Laptops.html">Laptops</a>
+      <a href="Accessories.html">Accessories</a>
+      <a href="Phones.html">Phones</a>
+      <a href="Smartwatches.html">Smartwatches</a>
+    </div>
+  </nav>
+
+  <!-- sort function -->
+  <div class="sort-section">
+    <label for="sort">Sort by:</label>
+    <form method="POST" action="productssort.html">
+      <select id="sort" name="sort">
+        <option value="default">Default</option>
+        <option value="priceasc">Price: Low to High</option>
+        <option value="pricedesc">Price: High to Low</option>
+        <option value="nameasc">Name: A to Z</option>
+        <option value="namedesc">Name: Z to A</option>
+      </select>
+      <button type="submit">Sort!</button>
+    </form>
+  </div>
+
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>Filters</h2>
+      <ul>
+
+        <div class="filter-section">
+          <button class="filter-title">RAM ▼</button>
+          <div class="filter-content">
+            <label><input type="checkbox"> 64-256GB</label>
+            <label><input type="checkbox"> 256-512GB</label>
+            <label><input type="checkbox"> 512GB-2TB</label>
+          </div>
+        </div>
+
+          <div class="filter-section">
+            <button class="filter-title">Brand ▼</button>
+            <div class="filter-content">
+              <label><input type="checkbox"> Apple</label>
+              <label><input type="checkbox"> Lenovo</label>
+              <label><input type="checkbox"> Samsung</label>
+              <label><input type="checkbox"> SONY</label>
+              <label><input type="checkbox"> HP</label>
+              <label><input type="checkbox"> Dell</label>
+              <label><input type="checkbox"> Microsoft</label>
+              <label><input type="checkbox"> Google</label>
+              <label><input type="checkbox"> Alienware</label>
+          </div>
+
+          <div class="filter-section">
+            <button class="filter-title">Price Range ▼</button>
+            <div class="filter-content">
+                <div class="range-container">
+                    <div class="price-inputs">
+                        <input type="number" id="minPrice" min="0" max="3000" step="10" value="0" oninput="updatePrice()">
+                        <span>-</span>
+                        <input type="number" id="maxPrice" min="0" max="3000" step="10" value="3000">
+                    </div>
+                    <div class="price-values">
+                        <span>£0</span>
+                        <span>£3000</span>
+                    </div>
+                    <input type="range" id="priceRange" min="0" max="3000" step="10" value="1500" oninput="updatePrice()">
+                    <div class="price-display">Selected Price: £<span id="priceValue">1500</span></div>
+                </div>
+            </div>
+        </div>
+        
+
+          <div class="filter-section">
+            <button class="filter-title">Colour  ▼</button>
+          <div class="filter-content"> 
+            
+    <li><input type="checkbox"><label> Red </label><div class="dot red"></div></li>
+    <li><input type="checkbox"><label> Orange </label><div class="dot orange"></div></li>
+    <li><input type="checkbox"><label> Yellow </label><div class="dot yellow"></div></li>
+    <li><input type="checkbox"><label> Green </label><div class="dot green"></div></li>
+    <li><input type="checkbox"><label> Blue </label><div class="dot blue"></div></li>
+    <li><input type="checkbox"><label> Black </label><div class="dot black"></div></li>
+    <li><input type="checkbox"><label> White </label><div class="dot white"></div></li>
+    <li><input type="checkbox"><label> Beige </label><div class="dot beige"></div></li>
+    <li><input type="checkbox"><label> Grey </label><div class="dot grey"></div></li>
+  
+        </div>
+        <button id="applyFilters">Apply</button>
+        
+      </ul>
+    </aside>
+
+    
+<!-- Script for product range!-->
+<script>
+  // Update the displayed price value and the input fields based on the slider value
+  function updatePrice() {
+      let price = document.getElementById("priceRange").value;
+      document.getElementById("priceValue").textContent = price;
+
+      // Update input boxes based on slider value
+      document.getElementById("minPrice").value = 0;
+      document.getElementById("maxPrice").value = price;
+  }
+
+  // Update slider based on min/max price inputs
+  function updateSlider() {
+      let minPrice = parseInt(document.getElementById("minPrice").value);
+      let maxPrice = parseInt(document.getElementById("maxPrice").value);
+
+      // Ensure the values are valid
+      if (minPrice >= 0 && maxPrice <= 3000 && minPrice < maxPrice) {
+          document.getElementById("priceRange").min = minPrice;
+          document.getElementById("priceRange").max = maxPrice;
+      }
+  }
+
+  // Event listeners to update the slider and price when inputs change
+  document.getElementById("minPrice").addEventListener("input", updateSlider);
+  document.getElementById("maxPrice").addEventListener("input", updateSlider);
+  document.getElementById("priceRange").addEventListener("input", updatePrice);
+</script>
+
+
+  <!--Script for visibility!-->
+
+<script>
+
+const filterTitles = document.querySelectorAll('.filter-title');
+    
+filterTitles.forEach((title) => {
+    title.addEventListener('click', function() {
+        const content = this.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+            this.innerHTML = this.innerHTML.replace('▲', '▼'); // Update button text
+        } else {
+            content.style.display = "block";
+            this.innerHTML = this.innerHTML.replace('▼', '▲'); // Update button text
+        }
+    });
+});
+</script>
+    
+
+    <main class="product-container">
+
+  <!-- product display -->
+  <!-- Product 1 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product1.jpg" alt="Product" class="iPadAir">
+      <div class="product-info">
+        <h3 class="product-title">Apple iPad Air</h3>
+        <p class="product-price">£599.99</p>
+
+        <div class="product-buttons">
+          <button class="view-button" type="submit" id="viewprod" onclick="window.location='productdesc.html?id=1'">View Product</button>
+
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Product 2 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product2.jpg" alt="Product" class="GalaxyTab">
+      <div class="product-info">
+        <h3 class="product-title">Samsung Galaxy Tab S9</h3>
+        <p class="product-price">£499.99</p>
+        <p class="text-warning">Hurry! Only 3 left in stock.</p>
+
+        <div class="product-buttons">
+          <button class="view-button" type="submit" id="viewprod" onclick="window.location='productdesc.html?id=2'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Product 3 - Out of stock -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product3.jpg" alt="Product" class="SonyHeadphones">
+      <div class="product-info">
+        <h3 class="product-title">Sony Headphones XM5</h3>
+        <p class="product-price">£349.99</p>
+        <p class="text-danger">Out of stock</p>
+
+        <div class="product-buttons">
+          <button class="view-button" type="submit" id="viewprod" onclick="window.location='productdesc.html?id=3'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 4 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product4.jpg" alt="Product" class="MbPro">
+      <div class="product-info">
+        <h3 class="product-title">MacBook Pro 14"</h3>
+        <p class="product-price">£1299.99</p>
+
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=4'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 5 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product5.jpg" alt="Product" class="GalaxyWatch">
+      <div class="product-info">
+        <h3 class="product-title">Samsung Galaxy Watch 6</h3>
+        <p class="product-price">£299.99</p>
+        <p class="text-warning">Hurry! Only 5 left in stock.</p>
+
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=5'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 6 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product6.jpg" alt="Product" class="GalaxyPhone">
+      <div class="product-info">
+        <h3 class="product-title">Samsung Galaxy S24</h3>
+        <p class="product-price">£899.99</p>
+
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=6'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 7 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product7.jpg" alt="Product" class="AppleWatch">
+      <div class="product-info">
+        <h3 class="product-title">Apple Watch Series 9</h3>
+        <p class="product-price">£399.99</p>
+
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=7'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 8 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product8.jpg" alt="Product" class="iPhone">
+      <div class="product-info">
+        <h3 class="product-title">iPhone 15 Pro</h3>
+        <p class="product-price">£1099.99</p>
+        <p class="text-warning">Hurry! Only 2 left in stock.</p>
+
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=8'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 9 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product9.jpg" alt="Product" class="DellXPS">
+      <div class="product-info">
+        <h3 class="product-title">Dell XPS 13</h3>
+        <p class="product-price">£999.99</p>
+        <p class="text-danger">Out of stock</p>
+
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=9'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 10 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product10.jpg" alt="Product" class="Airpods">
+      <div class="product-info">
+        <h3 class="product-title">Apple AirPods Pro</h3>
+        <p class="product-price">£249.99</p>
+
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=10'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 11 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product11.jpg" alt="Product" class="SurfacePro">
+      <div class="product-info">
+        <h3 class="product-title">Microsoft Surface Pro 9</h3>
+        <p class="product-price">£899.99</p>
+        <p class="text-warning">Hurry! Only 4 left in stock.</p>
+
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=11'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 12 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product12.jpg" alt="Product" class="GalaxyBuds">
+      <div class="product-info">
+        <h3 class="product-title">Samsung Galaxy Buds Pro</h3>
+        <p class="product-price">£179.99</p>
+
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=12'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Product 13 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product13.jpg" alt="Product" class="GooglePixel">
+      <div class="product-info">
+        <h3 class="product-title">Google Pixel 8 Pro</h3>
+        <p class="product-price">£999.99</p>
+  
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=13'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+  
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Product 14 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product14.jpg" alt="Product" class="iPadPro">
+      <div class="product-info">
+        <h3 class="product-title">iPad Pro M2</h3>
+        <p class="product-price">£1099.99</p>
+        <p class="text-warning">Hurry! Only 3 left in stock.</p>
+  
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=14'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+  
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Product 15 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product15.jpg" alt="Product" class="BoseSpeaker">
+      <div class="product-info">
+        <h3 class="product-title">Bose Portable Smart Speaker</h3>
+        <p class="product-price">£349.99</p>
+  
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=15'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+  
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Product 16 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product16.jpg" alt="Product" class="DJIMini">
+      <div class="product-info">
+        <h3 class="product-title">DJI Mini 3 Pro Drone</h3>
+        <p class="product-price">£759.99</p>
+        <p class="text-danger">Out of stock</p>
+  
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=16'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+  
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Product 17 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product17.jpg" alt="Product" class="LogitechMX">
+      <div class="product-info">
+        <h3 class="product-title">Logitech MX Master 3S</h3>
+        <p class="product-price">£119.99</p>
+  
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=17'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+  
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Product 18 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product18.jpg" alt="Product" class="RazerKeyboard">
+      <div class="product-info">
+        <h3 class="product-title">Razer BlackWidow V3 Pro</h3>
+        <p class="product-price">£229.99</p>
+        <p class="text-warning">Hurry! Only 2 left in stock.</p>
+  
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=18'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+  
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Product 19 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product19.jpg" alt="Product" class="SamsungTablet">
+      <div class="product-info">
+        <h3 class="product-title">Samsung Galaxy Tab A8</h3>
+        <p class="product-price">£219.99</p>
+  
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=19'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+  
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Product 20 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product20.jpg" alt="Product" class="GarminWatch">
+      <div class="product-info">
+        <h3 class="product-title">Garmin Forerunner 955</h3>
+        <p class="product-price">£479.99</p>
+        <p class="text-warning">Hurry! Only 1 left in stock.</p>
+  
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=20'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+  
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Product 21 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product21.jpg" alt="Product" class="SonySpeaker">
+      <div class="product-info">
+        <h3 class="product-title">Sony SRS-XB43 Speaker</h3>
+        <p class="product-price">£169.99</p>
+  
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=21'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+  
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Product 22 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product22.jpg" alt="Product" class="AsusROG">
+      <div class="product-info">
+        <h3 class="product-title">ASUS ROG Zephyrus G14</h3>
+        <p class="product-price">£1499.99</p>
+        <p class="text-danger">Out of stock</p>
+  
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=22'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+  
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Product 23 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product23.jpg" alt="Product" class="OculusQuest">
+      <div class="product-info">
+        <h3 class="product-title">Meta Quest 3</h3>
+        <p class="product-price">£479.99</p>
+  
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=23'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+  
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Product 24 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product24.jpg" alt="Product" class="NintendoSwitch">
+      <div class="product-info">
+        <h3 class="product-title">Nintendo Switch OLED</h3>
+        <p class="product-price">£309.99</p>
+        <p class="text-warning">Hurry! Only 4 left in stock.</p>
+  
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=24'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+  
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Product 25 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product25.jpg" alt="Product" class="CanonCamera">
+      <div class="product-info">
+        <h3 class="product-title">Canon EOS R6 Mark II</h3>
+        <p class="product-price">£2779.99</p>
+  
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=25'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+  
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Product 26 -->
+  <div class="product-section">
+    <div class="product">
+      <img src="images/product26.jpg" alt="Product" class="WDHardDrive">
+      <div class="product-info">
+        <h3 class="product-title">WD 5TB Portable Hard Drive</h3>
+        <p class="product-price">£129.99</p>
+        <p class="text-warning">Hurry! Only 6 left in stock.</p>
+  
+        <div class="product-buttons">
+          <button class="view-button" type="submit" onclick="window.location='productdesc.html?id=26'">View Product</button>
+          
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Basket</a>
+          </div>
+  
+          <div class="card-footer text-center">
+            <a href="login.html" class="btn btn-primary">Log in to Add to Wishlist</a>
+          </div>
+        </div>
+         </div>
+    </div>
+  </main>
+  </div>
+
+  </body>
+
+  </html>

@@ -171,25 +171,6 @@ body {
     font-weight: 500;
 }
 
-@media (max-width: 1200px) {
-    .MacbookAir2 {
-        width: 95%;
-    }
-
-    .DashboardContents,
-    .DashboardContentsInner {
-        width: calc(100% - 300px);
-    }
-
-    .menu-container {
-        flex-wrap: wrap;
-    }
-
-    .menu-item {
-        flex: 1 1 auto;
-        margin: 5px;
-    }
-}
 
 .section-container {
     padding: 20px;

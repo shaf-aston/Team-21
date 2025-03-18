@@ -58,7 +58,7 @@
     </div>
     @endforeach
     @endif
-
+    @include('components.Footer')
   </body>
 
 </html>
