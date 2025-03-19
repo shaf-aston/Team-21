@@ -31,11 +31,21 @@ document.addEventListener("DOMContentLoaded", function () {
             if (e.key === "Escape") closePopup();
         });
 
-        // Quantity input handlers
+        // Quantity input handlers with original value storage
         quantityInputs.forEach((input) => {
             let timeout;
+            storeOriginalQuantity(input);
+            
             input.addEventListener("input", () => {
                 handleQuantityChange(input, timeout);
+            });
+
+            // Add blur event to handle invalid inputs
+            input.addEventListener("blur", () => {
+                if (!input.value || parseInt(input.value) < 1) {
+                    input.value = 1;
+                    handleQuantityChange(input, timeout);
+                }
             });
         });
 
@@ -49,35 +59,60 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Quantity Handling
     function handleQuantityChange(input, timeout) {
-        // Minimum quantity validation
-        if (parseInt(input.value) < 1) {
-            input.value = 1;
+        const newQuantity = Math.max(parseInt(input.value) || 1, 1);
+        input.value = newQuantity;
+
+        const basketItem = input.closest(".basket-item");
+        const itemPrice = parseFloat(basketItem.querySelector(".price").textContent.replace("£", "").replace(",", ""));
+        const itemTotal = basketItem.querySelector(".item-total");
+        
+        // Update item total immediately
+        if (itemTotal) {
+            itemTotal.textContent = `£${formatPrice(itemPrice * newQuantity)}`;
         }
 
-        // Debounce the update
+        // Debounce the server update
         clearTimeout(timeout);
         timeout = setTimeout(async () => {
-            const totals = updateTotals();
-            const itemId = input.closest(".basket-item").dataset.itemId;
-            await updateBasketItem(itemId, input.value);
-            updatePaymentOptions(totals.totalPrice);
+            const itemId = basketItem.dataset.itemId;
+            
+            try {
+                const response = await updateBasketItem(itemId, newQuantity);
+                if (response.success) {
+                    const totals = updateTotals();
+                    updatePaymentOptions(totals.totalPrice);
+                    
+                    // Update basket icon if it exists
+                    const basketCount = document.querySelector(".basket-count");
+                    if (basketCount && response.totalItems) {
+                        basketCount.textContent = response.totalItems;
+                    }
+                } else {
+                    // Revert to original quantity if update fails
+                    input.value = input.dataset.originalQuantity || 1;
+                    showError("Failed to update quantity. Please try again.");
+                }
+            } catch (error) {
+                input.value = input.dataset.originalQuantity || 1;
+                showError("Failed to update quantity. Please try again.");
+            }
         }, DEBOUNCE_DELAY);
+    }
+
+    function storeOriginalQuantity(input) {
+        input.dataset.originalQuantity = input.value;
     }
 
     // Payment Methods
     function handlePaymentMethodChange(checkbox) {
         if (checkbox.checked) {
-            // Uncheck other checkboxes
             paymentCheckboxes.forEach((otherCheckbox) => {
                 if (otherCheckbox !== checkbox) {
                     otherCheckbox.checked = false;
                 }
             });
 
-            // Show/hide payment details
-            const isSpreadCost = checkbox
-                .closest("label")
-                .textContent.includes("Spread the cost");
+            const isSpreadCost = checkbox.closest("label").textContent.includes("Spread the cost");
             paymentDetails.style.display = isSpreadCost ? "block" : "none";
 
             if (isSpreadCost) {
@@ -108,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateDisplayTotals(totalPrice, totalItems) {
         const basketTotal = document.getElementById("basket-total");
         if (basketTotal) {
-            basketTotal.textContent = formatPrice(totalPrice);
+            basketTotal.textContent = `£${formatPrice(totalPrice)}`;
             basketTotal.dataset.initialTotal = totalPrice;
         }
 
@@ -140,9 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function calculateMonthlyPayment(total) {
-        return ((total * (1 + INTEREST_RATE / 100)) / PAYMENT_MONTHS).toFixed(
-            2
-        );
+        return ((total * (1 + INTEREST_RATE / 100)) / PAYMENT_MONTHS).toFixed(2);
     }
 
     function updateMonthlyPaymentDisplay(monthlyAmount) {
@@ -163,31 +196,35 @@ document.addEventListener("DOMContentLoaded", function () {
     function updatePaymentDisclaimer(total, monthlyAmount) {
         if (disclaimer) {
             const totalPayable = (monthlyAmount * PAYMENT_MONTHS).toFixed(2);
-            disclaimer.innerHTML = generateDisclaimerText(
-                total,
-                monthlyAmount,
-                totalPayable
-            );
+            disclaimer.innerHTML = generateDisclaimerText(total, monthlyAmount, totalPayable);
         }
     }
 
     // API Interactions
     async function updateBasketItem(itemId, quantity) {
         try {
-            const response = await fetch(`/basket/update/${itemId}`, {
-                method: "POST",
+            const basketItem = document.querySelector(`.basket-item[data-item-id="${itemId}"]`);
+            const form = basketItem.querySelector('.quantity-update-form');
+            const hiddenInput = form.querySelector('.hidden-quantity');
+            
+            hiddenInput.value = quantity;
+            
+            const formData = new FormData(form);
+            
+            const response = await fetch(form.action, {
+                method: 'POST',
                 headers: {
-                    "Content-Type": "application/json",
-                    "X-CSRF-TOKEN": token,
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                    'Accept': 'application/json'
                 },
-                body: JSON.stringify({ quantity }),
+                body: formData
             });
-
-            if (!response.ok) throw new Error("Network response was not ok");
+    
+            if (!response.ok) throw new Error('Network response was not ok');
             return await response.json();
         } catch (error) {
             console.error("Error updating basket:", error);
-            showError("Failed to update basket. Please try again.");
+            throw error;
         }
     }
 
@@ -236,9 +273,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function generateDisclaimerText(total, monthlyAmount, totalPayable) {
         return `
-            <strong>Illustrative example:</strong> Credit amount £${formatPrice(
-                total
-            )}. 
+            <strong>Illustrative example:</strong> Credit amount £${formatPrice(total)}. 
             Pay ${PAYMENT_MONTHS} monthly payments of £${monthlyAmount}. 
             Total amount payable £${totalPayable}. 
             The interest rate for this purchase is ${INTEREST_RATE}%.<br>
@@ -253,7 +288,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="empty-basket">
                 <p>Your basket is empty</p>
                 <p>When you add items they'll appear here</p>
-                <a href="{{ url('/products') }}" class="continue-shopping">Continue shopping</a>
+                <a href="/products" class="continue-shopping">Continue shopping</a>
             </div>`;
         document.querySelector(".basket-title").style.display = "none";
     }

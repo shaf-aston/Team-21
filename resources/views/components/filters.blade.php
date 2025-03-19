@@ -128,3 +128,153 @@
   document.getElementById("maxPrice").addEventListener("input", updateSlider);
   document.getElementById("priceRange").addEventListener("input", updatePrice);
 </script>
+
+<style>
+  /* Sidebar Styles */
+  .sidebar {
+    width: 250px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    height: 500px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f4f4f4;
+  }
+
+  .sidebar h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .sidebar ul li {
+    margin: 10px 0;
+  }
+
+  /* Scrollbar Styles */
+  .sidebar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .sidebar::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+  }
+
+  .sidebar::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
+
+  /* Filter Section Styles */
+  .filter-section {
+    margin-bottom: 10px;
+  }
+
+  .filter-title {
+    background-color: #2d4059;
+    opacity: 90%;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  /* Color Dots */
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 5px;
+  }
+
+  .red {
+    background-color: red;
+  }
+
+  .orange {
+    background-color: orange;
+  }
+
+  .yellow {
+    background-color: yellow;
+  }
+
+  .green {
+    background-color: green;
+  }
+
+  .blue {
+    background-color: blue;
+  }
+
+  .black {
+    background-color: black;
+  }
+
+  .white {
+    background-color: white;
+  }
+
+  .beige {
+    background-color: beige;
+  }
+
+  .grey {
+    background-color: grey;
+  }
+
+  /* Price Range Inputs */
+  .price-inputs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .price-inputs input {
+    width: 45%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  /* Apply Filters Button */
+  #applyFilters {
+    padding: 8px 20px;
+    border-radius: 8px;
+    border: 2px solid #2d4059;
+    background-color: #213145;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(45, 64, 89, 0.2);
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  #applyFilters:hover {
+    background-color: #2d4059;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(45, 64, 89, 0.2);
+    transform: translateY(-1px);
+  }
+
+  #applyFilters:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(45, 64, 89, 0.5);
+  }
+</style>

@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="{{ asset('/css/list-toggle.css') }}">
 </head>
 
-<body style="padding-top: 13rem">
+<body>
   @include('components.navbar')
   <nav id="gadgetGrads">
     <div class="topnav">

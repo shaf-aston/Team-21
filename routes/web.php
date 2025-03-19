@@ -381,3 +381,12 @@ Route::middleware(['auth', RoleMiddleware::class.':admin'])->group(function(){
     //routing for admin sort
     Route::get('/adminsort/result',[OrderController::class, 'sortResults'])->name('adminsort.result');
 });
+
+
+
+
+
+
+
+//Shaf adding
+Route::post('basket/update/{id}', [BasketController::class, 'update'])->name('basket.update');

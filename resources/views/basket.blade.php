@@ -40,6 +40,10 @@
                     class="quantity quantity-input"
                     value="{{ $item->quantity }}"
                     min="1">
+                  <form action="{{ route('basket.update', $item->id) }}" method="POST" style="display:none;" class="quantity-update-form">
+                    @csrf
+                    <input type="number" name="quantity" class="hidden-quantity">
+                  </form>
                 </div>
                 <a href="#" class="action-link" onclick="showRemovePopup(this)">Remove item</a>
                 <div class="price">£{{ number_format($item->product->product_price, 2) }}</div>
@@ -81,7 +85,7 @@
             <div id="buy-later-date"></div>
           </div>
 
-          <p>Total: £<span id="basket-total" data-initial-total="{{ $total }}">{{ number_format($total, 2) }}</span></p>
+          <p>Total: <span id="basket-total" data-initial-total="{{ $total }}">{{ number_format($total, 2) }}</span></p>
 
           <a href="{{ url('/checkout2') }}" class="checkout-button">Proceed to Checkout</a>
 
