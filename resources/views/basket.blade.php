@@ -28,40 +28,44 @@
         @php $total = 0; @endphp
         @foreach($basketItems as $item)
         <div class="basket-item" data-item-id="{{ $item->id }}">
-          <div class="product-info">
-            <img src="Images\{{$item->product->img_id}}.jpg" alt="Product Image" class="product-image">
-            <div class="product-details">
-              <div class="product-name">{{ $item->product->product_name }}</div>
-              <div class="product-details-row">
-                <div class="quantity-section">
-                  <label for="quantity-{{$item->id}}">Quantity:</label>
-                  <input type="number"
-                    id="quantity-{{$item->id}}"
-                    class="quantity quantity-input"
-                    value="{{ $item->quantity }}"
-                    min="1">
-                  <form action="{{ route('basket.update', $item->id) }}" method="POST" style="display:none;" class="quantity-update-form">
-                    @csrf
-                    <input type="number" name="quantity" class="hidden-quantity">
-                  </form>
+            <div class="product-info">
+                <img src="Images\{{$item->product->img_id}}.jpg" alt="Product Image" class="product-image">
+                <div class="product-details">
+                    <div class="product-name">{{ $item->product->product_name }}</div>
+                    <div class="product-details-row">
+                        <div class="quantity-section">
+                            <label for="quantity-{{$item->id}}">Quantity:</label>
+                            <input type="number"
+                                id="quantity-{{$item->id}}"
+                                class="quantity quantity-input"
+                                value="{{ $item->quantity }}"
+                                min="1">
+                            <form action="{{ route('basket.update', $item->id) }}" method="POST" style="display:none;" class="quantity-update-form">
+                                @csrf
+                                <input type="number" name="quantity" class="hidden-quantity">
+                            </form>
+                        </div>
+                        <form action="{{ route('basket.remove', $item->id) }}" method="POST" class="remove-form" style="display:none;">
+                            @csrf
+                            @method('DELETE')
+                        </form>
+                        <a href="#" class="action-link" onclick="showRemovePopup(this)">Remove item</a>
+                        <div class="price">£{{ number_format($item->product->product_price, 2) }}</div>
+                    </div>
+        
+                    <div class="availability">
+                        <p>You can choose your delivery or collection preferences at checkout</p>
+                        <div class="availability-item">
+                            <img src="{{asset('images/truck.svg')}}" alt="Delivery Icon" class="availability-icon">
+                            <span>Delivery available</span>
+                        </div>
+                        <div class="availability-item">
+                            <img src="{{asset('images/shop.svg')}}" alt="Collection Icon" class="availability-icon">
+                            <span>Collection unavailable</span>
+                        </div>
+                    </div>
                 </div>
-                <a href="#" class="action-link" onclick="showRemovePopup(this)">Remove item</a>
-                <div class="price">£{{ number_format($item->product->product_price, 2) }}</div>
-              </div>
-
-              <div class="availability">
-                <p>You can choose your delivery or collection preferences at checkout</p>
-                <div class="availability-item">
-                  <img src="{{asset('images/truck.svg')}}" alt="Delivery Icon" class="availability-icon">
-                  <span>Delivery available</span>
-                </div>
-                <div class="availability-item">
-                  <img src="{{asset('images/shop.svg')}}" alt="Collection Icon" class="availability-icon">
-                  <span>Collection unavailable</span>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
         @php $total += $item->product->product_price * $item->quantity; @endphp
         @endforeach

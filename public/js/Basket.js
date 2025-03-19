@@ -237,14 +237,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function removeItem() {
         if (!currentItem) return;
-
-        const form = currentItem.querySelector("form");
-        if (form) {
-            form.submit();
+    
+        const removeForm = currentItem.querySelector('.remove-form');
+        if (removeForm) {
+            removeForm.submit();
         } else {
             console.error("Remove form not found");
+            showError("Failed to remove item. Please try again.");
         }
-
+    
         closePopup();
     }
 
