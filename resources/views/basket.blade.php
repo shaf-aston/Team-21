@@ -74,12 +74,19 @@
       <div class="total-box-container">
         <div class="total-box">
           <div class="payment-options">
-            <label>
-              <input type="checkbox" class="payment-checkbox"> Card/Paypal
-            </label>
-            <label>
-              <input type="checkbox" class="payment-checkbox"> Spread the cost
-            </label>
+              <label>
+                  <input type="radio" 
+                         name="payment_method" 
+                         value="card_paypal" 
+                         class="payment-radio" 
+                         checked> Card/Paypal
+              </label>
+              <label>
+                  <input type="radio" 
+                         name="payment_method" 
+                         value="spread_cost" 
+                         class="payment-radio"> Spread the cost
+              </label>
           </div>
 
           <div class="payment-details">

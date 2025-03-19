@@ -7,33 +7,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const monthlyPayment = document.getElementById("monthly-payment");
     const buyLaterDate = document.getElementById("buy-later-date");
     const disclaimer = document.querySelector(".disclaimer");
-    const paymentCheckboxes = document.querySelectorAll(".payment-checkbox");
+    const paymentRadios = document.querySelectorAll(".payment-radio");
     const paymentDetails = document.querySelector(".payment-details");
 
     // Payment method selection handler
     function initializePaymentMethods() {
-        paymentCheckboxes.forEach((checkbox) => {
-            checkbox.addEventListener("change", function () {
-                if (this.checked) {
-                    // Uncheck other checkboxes
-                    paymentCheckboxes.forEach((otherCheckbox) => {
-                        if (otherCheckbox !== this) {
-                            otherCheckbox.checked = false;
-                        }
-                    });
-                    
-                    // Show/hide payment details based on selection
-                    if (this.closest('label').textContent.includes('Spread the cost')) {
-                        paymentDetails.style.display = 'block';
-                        updatePaymentInformation(getCurrentBasketTotal());
-                    } else {
-                        paymentDetails.style.display = 'none';
-                    }
+        paymentDetails.style.display = 'none';
+    
+        paymentRadios.forEach((radio) => {
+            radio.addEventListener("change", function () {
+                const isSpreadCost = this.value === 'spread_cost';
+                paymentDetails.style.display = isSpreadCost ? 'block' : 'none';
+                
+                if (isSpreadCost) {
+                    updatePaymentInformation(getCurrentBasketTotal());
                 }
             });
         });
     }
-
     // Update payment information
     function updatePaymentInformation(totalPrice) {
         updateMonthlyPayment(totalPrice);

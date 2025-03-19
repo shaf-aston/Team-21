@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const priceCells = document.querySelectorAll(".price");
     const token = document.querySelector('meta[name="csrf-token"]').content;
     const popup = document.getElementById("remove-popup");
-    const paymentCheckboxes = document.querySelectorAll(".payment-checkbox");
+    const paymentRadios = document.querySelectorAll(".payment-radio");
     const paymentDetails = document.querySelector(".payment-details");
     const buyLaterDate = document.getElementById("buy-later-date");
     const monthlyPayment = document.getElementById("monthly-payment");
@@ -46,13 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     input.value = 1;
                     handleQuantityChange(input, timeout);
                 }
-            });
-        });
-
-        // Payment method selection
-        paymentCheckboxes.forEach((checkbox) => {
-            checkbox.addEventListener("change", () => {
-                handlePaymentMethodChange(checkbox);
             });
         });
     }
@@ -104,23 +97,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Payment Methods
-    function handlePaymentMethodChange(checkbox) {
-        if (checkbox.checked) {
-            paymentCheckboxes.forEach((otherCheckbox) => {
-                if (otherCheckbox !== checkbox) {
-                    otherCheckbox.checked = false;
-                }
-            });
+// Replace the handlePaymentMethodChange function
+function handlePaymentMethodChange(radio) {
+  const isSpreadCost = radio.value === 'spread_cost';
+  paymentDetails.style.display = isSpreadCost ? "block" : "none";
 
-            const isSpreadCost = checkbox.closest("label").textContent.includes("Spread the cost");
-            paymentDetails.style.display = isSpreadCost ? "block" : "none";
-
-            if (isSpreadCost) {
-                updatePaymentOptions(getCurrentTotal());
-            }
-        }
-    }
-
+  if (isSpreadCost) {
+      updatePaymentOptions(getCurrentTotal());
+  }
+}
     // Total and Price Updates
     function updateTotals() {
         let totalPrice = 0;
