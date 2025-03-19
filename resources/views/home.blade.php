@@ -181,10 +181,10 @@
           <h2 class="popular-products-section__popular-title">Popular Right Now</h2>
         </div>
       </header>
-    
+
       <div class="popular-products-carousel">
         <button class="popular-products-carousel__button popular-products-carousel__button--left" aria-label="Previous slide">←</button>
-    
+
         <div class="popular-products-carousel__container">
           <div class="popular-products-carousel__items">
             <!-- Product Card 1 -->
@@ -195,7 +195,7 @@
               <h3 class="product-card__title">Apple Watch Series 10 - 42mm</h3>
               <p class="product-card__price">£399.00</p>
             </article>
-    
+
             <!-- Product Card 2 -->
             <article class="product-card">
               <div class="product-card__image-placeholder">
@@ -204,7 +204,7 @@
               <h3 class="product-card__title">Apple iPhone 16 Pro Max</h3>
               <p class="product-card__price">£1199.00</p>
             </article>
-    
+
             <!-- Product Card 3 -->
             <article class="product-card">
               <div class="product-card__image-placeholder">
@@ -213,7 +213,7 @@
               <h3 class="product-card__title">Apple 11" iPad Air(2024)</h3>
               <p class="product-card__price">£599.00</p>
             </article>
-    
+
             <!-- Product Card 4 -->
             <article class="product-card">
               <div class="product-card__image-placeholder">
@@ -224,7 +224,7 @@
             </article>
           </div>
         </div>
-    
+
         <button class="popular-products-carousel__button popular-products-carousel__button--right" aria-label="Next slide">→</button>
       </div>
     </section>
@@ -303,7 +303,7 @@
     // Update images when dark mode state
     function updateImagesForDarkMode() {
       const isDarkMode = document.body.classList.contains('dark-mode');
-      
+
       // Update brand logos
       const brandImages = {
         'samsung_logo.jpg': 'samsung_dark_mode.png',
@@ -314,14 +314,14 @@
         'playstation_logo.png': 'playstation_dark_mode.png',
         'drdre_logo.png': 'drdre_dark_mode.png',
         // 'oneplus_logo.png': 'oneplus_dark_mode.png',
-        'asus_logo.png': 'asus_dark_mode.png'
+        // 'asus_logo.png': 'asus_dark_mode.png'
       };
-      
+
       // Select all brand carousel images
       document.querySelectorAll('.brand-carousel__item img').forEach(img => {
         const src = img.src;
         const filename = src.substring(src.lastIndexOf('/') + 1);
-        
+
         if (isDarkMode && brandImages[filename]) {
           // Switch to dark mode image
           img.src = src.replace(filename, brandImages[filename]);
@@ -336,22 +336,93 @@
         }
       });
     }
-    
+
     // Call once on page load to set correct state
     updateImagesForDarkMode();
-    
+
     // Listen for dark mode changes
     const observer = new MutationObserver(function(mutations) {
       mutations.forEach(function(mutation) {
-        if (mutation.attributeName === 'class' && 
-            mutation.target === document.body) {
+        if (mutation.attributeName === 'class' &&
+          mutation.target === document.body) {
           updateImagesForDarkMode();
         }
       });
     });
-    
+
     // Start observing <body> for class changes
-    observer.observe(document.body, { attributes: true });
+    observer.observe(document.body, {
+      attributes: true
+    });
   });
 </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Popular Products Carousel
+    try {
+      const productItems = document.querySelector('.popular-products-carousel__items');
+      const leftBtn = document.querySelector('.popular-products-carousel__button--left');
+      const rightBtn = document.querySelector('.popular-products-carousel__button--right');
+      const items = document.querySelectorAll('.product-card');
+      const visibleCount = 3;
+      let currentIndex = 0;
+
+      // Set initial styles
+      productItems.style.display = 'flex';
+      productItems.style.transition = 'transform 0.6s ease';
+
+      // Calculate item width based on container
+      const containerWidth = productItems.parentElement.offsetWidth - 80;
+      const itemWidth = (containerWidth / visibleCount) - 40;
+
+      // Set width for each item
+      items.forEach(item => {
+        item.style.minWidth = `${itemWidth}px`;
+        item.style.marginRight = '40px';
+      });
+
+      function showItems(index) {
+        // Allow scrolling to the last item before resetting
+        if (index < 0) {
+          currentIndex = items.length - visibleCount;
+        } else if (index > items.length - visibleCount) {
+          // Only reset when trying to go past the last item
+          currentIndex = 0;
+        } else {
+          currentIndex = index;
+        }
+
+        const moveAmount = (itemWidth + 40) * currentIndex;
+        productItems.style.transform = `translateX(-${moveAmount}px)`;
+      }
+
+      leftBtn.addEventListener('click', () => {
+        showItems(currentIndex - 1);
+      });
+
+      rightBtn.addEventListener('click', () => {
+        showItems(currentIndex + 1);
+      });
+
+      // Initialize
+      showItems(currentIndex);
+
+      // Update on window resize
+      window.addEventListener('resize', () => {
+        const newContainerWidth = productItems.parentElement.offsetWidth - 80;
+        const newItemWidth = (newContainerWidth / visibleCount) - 40;
+
+        items.forEach(item => {
+          item.style.minWidth = `${newItemWidth}px`;
+        });
+
+        showItems(currentIndex);
+      });
+
+    } catch (e) {
+      console.error("Popular Products Carousel error:", e);
+    }
+  });
+</script>
+
 </html>

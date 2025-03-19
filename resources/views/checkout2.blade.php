@@ -19,7 +19,6 @@
 <body>
   @include('components.navbar')
   
-
     <div class="checkout-container">
       <form id="checkoutForm" method="POST" action="{{ route('checkout.verify') }}">
         @csrf
@@ -53,12 +52,7 @@
                   <p class="error-message">{{ $message }}</p>
                   @enderror
                 </div>
-              </div>
-            </div>
-            
-            <div class="form-section">
-              <h3>Delivery Address</h3>
-              <div class="form-grid">
+
                 <div class="form-group full-width">
                   <label for="address">Street Address</label>
                   <input type="text" id="address" name="address" value="{{ old('address') }}" required>

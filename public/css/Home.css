@@ -445,3 +445,107 @@ body {
     clip: rect(0, 0, 0, 0);
     border: 0;
 }
+
+
+/* Popular Products Carousel */
+.popular-products-carousel {
+    position: relative;
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px 0;
+}
+
+.popular-products-carousel__container {
+    position: relative;
+    overflow: hidden;
+    margin: 0 40px;
+}
+
+.popular-products-carousel__items {
+    display: flex;
+    gap: 20px;
+    transform: translateX(0);
+    transition: transform 0.6s ease;
+}
+
+.product-card {
+    flex: 0 0 calc(33.333% - 14px);
+    min-width: calc(33.333% - 14px);
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    padding: 15px;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.product-card__image-placeholder {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 15px;
+    background: none;
+    padding: 0;
+}
+
+.product-card__image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.product-card__title {
+    font-size: 16px;
+    color: var(--primary-color);
+    margin: 10px 0;
+    text-align: center;
+}
+
+.product-card__price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Carousel Navigation Buttons */
+.popular-products-carousel__button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: #ffffff;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.popular-products-carousel__button:hover {
+    background: var(--primary-color);
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.popular-products-carousel__button--left {
+    left: 0;
+}
+
+.popular-products-carousel__button--right {
+    right: 0;
+}
