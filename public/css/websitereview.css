@@ -14,7 +14,7 @@ body {
   padding: 0 1rem;
 }
 
-.review-container, 
+.review-container,
 .review-section {
   width: 100%;
   max-width: 800px;
@@ -130,7 +130,7 @@ h3:after {
   gap: 1.5rem;
 }
 
-/***** STAR RATING *****/ 
+/***** STAR RATING *****/
 .rating {
   display: inline-flex;
   flex-direction: row-reverse;
@@ -153,7 +153,7 @@ h3:after {
 /* Half stars */
 .rating label.half {
   width: 0.6em;
-  z-index: 2; 
+  z-index: 2;
   overflow: hidden;
   position: absolute;
   margin-right: 0;
@@ -164,23 +164,27 @@ h3:after {
 .rating label.half[for="star4-5"] {
   margin-right: 1.1em;
 }
+
 .rating label.half[for="star3-5"] {
   margin-right: 2.2em;
 }
+
 .rating label.half[for="star2-5"] {
   margin-right: 3.3em;
 }
+
 .rating label.half[for="star1-5"] {
   margin-right: 4.4em;
 }
+
 .rating label.half[for="star0-5"] {
   margin-right: 5.5em;
 }
 
 /* Fill color logic for hover and checked */
 .rating:hover label:hover,
-.rating:hover label:hover ~ label,
-.rating input:checked ~ label {
+.rating:hover label:hover~label,
+.rating input:checked~label {
   color: #ffaa00;
 }
 
@@ -202,6 +206,7 @@ h3:after {
   font-size: 0.9rem;
   margin-top: -0.5rem;
 }
+
 /* Form Elements */
 textarea {
   width: 100%;
@@ -251,5 +256,3 @@ hr {
   background: #eee;
   margin: 1.5rem 0;
 }
-
-

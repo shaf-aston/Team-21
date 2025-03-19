@@ -104,7 +104,7 @@ main {
   color: white;
   text-decoration: none;
   transition: var(--transition);
-  padding: 3px;
+  padding: 5px;
   border-radius: 3px;
   display: inline-block;
 }
@@ -165,11 +165,19 @@ main {
   padding: 5px 10px;
   border-radius: 4px;
   margin-left: auto;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .remove-link:hover {
   background-color: rgba(255, 255, 255, 0.1);
   color: #ffffff;
+  text-decoration: underline;
+}
+
+.remove-link:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
 }
 
 .price {
@@ -181,6 +189,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 80px;
 }
 
 /* ========================================================================== */

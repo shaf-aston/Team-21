@@ -103,8 +103,10 @@
   margin: 0;
   font-size: 14px;
   color: #333;
-  margin-right: 8px; /* Add spacing between label and dot */
+  margin-right: 8px;
+  /* Add spacing between label and dot */
 }
+
 .dot {
   width: 12px;
   height: 12px;
@@ -113,15 +115,42 @@
   margin-left: 0;
 }
 
-.red { background-color: red; }
-.orange { background-color: orange; }
-.yellow { background-color: yellow; }
-.green { background-color: green; }
-.blue { background-color: blue; }
-.black { background-color: black; }
-.white { background-color: white; border: 1px solid #ccc; }
-.beige { background-color: beige; }
-.grey { background-color: grey; }
+.red {
+  background-color: red;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.black {
+  background-color: black;
+}
+
+.white {
+  background-color: white;
+  border: 1px solid #ccc;
+}
+
+.beige {
+  background-color: beige;
+}
+
+.grey {
+  background-color: grey;
+}
 
 /* PRICE RANGE STYLES */
 /******************************/
@@ -159,7 +188,7 @@
 
 #priceRange {
   width: 90%;
-  margin: 10px auto; 
+  margin: 10px auto;
 }
 
 /* APPLY FILTERS BUTTON */

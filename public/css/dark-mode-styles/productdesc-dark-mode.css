@@ -84,13 +84,13 @@ body.dark-mode {
   color: #8ca9f2;
 }
 
-.dark-mode .rating input + label {
+.dark-mode .rating input+label {
   color: #444;
 }
 
-.dark-mode .rating:hover input + label:hover,
-.dark-mode .rating:hover input + label:hover ~ label,
-.dark-mode .rating input:checked ~ label {
+.dark-mode .rating:hover input+label:hover,
+.dark-mode .rating:hover input+label:hover~label,
+.dark-mode .rating input:checked~label {
   color: #ffcc00;
 }
 

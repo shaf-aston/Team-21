@@ -1,80 +1,80 @@
 .dark-mode .MacbookAir2 {
-    background: #1a1a1a;
+  background: #1a1a1a;
 }
 
 .dark-mode .left-sidepanel {
-    background: linear-gradient(180deg, #2d4059, #34495e);
+  background: linear-gradient(180deg, #2d4059, #34495e);
 }
 
 .dark-mode .DashboardContentsInner {
-    background: linear-gradient(180deg, #2d4059, #34495e);
-    border-color: #2c3e50;
+  background: linear-gradient(180deg, #2d4059, #34495e);
+  border-color: #2c3e50;
 }
 
 .dark-mode .Rectangle16 {
-    background: #2c3e50;
+  background: #2c3e50;
 }
 
 .dark-mode .section-content {
-    background: rgba(28, 28, 28, 0.95);
+  background: rgba(28, 28, 28, 0.95);
 }
 
 .dark-mode .section-content h2 {
-    color: #8ca9f2;
+  color: #8ca9f2;
 }
 
 .dark-mode .info-group label {
-    color: #8ca9f2;
+  color: #8ca9f2;
 }
 
 .dark-mode .info-group p {
-    color: #e1e8ff;
+  color: #e1e8ff;
 }
 
 .dark-mode .form-group label {
-    color: #e1e8ff;
+  color: #e1e8ff;
 }
 
 .dark-mode .form-group input,
 .dark-mode .form-group select,
 .dark-mode .form-group textarea {
-    background: #2c3e50;
-    border-color: #34495e;
-    color: #e1e8ff;
+  background: #2c3e50;
+  border-color: #34495e;
+  color: #e1e8ff;
 }
 
 .dark-mode #credentials-form {
-    background: rgba(28, 28, 28, 0.5);
+  background: rgba(28, 28, 28, 0.5);
 }
 
 .dark-mode .submit-btn,
 .dark-mode .save-btn {
-    background: #8ca9f2;
-    color: #1a1a1a;
+  background: #8ca9f2;
+  color: #1a1a1a;
 }
 
 .dark-mode .submit-btn:hover,
 .dark-mode .save-btn:hover {
-    background: #6384e4;
+  background: #6384e4;
 }
 
 .dark-mode .empty-message {
-    color: #999;
-    background: rgba(255, 255, 255, 0.05);
+  color: #999;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .dark-mode .menu-container {
-    background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .dark-mode .menu-item:hover {
-    background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .dark-mode .menu-item.active {
-    background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .dark-mode .Dashboard {
-    color: #e1e8ff;
+  color: #e1e8ff;
 }

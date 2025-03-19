@@ -1,167 +1,167 @@
 /* ==== BASE FOOTER STYLES ==== */
 .footer {
-    background-color: #2d4059;
-    color: #ffffff;
-    padding-top: 60px;
+  background-color: #2d4059;
+  color: #ffffff;
+  padding-top: 60px;
 }
 
 /* Main container with flexbox layout */
 .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 /* Common section styling */
 .footer-section {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 /* [ LOGO SECTION ] */
 .footer-logo {
-    flex-basis: 100%;
-    max-width: 300px;
+  flex-basis: 100%;
+  max-width: 300px;
 }
 
 .logo-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
 /* Logo mark styling */
 .logo-placeholder {
-    width: 50px;
-    height: 50px;
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Dela Gothic One", sans-serif;
-    font-size: 24px;
-    color: white;
-    margin-right: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Dela Gothic One", sans-serif;
+  font-size: 24px;
+  color: white;
+  margin-right: 15px;
 }
 
 /* Logo text container */
 .site-info {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Main brand name */
 .footer-title {
-    font-family: "Dela Gothic One", sans-serif;
-    margin: 0;
-    font-size: 18px;
-    letter-spacing: 0.5px;
+  font-family: "Dela Gothic One", sans-serif;
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: 0.5px;
 }
 
 /* Brand tagline */
 .footer-subtitle {
-    margin: 0;
-    font-size: 12px;
-    opacity: 0.8;
+  margin: 0;
+  font-size: 12px;
+  opacity: 0.8;
 }
 
 /* Brand description text */
 .footer-description {
-    font-size: 14px;
-    line-height: 1.5;
-    opacity: 0.8;
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.8;
 }
 
 /*-------------------------
  * SECTION HEADINGS
  *------------------------*/
 .footer-heading {
-    font-family: "Dela Gothic One", sans-serif;
-    font-size: 16px;
-    margin-top: 0;
-    margin-bottom: 20px;
-    position: relative;
+  font-family: "Dela Gothic One", sans-serif;
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  position: relative;
 }
 
 /* Decorative underline for headings */
 .footer-heading:after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-    height: 2px;
-    width: 60px;
-    background-color: #e1e8ff;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  height: 2px;
+  width: 60px;
+  background-color: #e1e8ff;
 }
 
 /* >>> NAVIGATION SECTIONS <<< */
 .footer-links,
 .footer-categories,
 .footer-contact {
-    flex: 1;
-    min-width: 170px;
-    padding: 0 15px;
+  flex: 1;
+  min-width: 170px;
+  padding: 0 15px;
 }
 
 /* Menu styling for navigation lists */
 .footer-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .footer-menu li {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 /* Link styling for menus and legal links */
 .footer-menu a,
 .footer-legal a {
-    color: #ffffff;
-    text-decoration: none;
-    opacity: 0.8;
-    transition: opacity 0.3s ease, color 0.3s ease;
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.3s ease, color 0.3s ease;
 }
 
 /* Hover effects for links */
 .footer-menu a:hover,
 .footer-legal a:hover {
-    opacity: 1;
-    color: #e1e8ff;
+  opacity: 1;
+  color: #e1e8ff;
 }
 
 /* [ CONTACT INFORMATION ] */
 address {
-    font-style: normal;
-    line-height: 1.6;
-    font-size: 14px;
-    opacity: 0.8;
+  font-style: normal;
+  line-height: 1.6;
+  font-size: 14px;
+  opacity: 0.8;
 }
 
 /***** SOCIAL MEDIA ICONS *****/
 .social-icons {
-    display: flex;
-    margin-top: 20px;
-    gap: 15px;
+  display: flex;
+  margin-top: 20px;
+  gap: 15px;
 }
 
 /* Base social icon styling */
 .social-icon {
-    display: block;
-    width: 36px;
-    height: 36px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    position: relative;
-    transition: background-color 0.3s ease;
+  display: block;
+  width: 36px;
+  height: 36px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  position: relative;
+  transition: background-color 0.3s ease;
 }
 
 /* Hover effect for social icons */
 .social-icon:hover {
-    background-color: #e1e8ff;
+  background-color: #e1e8ff;
 }
 
 /* Common positioning for all social icon content */
@@ -169,72 +169,72 @@ address {
 .social-twitter::before,
 .social-instagram::before,
 .social-linkedin::before {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #ffffff;
-    font-family: Arial, sans-serif;
-    font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
 }
 
 /* Individual social icon content */
 .social-facebook::before {
-    content: "f";
+  content: "f";
 }
 
 .social-twitter::before {
-    content: "t";
+  content: "t";
 }
 
 .social-instagram::before {
-    content: "i";
+  content: "i";
 }
 
 .social-linkedin::before {
-    content: "in";
-    font-size: 12px;
+  content: "in";
+  font-size: 12px;
 }
 
 /* Color change on hover */
 .social-icon:hover::before {
-    color: #2d4059;
+  color: #2d4059;
 }
 
 /* ==== FOOTER BOTTOM SECTION ==== */
 .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 20px 0;
-    margin-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px 0;
+  margin-top: 20px;
 }
 
 /* Container for copyright and legal links */
 .footer-bottom .footer-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Copyright text */
 .copyright {
-    font-size: 13px;
-    opacity: 0.7;
-    margin: 0;
+  font-size: 13px;
+  opacity: 0.7;
+  margin: 0;
 }
 
 /* Legal links container */
 .footer-legal {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 /* Legal link styling */
 .footer-legal a {
-    font-size: 13px;
+  font-size: 13px;
 }
 
 /* Dark mode override */
 html.dark .footer {
-    background-color: #1a2634;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: #1a2634;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }

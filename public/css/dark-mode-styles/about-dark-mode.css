@@ -1,26 +1,26 @@
 body.dark-mode {
-    background-color: #1a1a1a;
-    color: #f4f4f4;
+  background-color: #1a1a1a;
+  color: #f4f4f4;
 }
 
 .dark-mode .about-us {
-    background-color: #2d2d2d;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  background-color: #2d2d2d;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 .dark-mode h2,
 .dark-mode h3 {
-    color: #66b2ff;
+  color: #66b2ff;
 }
 
 .dark-mode .about-us p {
-    color: #e0e0e0;
+  color: #e0e0e0;
 }
 
 .dark-mode .values-list li {
-    color: #e0e0e0;
+  color: #e0e0e0;
 }
 
 .dark-mode .about-us strong {
-    color: #66b2ff;
+  color: #66b2ff;
 }

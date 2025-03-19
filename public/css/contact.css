@@ -1,100 +1,100 @@
 /* Container styles */
 .contact-page .container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 /* Mail icon container */
 .contact-page .mail-icon-container {
-    width: 120px;
-    height: 120px;
-    margin: 20px auto;
-    position: relative;
-    overflow: hidden;
-    border-radius: 50%;
-    background-color: #f5f7fa;
-    box-shadow: 0 4px 15px rgba(45, 64, 89, 0.1);
+  width: 120px;
+  height: 120px;
+  margin: 20px auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: #f5f7fa;
+  box-shadow: 0 4px 15px rgba(45, 64, 89, 0.1);
 }
 
 .contact-page .mail-icon-container img {
-    width: 80px;
-    height: 80px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: floatIcon 3s ease-in-out infinite;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: floatIcon 3s ease-in-out infinite;
 }
 
 /* Form elements */
 .container-text {
-    text-align: left;
+  text-align: left;
 }
 
 .contact-page h2 {
-    font-family: "Dela Gothic One", sans-serif;
-    color: #2d4059;
-    margin-bottom: 20px;
+  font-family: "Dela Gothic One", sans-serif;
+  color: #2d4059;
+  margin-bottom: 20px;
 }
 
 .contact-page label {
-    font-weight: bold;
-    color: #2d4059;
+  font-weight: bold;
+  color: #2d4059;
 }
 
 .contact-page input[type="text"],
 .contact-page input[type="email"],
 .contact-page textarea,
 .contact-page select {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 14px;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 14px;
 }
 
 .contact-page input[type="text"]:focus,
 .contact-page input[type="email"]:focus,
 .contact-page textarea:focus,
 .contact-page select:focus {
-    border-color: #2d4059;
-    outline: none;
-    box-shadow: 0 0 5px rgba(45, 64, 89, 0.5);
+  border-color: #2d4059;
+  outline: none;
+  box-shadow: 0 0 5px rgba(45, 64, 89, 0.5);
 }
 
 .contact-page textarea {
-    height: 150px;
-    resize: vertical;
+  height: 150px;
+  resize: vertical;
 }
 
 .contact-page input[type="submit"] {
-    background-color: #2d4059;
-    color: #ffffff;
-    border: none;
-    padding: 15px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+  background-color: #2d4059;
+  color: #ffffff;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
 .contact-page input[type="submit"]:hover {
-    background-color: #1a2a3a;
+  background-color: #1a2a3a;
 }
 
 /* Error messages */
 .contact-page .error {
-    color: #dc3545;
-    font-size: 12px;
-    margin-top: -10px;
-    margin-bottom: 10px;
-    text-align: left;
-    display: block;
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  text-align: left;
+  display: block;
 }

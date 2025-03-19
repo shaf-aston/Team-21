@@ -390,3 +390,4 @@ Route::middleware(['auth', RoleMiddleware::class.':admin'])->group(function(){
 
 //Shaf adding
 Route::post('basket/update/{id}', [BasketController::class, 'update'])->name('basket.update');
+Route::post('/wishlist/update/{item}', [WishListController::class, 'update'])->name('wishlist.update');
