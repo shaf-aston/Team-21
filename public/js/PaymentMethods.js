@@ -92,4 +92,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Initial call to update totals
     updateTotals();
+
+
+    const paymentCheckboxes = document.querySelectorAll(".payment-checkbox");
+    const paymentDetails = document.querySelector(".payment-details");
+
+    paymentCheckboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", function () {
+            if (this.checked) {
+                // Uncheck other checkboxes
+                paymentCheckboxes.forEach((otherCheckbox) => {
+                    if (otherCheckbox !== this) {
+                        otherCheckbox.checked = false;
+                    }
+                });
+                
+                // Show/hide payment details based on selection
+                if (this.closest('label').textContent.includes('Spread the cost')) {
+                    paymentDetails.style.display = 'block';
+                } else {
+                    paymentDetails.style.display = 'none';
+                }
+            }
+        });
+    });
+
+
 });
