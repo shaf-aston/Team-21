@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         // Quantity input handlers
-        quantityInputs.forEach(input => {
+        quantityInputs.forEach((input) => {
             let timeout;
             input.addEventListener("input", () => {
                 handleQuantityChange(input, timeout);
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         // Payment method selection
-        paymentCheckboxes.forEach(checkbox => {
+        paymentCheckboxes.forEach((checkbox) => {
             checkbox.addEventListener("change", () => {
                 handlePaymentMethodChange(checkbox);
             });
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
         clearTimeout(timeout);
         timeout = setTimeout(async () => {
             const totals = updateTotals();
-            const itemId = input.closest('.basket-item').dataset.itemId;
+            const itemId = input.closest(".basket-item").dataset.itemId;
             await updateBasketItem(itemId, input.value);
             updatePaymentOptions(totals.totalPrice);
         }, DEBOUNCE_DELAY);
@@ -68,16 +68,18 @@ document.addEventListener("DOMContentLoaded", function () {
     function handlePaymentMethodChange(checkbox) {
         if (checkbox.checked) {
             // Uncheck other checkboxes
-            paymentCheckboxes.forEach(otherCheckbox => {
+            paymentCheckboxes.forEach((otherCheckbox) => {
                 if (otherCheckbox !== checkbox) {
                     otherCheckbox.checked = false;
                 }
             });
 
             // Show/hide payment details
-            const isSpreadCost = checkbox.closest('label').textContent.includes('Spread the cost');
-            paymentDetails.style.display = isSpreadCost ? 'block' : 'none';
-            
+            const isSpreadCost = checkbox
+                .closest("label")
+                .textContent.includes("Spread the cost");
+            paymentDetails.style.display = isSpreadCost ? "block" : "none";
+
             if (isSpreadCost) {
                 updatePaymentOptions(getCurrentTotal());
             }
@@ -91,7 +93,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         quantityInputs.forEach((input, index) => {
             const quantity = parseInt(input.value) || 0;
-            const priceText = priceCells[index].textContent.replace('£', '').replace(',', '');
+            const priceText = priceCells[index].textContent
+                .replace("£", "")
+                .replace(",", "");
             const price = parseFloat(priceText) || 0;
             totalPrice += quantity * price;
             totalItems += quantity;
@@ -118,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateItemCount(totalItems) {
         const itemCountHeader = document.getElementById("item-count-header");
         const itemLabel = document.getElementById("item-label");
-        
+
         if (itemCountHeader) {
             itemCountHeader.textContent = totalItems;
         }
@@ -136,7 +140,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function calculateMonthlyPayment(total) {
-        return ((total * (1 + INTEREST_RATE/100)) / PAYMENT_MONTHS).toFixed(2);
+        return ((total * (1 + INTEREST_RATE / 100)) / PAYMENT_MONTHS).toFixed(
+            2
+        );
     }
 
     function updateMonthlyPaymentDisplay(monthlyAmount) {
@@ -157,7 +163,11 @@ document.addEventListener("DOMContentLoaded", function () {
     function updatePaymentDisclaimer(total, monthlyAmount) {
         if (disclaimer) {
             const totalPayable = (monthlyAmount * PAYMENT_MONTHS).toFixed(2);
-            disclaimer.innerHTML = generateDisclaimerText(total, monthlyAmount, totalPayable);
+            disclaimer.innerHTML = generateDisclaimerText(
+                total,
+                monthlyAmount,
+                totalPayable
+            );
         }
     }
 
@@ -165,19 +175,19 @@ document.addEventListener("DOMContentLoaded", function () {
     async function updateBasketItem(itemId, quantity) {
         try {
             const response = await fetch(`/basket/update/${itemId}`, {
-                method: 'POST',
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': token
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": token,
                 },
-                body: JSON.stringify({ quantity })
+                body: JSON.stringify({ quantity }),
             });
 
-            if (!response.ok) throw new Error('Network response was not ok');
+            if (!response.ok) throw new Error("Network response was not ok");
             return await response.json();
         } catch (error) {
-            console.error('Error updating basket:', error);
-            showError('Failed to update basket. Please try again.');
+            console.error("Error updating basket:", error);
+            showError("Failed to update basket. Please try again.");
         }
     }
 
@@ -190,14 +200,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function removeItem() {
         if (!currentItem) return;
-        
-        const form = currentItem.querySelector('form');
+
+        const form = currentItem.querySelector("form");
         if (form) {
             form.submit();
         } else {
-            console.error('Remove form not found');
+            console.error("Remove form not found");
         }
-        
+
         closePopup();
     }
 
@@ -212,10 +222,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function formatDate(date) {
-        return date.toLocaleDateString('en-GB', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric'
+        return date.toLocaleDateString("en-GB", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
         });
     }
 
@@ -226,7 +236,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function generateDisclaimerText(total, monthlyAmount, totalPayable) {
         return `
-            <strong>Illustrative example:</strong> Credit amount £${formatPrice(total)}. 
+            <strong>Illustrative example:</strong> Credit amount £${formatPrice(
+                total
+            )}. 
             Pay ${PAYMENT_MONTHS} monthly payments of £${monthlyAmount}. 
             Total amount payable £${totalPayable}. 
             The interest rate for this purchase is ${INTEREST_RATE}%.<br>
@@ -241,16 +253,16 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="empty-basket">
                 <p>Your basket is empty</p>
                 <p>When you add items they'll appear here</p>
-                <a href="/nav" class="continue-shopping">Continue shopping</a>
+                <a href="{{ url('/products') }}" class="continue-shopping">Continue shopping</a>
             </div>`;
         document.querySelector(".basket-title").style.display = "none";
     }
 
     function showError(message) {
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'error-message';
+        const errorDiv = document.createElement("div");
+        errorDiv.className = "error-message";
         errorDiv.textContent = message;
-        document.querySelector('.basket-container').prepend(errorDiv);
+        document.querySelector(".basket-container").prepend(errorDiv);
         setTimeout(() => errorDiv.remove(), 3000);
     }
 

@@ -280,8 +280,9 @@ main {
 }
 
 .continue-shopping {
-    color: var(--light-color);
+    color: var(--primary-color);
     text-decoration: none;
+    font-weight: bold;
     text-align: center;
     display: block;
     margin-top: 15px;
@@ -291,7 +292,7 @@ main {
 }
 
 .continue-shopping:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(104, 147, 255, 0.784);
     color: white;
     transform: translateY(-2px);
 }

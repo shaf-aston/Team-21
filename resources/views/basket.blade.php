@@ -93,7 +93,7 @@
             <img src="{{ asset('images/PayPal.svg') }}" alt="PayPal">
           </div>
 
-          <a href="{{ url('/nav') }}" class="continue-shopping">Continue shopping</a>
+          <a href="{{ url('/products') }}" class="continue-shopping">Continue shopping</a>
 
           <div class="disclaimer"></div>
         </div>
