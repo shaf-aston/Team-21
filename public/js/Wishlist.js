@@ -1,149 +1,195 @@
-   // Global variable to store the item being removed
-   let currentItem;
-    
-    // Wait for the DOM to fully load before running the script
-    document.addEventListener("DOMContentLoaded", function () {
-      // Select all quantity input fields and price elements
-      const quantityInputs = document.querySelectorAll(".quantity");
-      const priceCells = document.querySelectorAll(".price");
-      
-      // Function to update total price and items in the wishlist
-      function updateTotals() {
+// Global variable to store the item being removed
+let currentItem;
+
+// Wait for the DOM to fully load before running the script
+document.addEventListener("DOMContentLoaded", function () {
+    // Select all quantity input fields and price elements
+    const quantityInputs = document.querySelectorAll(".quantity");
+    const priceCells = document.querySelectorAll(".price");
+    const token = document.querySelector('meta[name="csrf-token"]');
+
+    // Function to update total price and items in the wishlist
+    function updateTotals() {
         let totalPrice = 0;
         let totalItems = 0;
-        
+
         // Iterate through each quantity input field
         quantityInputs.forEach((input, index) => {
-          const quantity = parseInt(input.value) || 0; // Use parseInt for whole numbers
-          const priceText = priceCells[index].textContent.replace('£', '').replace(',', '');
-          const price = parseFloat(priceText) || 0; // Handle commas in price formatting
-          const total = quantity * price; // Calculate total price for this item
-          
-          totalPrice += total; // Add to overall total price
-          totalItems += quantity; // Add to overall total items
+            const quantity = parseInt(input.value) || 0;
+            const priceText = priceCells[index].textContent
+                .replace("£", "")
+                .replace(",", "");
+            const price = parseFloat(priceText) || 0;
+            const total = quantity * price;
+
+            totalPrice += total;
+            totalItems += quantity;
         });
-        
-        // Update the total display with proper formatting for large numbers
+
+        // Update the total display with proper formatting
         const wishlistTotal = document.getElementById("wishlist-total");
         if (wishlistTotal) {
-          // Format number with commas for thousands
-          wishlistTotal.textContent = totalPrice.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            wishlistTotal.textContent = formatPrice(totalPrice);
         }
-        
+
         // Update item count in header
         const itemCountHeader = document.getElementById("item-count-header");
         if (itemCountHeader) {
-          itemCountHeader.textContent = totalItems;
+            itemCountHeader.textContent = totalItems;
         }
-        
+
         // Update item label (singular/plural)
         const itemLabel = document.getElementById("item-label");
         if (itemLabel) {
-          itemLabel.textContent = totalItems === 1 ? "item" : "items";
+            itemLabel.textContent = totalItems === 1 ? "item" : "items";
         }
-        
-        // If wishlist is empty, display an empty wishlist message
+
+        // If wishlist is empty, display message
         if (totalItems === 0) {
-          displayEmptyWishlistMessage();
+            displayEmptyWishlistMessage();
         }
-      }
-      
-      // Function to display a message when the wishlist is empty
-      function displayEmptyWishlistMessage() {
-        document.querySelector(".wishlist-content").innerHTML = `
-          <div class="empty-wishlist">
-            <p>Your wishlist is empty</p>
-            <p>When you add items they'll appear here</p>
-            <a href="{{ url('/home') }}" class="continue-shopping">Continue shopping</a>
-          </div>`;
-          
-        const header = document.querySelector("h2");
-        if (header) {
-          header.style.display = "none"; // Hide the wishlist header
-        }
-      }
-      
-      // Add event listeners to update totals when quantity input changes
-      quantityInputs.forEach((input) => {
+    }
+
+    // Add debounced quantity input handlers
+    quantityInputs.forEach((input) => {
+        let timeout;
+        let originalValue = input.value;
+
         input.addEventListener("input", function() {
-          // Ensure quantity is at least 1
-          if (parseInt(this.value) < 1) {
-            this.value = 1;
-          }
-          
-          updateTotals();
-          
-          // Get the item ID and new quantity
-          const itemId = this.getAttribute('data-item-id');
-          const newQuantity = this.value;
-          
-          // Update quantity via AJAX if item ID is available
-          if (itemId) {
-            updateWishlistItemQuantity(itemId, newQuantity);
-          }
+            // Ensure quantity is at least 1
+            const newQuantity = Math.max(parseInt(this.value) || 1, 1);
+            this.value = newQuantity;
+            
+            // Update totals immediately for responsive UI
+            updateTotals();
+            
+            // Update the Add to Basket form quantity
+            const basketForm = this.closest('.product-details-row')
+                .querySelector('form input[name="quantity"]');
+            if (basketForm) {
+                basketForm.value = newQuantity;
+            }
+            
+            // Debounce the server update
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                const itemId = this.getAttribute('data-item-id');
+                if (itemId) {
+                    updateWishlistItemQuantity(itemId, newQuantity);
+                }
+            }, 500);
         });
-      });
-      
-      // Function to update wishlist item quantity via AJAX
-      function updateWishlistItemQuantity(itemId, quantity) {
-        // Get the CSRF token from meta tag
-        const token = document.querySelector('meta[name="csrf-token"]');
-        
-        if (!token) {
-          console.error("CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token");
-          return;
-        }
-        
-        fetch(`/wishlist/update/${itemId}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': token.getAttribute('content')
-          },
-          body: JSON.stringify({ quantity: quantity })
-        })
-        .then(response => response.json())
-        .then(data => {
-          console.log('Quantity updated successfully', data);
-        })
-        .catch(error => {
-          console.error('Error updating quantity:', error);
+
+        // Handle blur event for invalid inputs
+        input.addEventListener("blur", function() {
+            if (!this.value || parseInt(this.value) < 1) {
+                this.value = 1;
+                updateTotals();
+                
+                const itemId = this.getAttribute('data-item-id');
+                if (itemId) {
+                    updateWishlistItemQuantity(itemId, 1);
+                }
+            }
         });
-      }
-      
-      // Initial call to update totals
-      updateTotals();
     });
-    
-    // Function to show the remove item popup
-    function showRemovePopup(element) {
-      currentItem = element.closest(".wishlist-item"); // Get the closest wishlist item element
-      const popup = document.getElementById("remove-popup");
-      if (popup) {
-        popup.style.display = "flex"; // Show the popup
-      }
-    }
-    
-    // Function to remove an item from the wishlist
-    function removeItem() {
-      if (currentItem) {
-        // Find the form within the current item and submit it
-        const form = currentItem.querySelector('form');
-        if (form) {
-          form.submit();
+
+    // Function to update wishlist item quantity via AJAX
+    async function updateWishlistItemQuantity(itemId, quantity) {
+        if (!token) {
+            showMessage('CSRF token not found', 'error');
+            return;
         }
-      }
-      
-      const popup = document.getElementById("remove-popup");
-      if (popup) {
-        popup.style.display = "none"; // Hide the popup
-      }
+
+        try {
+            const response = await fetch(`/wishlist/update/${itemId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': token.content,
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ quantity: quantity })
+            });
+
+            if (!response.ok) throw new Error('Network response was not ok');
+
+            const data = await response.json();
+            showMessage('Quantity updated successfully', 'success');
+        } catch (error) {
+            console.error('Error updating quantity:', error);
+            showMessage('Failed to update quantity', 'error');
+        }
     }
-    
-    // Function to close the remove item popup
-    function closePopup() {
-      const popup = document.getElementById("remove-popup");
-      if (popup) {
-        popup.style.display = "none"; // Hide the popup
-      }
+
+    // Function to display empty wishlist message
+    function displayEmptyWishlistMessage() {
+        document.querySelector(".wishlist-content").innerHTML = `
+            <div class="empty-wishlist">
+                <p>Your wishlist is empty</p>
+                <p>When you add items they'll appear here</p>
+                <a href="/products" class="continue-shopping">Continue shopping</a>
+            </div>`;
+        
+        const header = document.querySelector(".wishlist-title");
+        if (header) header.style.display = "none";
     }
+
+    // Function to format price with commas and 2 decimal places
+    function formatPrice(price) {
+        return price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    // Function to show status messages
+    function showMessage(message, type) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${type}`;
+        messageDiv.textContent = message;
+        
+        document.querySelector('.wishlist-page').prepend(messageDiv);
+        
+        setTimeout(() => messageDiv.remove(), 3000);
+    }
+
+    // Remove item functionality
+    window.removeItem = function() {
+        if (!currentItem) return;
+        
+        const form = currentItem.querySelector('.hidden-form');
+        if (form) {
+            try {
+                form.submit();
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                showMessage('Failed to remove item', 'error');
+            }
+        } else {
+            console.error('Remove form not found');
+            showMessage('Failed to remove item', 'error');
+        }
+        
+        closePopup();
+    };
+
+    // Show remove popup
+    window.showRemovePopup = function(element) {
+        currentItem = element.closest(".wishlist-item");
+        const popup = document.getElementById("remove-popup");
+        if (popup) {
+            popup.style.display = "flex";
+            popup.querySelector("button.remove-button").focus();
+        }
+    };
+
+    // Close popup
+    window.closePopup = function() {
+        const popup = document.getElementById("remove-popup");
+        if (popup) {
+            popup.style.display = "none";
+        }
+        currentItem = null;
+    };
+
+    // Initialize totals on page load
+    updateTotals();
+});
