@@ -88,10 +88,6 @@
     color: #e1e8ff;
 }
 
-.dark-mode .brand-carousel img {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
 .dark-mode .brand-item {
     background-color: #34495e;
 }

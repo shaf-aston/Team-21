@@ -307,6 +307,11 @@ body {
     box-sizing: border-box;
     position: relative;
     vertical-align: top;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-info {
+  padding: 5px;
 }
 
 .product {
