@@ -2,7 +2,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Get all necessary DOM elements
     const authPopup = document.getElementById("auth-popup");
     const signupPopup = document.getElementById("signup-popup");
-    const forgotPasswordPopup = document.getElementById("forgot-password-popup");
+    const forgotPasswordPopup = document.getElementById(
+        "forgot-password-popup"
+    );
     const closeBtns = document.querySelectorAll(".close-btn");
 
     const loginBtns = document.querySelectorAll(".login-btn");
@@ -33,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const togglePopup = (popup) => {
         if (!popup) return;
-        
+
         if (popup.style.display === "block") {
             closePopup(popup);
         } else {
@@ -73,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Login button handlers
     if (loginBtns && loginBtns.length > 0) {
-        loginBtns.forEach(btn => {
+        loginBtns.forEach((btn) => {
             btn.addEventListener("click", (e) => {
                 e.preventDefault();
                 e.stopPropagation(); // Prevent event bubbling
@@ -84,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Register button handlers
     if (registerBtn && registerBtn.length > 0) {
-        registerBtn.forEach(btn => {
+        registerBtn.forEach((btn) => {
             btn.addEventListener("click", (e) => {
                 e.preventDefault();
                 e.stopPropagation(); // Prevent event bubbling
@@ -135,7 +137,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (signupPopup && signupPopup.querySelector(".text-danger")) {
         openPopup(signupPopup);
     }
-    if (forgotPasswordPopup && forgotPasswordPopup.querySelector(".text-danger")) {
+    if (
+        forgotPasswordPopup &&
+        forgotPasswordPopup.querySelector(".text-danger")
+    ) {
         openPopup(forgotPasswordPopup);
     }
 
@@ -145,13 +150,16 @@ document.addEventListener("DOMContentLoaded", () => {
             const input = eyeIcon.previousElementSibling;
             const type = input.type === "password" ? "text" : "password";
             input.type = type;
-            
+
             // Fix path to eye icons
-            eyeIcon.src = type === "password" 
-                ? "/images/eye-open.svg" 
-                : "/images/eye-closed.svg";
-                
-            eyeIcon.alt = type === "password" ? "Show Password" : "Hide Password";
+            eyeIcon.src =
+                type === "password"
+                    ? "./images/eye-open.svg"
+                    : "./images/eye-closed.svg";
+
+
+            eyeIcon.alt =
+                type === "password" ? "Show Password" : "Hide Password";
         });
     });
 });

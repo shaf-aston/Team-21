@@ -1,5 +1,96 @@
+/* ==== CORE DEFAULT STYLING ==== */
+:root {
+  /* Main Colors */
   --primary-color: #2d4059;
   --secondary-color: #D9D9D9;
-  --font-family: 'Dela Gothic One', sans-serif;
+  --accent-color: #0a7be5;
+  --accent-hover: #0b59a2;
+  --navy-color: #1d4056;
+  --danger-color: #dc3545;
+  --light-color: #a8c6f2;
 
+  /* Typography */
+  --heading-font: 'Dela Gothic One', sans-serif;
+  --body-font: 'Inter', sans-serif;
   
+  /* Layout */
+  --border-radius: 8px;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+/* ==== DARK MODE DEFAULT STYLING ==== */
+.dark-mode {
+  /* Main Colors */
+  --bg-color: #1a1a1a;
+  --container-bg: #2c3e50;
+  --element-bg: #34495e;
+  --text-color: #e1e8ff;
+  --accent-color: #8ca9f2;
+  --accent-hover: #6384e4;
+  --border-color: #4a6b8a;
+  
+  /* Shadows & Highlights */
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ==== outliers --> COMPONENT-SPECIFIC STYLING ==== */
+/* 
+These are outlier styles used in specific components:
+
+1. Basket.css - Uses variable system:
+    --primary-color: #0b59a2
+    --navy-color: #1d4056
+    --border-radius: 10px
+
+2. Checkout.css - Uses variable system:
+    --accent-color: #0a7be5
+    --accent-hover: #0b59a2
+    --success-color: #28a745
+    --disabled-color: #6c757d
+
+3. Home.css - Uses different animation patterns:
+    - Transform transitions for cards
+    - Hover effects with scale and shadow changes
+
+4. ProductListing.css - Special product card styling:
+    - Unique card layout with flexible grid system
+    - Grid/List toggle functionality
+    - Special stock status indicators
+*/
+
+
+
+Comments meaning:
+
+/* ========================================================================== */
+/* SECTION TITLE: General description of the section                          */
+/* ========================================================================== */
+Used for major sections of your CSS like headers, navigation, main content areas.
+Example: HEADER STYLING, FOOTER STYLING, PRODUCT CARDS
+
+/* Subsection Title: Specific description of the subsection */
+/* ------------------------- */
+Used for components or elements within a major section.
+Example: Primary Navigation, Footer Links, Product Image Container
+
+/* Element or Component Name */
+/* Description of the styling applied to this element/component */
+Used for specific elements within subsections, describes the purpose of styling.
+Example: "Button Hover State" with description "Increases opacity for interactive feedback"
+
+/* Property descriptions */
+Used inline within style rules to explain non-obvious property choices.
+Example: "z-index: 100; /* Ensures dropdown appears above other content */"
+
+/* ========================================================================== */
+/* END OF SECTION TITLE                                                       */
+/* ========================================================================== */
+Clearly marks where major sections end to improve code navigation.
+
+
+/* >>> TOTAL BOX <<< */
+Indicates a featured component or highlighted subsection:
+- Have significant visual importance in the UI
+- Contain multiple related elements grouped together
+- Represent a distinct functional unit on the page

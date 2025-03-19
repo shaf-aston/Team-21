@@ -1,5 +1,6 @@
-// Global variable to store the item being removed
+// Global variable to store the item being removed and active AJAX requests
 let currentItem;
+let activeRequests = {};
 
 // Wait for the DOM to fully load before running the script
 document.addEventListener("DOMContentLoaded", function () {
@@ -7,6 +8,23 @@ document.addEventListener("DOMContentLoaded", function () {
     const quantityInputs = document.querySelectorAll(".quantity");
     const priceCells = document.querySelectorAll(".price");
     const token = document.querySelector('meta[name="csrf-token"]');
+    const wishlistPage = document.querySelector('.wishlist-page');
+    
+    // Setup accessibility for popup
+    const popup = document.getElementById("remove-popup");
+    if (popup) {
+        popup.setAttribute('role', 'dialog');
+        popup.setAttribute('aria-modal', 'true');
+        popup.setAttribute('aria-labelledby', 'remove-popup-title');
+        
+        // Add title for screen readers if not present
+        if (!popup.querySelector('[id="remove-popup-title"]')) {
+            const titleElement = popup.querySelector('.popup-content p');
+            if (titleElement) {
+                titleElement.id = 'remove-popup-title';
+            }
+        }
+    }
 
     // Function to update total price and items in the wishlist
     function updateTotals() {
@@ -15,6 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Iterate through each quantity input field
         quantityInputs.forEach((input, index) => {
+            if (!input || !priceCells[index]) return;
+            
             const quantity = parseInt(input.value) || 0;
             const priceText = priceCells[index].textContent
                 .replace("£", "")
@@ -45,15 +65,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // If wishlist is empty, display message
-        if (totalItems === 0) {
+        if (totalItems === 0 && document.querySelector('.wishlist-container')) {
             displayEmptyWishlistMessage();
         }
+        
+        return { totalPrice, totalItems };
     }
 
-    // Add debounced quantity input handlers
+    // Add debounced quantity input handlers with request cancellation
     quantityInputs.forEach((input) => {
         let timeout;
-        let originalValue = input.value;
 
         input.addEventListener("input", function() {
             // Ensure quantity is at least 1
@@ -64,19 +85,25 @@ document.addEventListener("DOMContentLoaded", function () {
             updateTotals();
             
             // Update the Add to Basket form quantity
-            const basketForm = this.closest('.product-details-row')
-                .querySelector('form input[name="quantity"]');
+            const basketForm = this.closest('.product-details-row')?.querySelector('form input[name="quantity"]');
             if (basketForm) {
                 basketForm.value = newQuantity;
             }
             
-            // Debounce the server update
+            // Debounce the server update with request cancellation
+            const itemId = this.getAttribute('data-item-id');
+            if (!itemId) return;
+            
             clearTimeout(timeout);
+            
+            // Cancel previous request for this item if it exists
+            if (activeRequests[itemId]) {
+                activeRequests[itemId].abort();
+                delete activeRequests[itemId];
+            }
+            
             timeout = setTimeout(() => {
-                const itemId = this.getAttribute('data-item-id');
-                if (itemId) {
-                    updateWishlistItemQuantity(itemId, newQuantity);
-                }
+                updateWishlistItemQuantity(itemId, newQuantity);
             }, 500);
         });
 
@@ -92,9 +119,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         });
+        
+        // Add accessibility attributes
+        input.setAttribute('aria-label', 'Quantity');
     });
 
-    // Function to update wishlist item quantity via AJAX
+    // Function to update wishlist item quantity via AJAX with abort controller
     async function updateWishlistItemQuantity(itemId, quantity) {
         if (!token) {
             showMessage('CSRF token not found', 'error');
@@ -102,6 +132,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         try {
+            // Create abort controller for this request
+            const controller = new AbortController();
+            activeRequests[itemId] = controller;
+            
             const response = await fetch(`/wishlist/update/${itemId}`, {
                 method: 'POST',
                 headers: {
@@ -109,26 +143,56 @@ document.addEventListener("DOMContentLoaded", function () {
                     'X-CSRF-TOKEN': token.content,
                     'Accept': 'application/json'
                 },
-                body: JSON.stringify({ quantity: quantity })
+                body: JSON.stringify({ quantity: quantity }),
+                signal: controller.signal
             });
 
-            if (!response.ok) throw new Error('Network response was not ok');
+            // Remove from active requests
+            delete activeRequests[itemId];
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Network response was not ok');
+            }
 
             const data = await response.json();
             showMessage('Quantity updated successfully', 'success');
+            
+            // Ensure UI is synchronized with server response
+            if (data.quantity && data.quantity !== quantity) {
+                const input = document.querySelector(`.quantity[data-item-id="${itemId}"]`);
+                if (input) {
+                    input.value = data.quantity;
+                    updateTotals();
+                }
+            }
         } catch (error) {
+            // Ignore AbortError which is expected during cancellation
+            if (error.name === 'AbortError') return;
+            
             console.error('Error updating quantity:', error);
-            showMessage('Failed to update quantity', 'error');
+            showMessage(error.message || 'Failed to update quantity', 'error');
+            
+            // Revert to original value on server error
+            const input = document.querySelector(`.quantity[data-item-id="${itemId}"]`);
+            if (input) {
+                const originalQuantity = parseInt(input.getAttribute('data-original-quantity') || 1);
+                input.value = originalQuantity;
+                updateTotals();
+            }
         }
     }
 
     // Function to display empty wishlist message
     function displayEmptyWishlistMessage() {
-        document.querySelector(".wishlist-content").innerHTML = `
+        const wishlistContent = document.querySelector(".wishlist-content");
+        if (!wishlistContent) return;
+        
+        wishlistContent.innerHTML = `
             <div class="empty-wishlist">
                 <p>Your wishlist is empty</p>
                 <p>When you add items they'll appear here</p>
-                <a href="/products" class="continue-shopping">Continue shopping</a>
+                <a href="/products" class="continue-shopping" role="button">Continue shopping</a>
             </div>`;
         
         const header = document.querySelector(".wishlist-title");
@@ -140,28 +204,54 @@ document.addEventListener("DOMContentLoaded", function () {
         return price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
-    // Function to show status messages
+    // Function to show status messages with improved accessibility
     function showMessage(message, type) {
+        // Remove any existing message of the same type
+        const existingMessages = document.querySelectorAll(`.message.${type}`);
+        existingMessages.forEach(msg => msg.remove());
+        
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${type}`;
         messageDiv.textContent = message;
+        messageDiv.setAttribute('role', 'alert');
+        messageDiv.setAttribute('aria-live', 'assertive');
         
-        document.querySelector('.wishlist-page').prepend(messageDiv);
+        if (wishlistPage) {
+            wishlistPage.prepend(messageDiv);
+        } else {
+            document.body.prepend(messageDiv);
+        }
         
-        setTimeout(() => messageDiv.remove(), 3000);
+        setTimeout(() => {
+            messageDiv.classList.add('fade-out');
+            setTimeout(() => messageDiv.remove(), 500);
+        }, 3000);
     }
 
-    // Remove item functionality
+    // Remove item functionality with improved error handling
     window.removeItem = function() {
         if (!currentItem) return;
         
         const form = currentItem.querySelector('.hidden-form');
         if (form) {
             try {
+                // Disable the remove button to prevent double-submission
+                const removeButton = document.querySelector('#remove-popup .remove-button');
+                if (removeButton) {
+                    removeButton.disabled = true;
+                    removeButton.textContent = 'Removing...';
+                }
+                
                 form.submit();
             } catch (error) {
                 console.error('Error submitting form:', error);
                 showMessage('Failed to remove item', 'error');
+                
+                // Re-enable the button on error
+                if (removeButton) {
+                    removeButton.disabled = false;
+                    removeButton.textContent = 'Yes';
+                }
             }
         } else {
             console.error('Remove form not found');
@@ -171,25 +261,77 @@ document.addEventListener("DOMContentLoaded", function () {
         closePopup();
     };
 
-    // Show remove popup
+    // Show remove popup with improved accessibility
     window.showRemovePopup = function(element) {
         currentItem = element.closest(".wishlist-item");
+        if (!currentItem) return;
+        
         const popup = document.getElementById("remove-popup");
         if (popup) {
             popup.style.display = "flex";
-            popup.querySelector("button.remove-button").focus();
+            
+            // Trap focus in the modal
+            const focusableElements = popup.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            const firstFocusable = focusableElements[0];
+            const lastFocusable = focusableElements[focusableElements.length - 1];
+            
+            // Focus the first button
+            firstFocusable.focus();
+            
+            // Handle keyboard navigation for accessibility
+            popup.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closePopup();
+                    return;
+                }
+                
+                if (e.key !== 'Tab') return;
+                
+                if (e.shiftKey) {
+                    if (document.activeElement === firstFocusable) {
+                        lastFocusable.focus();
+                        e.preventDefault();
+                    }
+                } else {
+                    if (document.activeElement === lastFocusable) {
+                        firstFocusable.focus();
+                        e.preventDefault();
+                    }
+                }
+            });
         }
     };
 
-    // Close popup
+    // Close popup with improved accessibility
     window.closePopup = function() {
         const popup = document.getElementById("remove-popup");
         if (popup) {
             popup.style.display = "none";
+            
+            // Return focus to the element that opened the popup
+            if (currentItem) {
+                const removeLink = currentItem.querySelector('.remove-link');
+                if (removeLink) {
+                    removeLink.focus();
+                }
+            }
         }
         currentItem = null;
     };
 
-    // Initialize totals on page load
+    // Store original quantity for revert on error
+    quantityInputs.forEach(input => {
+        input.setAttribute('data-original-quantity', input.value);
+    });
+
+    // Initialize totals and responsive layout on page load
     updateTotals();
+    setupResponsiveLayout();
+    
+    // Add keyboard handler for popup
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closePopup();
+        }
+    });
 });

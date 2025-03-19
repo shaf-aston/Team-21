@@ -1,68 +1,116 @@
-/* Sidebar Styles */
+/* ==== SIDEBAR STYLES ==== */
+/******************************/
+/* Sidebar container styling */
 .sidebar {
-    width: 250px;
-    background-color: #f4f4f4;
-    padding: 20px;
-    height: 500px;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #888 #f4f4f4;
+  width: 250px;
+  background-color: #f4f4f4;
+  padding: 20px;
+  height: 500px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f4f4f4;
 }
 
+/* [ SIDEBAR HEADER ] */
 .sidebar h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #2d4059;
+  position: sticky;
+  top: 0;
+  background-color: #f4f4f4;
+  z-index: 10;
+  padding: 10px 0;
 }
 
+/* Sidebar list styling */
+/* ------------------------- */
 .sidebar ul {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
-.sidebar ul li {
-    margin: 10px 0;
-}
-
-/* Scrollbar Styles */
+/* SCROLLBAR STYLES */
+/******************************/
+/* Webkit scrollbar styling */
 .sidebar::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 
 .sidebar::-webkit-scrollbar-thumb {
-    background-color: #888;
-    border-radius: 4px;
+  background-color: #888;
+  border-radius: 4px;
 }
 
 .sidebar::-webkit-scrollbar-thumb:hover {
-    background-color: #555;
+  background-color: #555;
 }
 
-/* Filter Section Styles */
+/* FILTER SECTION STYLES */
+/* >>> FILTER SECTION <<< */
+/******************************/
+/* Filter section header styling */
 .filter-section {
-    margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .filter-title {
-    background-color: #2d4059;
-    opacity: 90%;
-    color: white;
-    padding: 10px;
-    width: 100%;
-    text-align: left;
-    cursor: pointer;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 10px;
+  background-color: #2d4059;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
 }
 
-/* Color Dots */
+.filter-title:hover {
+  background-color: #213145;
+}
+
+/* Filter content styling */
+.filter-content {
+  display: none;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.filter-content label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+/******************************/
+/* ── COLOR DOT STYLING ── */
+.filter-content li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.filter-content label {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+  margin-right: 8px; /* Add spacing between label and dot */
+}
 .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 0;
 }
 
 .red { background-color: red; }
@@ -71,51 +119,76 @@
 .green { background-color: green; }
 .blue { background-color: blue; }
 .black { background-color: black; }
-.white { background-color: white; }
+.white { background-color: white; border: 1px solid #ccc; }
 .beige { background-color: beige; }
 .grey { background-color: grey; }
 
-/* Price Range Inputs */
+/* PRICE RANGE STYLES */
+/******************************/
 .price-inputs {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .price-inputs input {
-    width: 45%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    text-align: center;
+  width: 45%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
 }
 
-/* Apply Filters Button */
+.price-values {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.price-display {
+  font-size: 14px;
+  font-weight: bold;
+  color: #2d4059;
+  text-align: center;
+  margin-top: 10px;
+}
+
+#priceRange {
+  width: 90%;
+  margin: 10px auto; 
+}
+
+/* APPLY FILTERS BUTTON */
+/******************************/
+/* Button styling for applying filters */
 #applyFilters {
-    padding: 8px 20px;
-    border-radius: 8px;
-    border: 2px solid #2d4059;
-    background-color: #213145;
-    color: #ffffff;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: "Inter", sans-serif;
-    font-weight: 500;
-    box-shadow: 0 2px 4px rgba(45, 64, 89, 0.2);
-    width: 100%;
-    margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 2px solid #2d4059;
+  background-color: #213145;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(45, 64, 89, 0.2);
+  width: 100%;
+  margin-top: 20px;
 }
 
 #applyFilters:hover {
-    background-color: #2d4059;
-    color: #ffffff;
-    box-shadow: 0 4px 8px rgba(45, 64, 89, 0.2);
-    transform: translateY(-1px);
+  background-color: #2d4059;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(45, 64, 89, 0.2);
+  transform: translateY(-1px);
 }
 
 #applyFilters:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(45, 64, 89, 0.5);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(45, 64, 89, 0.5);
 }

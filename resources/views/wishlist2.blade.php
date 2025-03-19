@@ -14,8 +14,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ asset('/css/dark-mode-styles/wishlist-dark-mode.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/wishlist.css') }}">
+  <link rel="stylesheet" href="{{ asset('/css/dark-mode-styles/wishlist-dark-mode.css') }}">
 </head>
 
 <body>
@@ -23,6 +23,9 @@
 
   <main>
     <div class="container wishlist-page">
+      <!-- Status message area for AJAX feedback -->
+      <div id="status-messages" aria-live="polite"></div>
+      
       <!-- Wishlist Header -->
       <h2 class="wishlist-title">Your Wishlist (<span id="item-count-header">{{ count($wishListItems) }}</span> <span id="item-label">{{ count($wishListItems) == 1 ? 'item' : 'items' }}</span>)</h2>
 
@@ -33,53 +36,69 @@
           <!-- Loop through wishlist items -->
           @php $total = 0; @endphp
           @foreach($wishListItems as $item)
-          <div class="wishlist-item">
+          <div class="wishlist-item" id="wishlist-item-{{ $item->id }}">
             <div class="product-info">
               <!-- Product image -->
               <img src="{{ asset('images/' . $item->product->img_id . '.jpg') }}" alt="{{ $item->product->product_name }}" class="product-image">
 
               <!-- Product Details -->
               <div class="product-details">
-                <div class="product-name">{{ $item->product->product_name }}</div>
+                <div class="product-name">
+                  <a href="{{ url('productdesc', $item->product->product_id) }}" class="product-link">
+                    {{ $item->product->product_name }}
+                  </a>
+                </div>
                 <div class="product-details-row">
                   <div class="quantity-section">
                     <label for="quantity-{{ $item->id }}">Quantity:</label>
                     <input type="number"
                       id="quantity-{{ $item->id }}"
                       data-item-id="{{ $item->id }}"
+                      data-original-quantity="{{ $item->quantity }}"
                       value="{{ $item->quantity }}"
                       min="1"
+                      aria-label="Quantity for {{ $item->product->product_name }}"
                       class="quantity quantity-input"
                       style="width: 70px;">
                   </div>
                 
                   <!-- Add to Basket form -->
-                  <form method="POST" action="{{ route('basket.add') }}" class="d-inline-block">
+                  <form method="POST" action="{{ route('basket.add') }}" class="basket-form">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $item->product->product_id }}">
                     <input type="hidden" name="quantity" value="{{ $item->quantity }}">
-                    <button type="submit" class="add-to-basket">Add to Basket</button>
+                    <button type="submit" class="button-primary add-to-basket" aria-label="Add {{ $item->product->product_name }} to basket">
+                      Add to Basket
+                    </button>
                   </form>
                 
                   <!-- Remove link -->
-                  <a href="#" class="remove-link" onclick="showRemovePopup(this); return false;">Remove item</a>
+                  <a href="#" 
+                     class="remove-link" 
+                     onclick="showRemovePopup(this); return false;"
+                     aria-label="Remove {{ $item->product->product_name }} from wishlist">
+                    Remove item
+                  </a>
                   <form action="{{ route('wishlist.remove', $item->id) }}" method="POST" class="hidden-form">
                     @csrf
                     @method('DELETE')
                   </form>
+                  
                   <!-- Price -->
-                  <div class="price">£{{ number_format($item->product->product_price, 2) }}</div>
+                  <div class="price" aria-label="Price: £{{ number_format($item->product->product_price, 2) }}">
+                    £{{ number_format($item->product->product_price, 2) }}
+                  </div>
                 </div>
 
                 <!-- Availability Information -->
                 <div class="availability white-box">
                   <p>You can choose your delivery or collection preferences at checkout</p>
                   <div class="availability-item">
-                    <img src="{{ asset('images/truck.svg') }}" alt="Delivery Icon" class="availability-icon">
+                    <img src="{{ asset('images/truck.svg') }}" alt="" class="availability-icon" aria-hidden="true">
                     <span>Delivery available</span>
                   </div>
                   <div class="availability-item">
-                    <img src="{{ asset('images/shop.svg') }}" alt="Collection Icon" class="availability-icon">
+                    <img src="{{ asset('images/shop.svg') }}" alt="" class="availability-icon" aria-hidden="true">
                     <span>Collection unavailable</span>
                   </div>
                 </div>
@@ -95,9 +114,9 @@
           <div class="total-box">
             <p>Total: £<span id="wishlist-total">{{ number_format($total, 2) }}</span></p>
             <!-- Button to go to basket -->
-            <a href="{{ url('/basket') }}" class="basket-button">Go to Basket</a>
+            <a href="{{ url('/basket') }}" class="button-primary basket-button" role="button">Go to Basket</a>
             <!-- Continue shopping link -->
-            <a href="{{ url('/home') }}" class="continue-shopping">Continue shopping</a>
+            <a href="{{ url('/products') }}" class="button-secondary continue-shopping" role="button">Continue shopping</a>
           </div>
         </div>
         @else
@@ -105,18 +124,18 @@
         <div class="empty-wishlist">
           <p>Your wishlist is empty</p>
           <p>When you add items they'll appear here</p>
-          <a href="{{ url('/home') }}" class="continue-shopping">Continue shopping</a>
+          <a href="{{ url('/products') }}" class="button-secondary continue-shopping" role="button">Continue shopping</a>
         </div>
         @endif
       </div>
 
       <!-- Remove Item Popup -->
-      <div id="remove-popup" class="popup">
+      <div id="remove-popup" class="popup" role="dialog" aria-modal="true" aria-labelledby="remove-popup-title">
         <div class="popup-content">
-          <p>Are you sure you want to remove this item?</p>
+          <p id="remove-popup-title">Are you sure you want to remove this item?</p>
           <div class="popup-buttons">
-            <button onclick="removeItem()" class="remove-button">Yes</button>
-            <button onclick="closePopup()" class="cancel-button">No</button>
+            <button onclick="removeItem()" class="button-primary remove-button">Yes</button>
+            <button onclick="closePopup()" class="button-secondary cancel-button">No</button>
           </div>
         </div>
       </div>
