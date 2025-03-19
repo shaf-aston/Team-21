@@ -42,7 +42,7 @@
               <img src="{{ asset('images/' . $item->product->img_id . '.jpg') }}" alt="{{ $item->product->product_name }}" class="product-image">
 
               <!-- Product Details -->
-              <div class="product-details">
+               <div class="product-details">
                 <div class="product-name">
                   <a href="{{ url('productdesc', $item->product->product_id) }}" class="product-link">
                     {{ $item->product->product_name }}
