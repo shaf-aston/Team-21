@@ -359,35 +359,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initialize totals on page load
     updateTotals();
     
-    // Add the missing setupResponsiveLayout function
-    function setupResponsiveLayout() {
-        // Check window width and apply responsive styles
-        const isMobile = window.innerWidth < 768;
-        const wishlistItems = document.querySelectorAll('.wishlist-item');
-        
-        wishlistItems.forEach(item => {
-            const productDetails = item.querySelector('.product-details');
-            if (productDetails) {
-                productDetails.classList.toggle('mobile-layout', isMobile);
-            }
-        });
-        
-        // Re-check on window resize
-        window.addEventListener('resize', () => {
-            const newIsMobile = window.innerWidth < 768;
-            wishlistItems.forEach(item => {
-                const productDetails = item.querySelector('.product-details');
-                if (productDetails) {
-                    productDetails.classList.toggle('mobile-layout', newIsMobile);
-                }
-            });
-        });
-        
-        console.log("Responsive layout initialized");
-    }
-    
-    // Call the setup function
-    setupResponsiveLayout();
+
 
     // Add keyboard handler for popup
     document.addEventListener("keydown", function (e) {

@@ -13,12 +13,16 @@
   <link rel="stylesheet" href="{{asset('css/Home.css')}}">
   <link rel="stylesheet" href="{{asset('css/Footer.css')}}">
   <link rel="stylesheet" href="{{ asset('css/dark-mode-styles/home-dark-mode.css') }}">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 
 <body style="padding-top: 7.5rem">
   <main>
     @include('components.navbar')
-
+<x-splashscreen />
     <!-- Top Deals Banner Section -->
     <section class="top-deals-banner">
       <!-- Call To Action Banner -->
@@ -120,7 +124,7 @@
     </section>
 
     <!-- Top Electronic Brands Carousel Section -->
-    <section class="top-brands-section brand-carousel">
+    <section class="top-brands-section">
       <div class="section-header">
         <div class="section-header__title-wrapper">
           <h2 class="section-header__title">Top Electronic <span class="highlight">Brands</span></h2>
@@ -128,104 +132,160 @@
         </div>
       </div>
 
-      <div class="brand-carousel__container">
-        <button class="brand-carousel__button brand-carousel__button--left" aria-label="Previous slide">←</button>
-
-        <div class="brand-carousel__items">
-          <div class="brand-carousel__item">
-            <img src="{{ asset('Images/samsung_logo.jpg') }}" alt="Samsung">
-            <h3>Samsung</h3>
+      <div id="brandCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <!-- First slide -->
+          <div class="carousel-item active">
+            <div class="row justify-content-center">
+              <div class="col-md-4">
+                <div class="brand-card">
+                  <img src="{{ asset('Images/samsung_logo.jpg') }}" alt="Samsung">
+                  <h3>Samsung</h3>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="brand-card">
+                  <img src="{{ asset('images/apple_logo.png') }}" alt="Apple">
+                  <h3>Apple</h3>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="brand-card">
+                  <img src="{{ asset('images/dell_logo.png') }}" alt="Dell">
+                  <h3>Dell</h3>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="brand-carousel__item">
-            <img src="{{ asset('images/apple_logo.png') }}" alt="Apple">
-            <h3>Apple</h3>
+          <!-- Second slide -->
+          <div class="carousel-item">
+            <div class="row justify-content-center">
+              <div class="col-md-4">
+                <div class="brand-card">
+                  <img src="{{ asset('images/sony_logo.png') }}" alt="Sony">
+                  <h3>Sony</h3>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="brand-card">
+                  <img src="{{ asset('images/alienware_logo.png') }}" alt="Alienware">
+                  <h3>Alienware</h3>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="brand-card">
+                  <img src="{{ asset('images/playstation_logo.png') }}" alt="PlayStation">
+                  <h3>PlayStation</h3>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="brand-carousel__item">
-            <img src="{{ asset('images/dell_logo.png') }}" alt="Dell">
-            <h3>Dell</h3>
-          </div>
-          <div class="brand-carousel__item">
-            <img src="{{ asset('images/sony_logo.png') }}" alt="Sony">
-            <h3>Sony</h3>
-          </div>
-          <div class="brand-carousel__item">
-            <img src="{{ asset('images/alienware_logo.png') }}" alt="Alienware">
-            <h3>Alienware</h3>
-          </div>
-          <div class="brand-carousel__item">
-            <img src="{{ asset('images/playstation_logo.png') }}" alt="PlayStation">
-            <h3>PlayStation</h3>
-          </div>
-          <div class="brand-carousel__item">
-            <img src="{{ asset('images/drdre_logo.png') }}" alt="Dr. Dre">
-            <h3>Dr. Dre</h3>
-          </div>
-          <div class="brand-carousel__item">
-            <img src="{{ asset('images/oneplus_logo.png') }}" alt="OnePlus">
-            <h3>OnePlus</h3>
-          </div>
-          <div class="brand-carousel__item">
-            <img src="{{ asset('images/asus_logo.png') }}" alt="Asus">
-            <h3>Asus</h3>
+          <!-- Third slide -->
+          <div class="carousel-item">
+            <div class="row justify-content-center">
+              <div class="col-md-4">
+                <div class="brand-card">
+                  <img src="{{ asset('images/drdre_logo.png') }}" alt="Dr. Dre">
+                  <h3>Dr. Dre</h3>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="brand-card">
+                  <img src="{{ asset('images/oneplus_logo.png') }}" alt="OnePlus">
+                  <h3>OnePlus</h3>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="brand-card">
+                  <img src="{{ asset('images/asus_logo.png') }}" alt="Asus">
+                  <h3>Asus</h3>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <button class="brand-carousel__button brand-carousel__button--right" aria-label="Next slide">→</button>
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#brandCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#brandCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
     </section>
 
+
     <!-- Popular Products Section -->
     <section class="popular-products-section">
-      <header class="popular-products-section__header">
-        <div class="popular-products-section__popular">
-          <h2 class="popular-products-section__popular-title">Popular Right Now</h2>
+      <div class="section-header">
+        <div class="section-header__title-wrapper">
+          <h2 class="section-header__title">Popular <span class="highlight">Right Now</span></h2>
+          <div class="section-header__title-underline"></div>
         </div>
-      </header>
+      </div>
 
-      <div class="popular-products-carousel">
-        <button class="popular-products-carousel__button popular-products-carousel__button--left" aria-label="Previous slide">←</button>
-
-        <div class="popular-products-carousel__container">
-          <div class="popular-products-carousel__items">
-            <!-- Product Card 1 -->
-            <article class="product-card">
-              <div class="product-card__image-placeholder">
-                <img src="{{asset('images/2.jpg')}}" alt="Apple Watch Series 10">
+      <div id="popularProductsCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <!-- First slide -->
+          <div class="carousel-item active">
+            <div class="row justify-content-center">
+              <div class="col-md-4">
+                <div class="product-card">
+                  <div class="product-card__image-placeholder">
+                    <img src="{{asset('images/2.jpg')}}" alt="Apple Watch Series 10">
+                  </div>
+                  <h3 class="product-card__title">Apple Watch Series 10 - 42mm</h3>
+                  <p class="product-card__price">£399.00</p>
+                </div>
               </div>
-              <h3 class="product-card__title">Apple Watch Series 10 - 42mm</h3>
-              <p class="product-card__price">£399.00</p>
-            </article>
-
-            <!-- Product Card 2 -->
-            <article class="product-card">
-              <div class="product-card__image-placeholder">
-                <img src="{{asset('images/4.jpg')}}" alt="Apple iPhone 16 Pro Max">
+              <div class="col-md-4">
+                <div class="product-card">
+                  <div class="product-card__image-placeholder">
+                    <img src="{{asset('images/4.jpg')}}" alt="Apple iPhone 16 Pro Max">
+                  </div>
+                  <h3 class="product-card__title">Apple iPhone 16 Pro Max</h3>
+                  <p class="product-card__price">£1199.00</p>
+                </div>
               </div>
-              <h3 class="product-card__title">Apple iPhone 16 Pro Max</h3>
-              <p class="product-card__price">£1199.00</p>
-            </article>
-
-            <!-- Product Card 3 -->
-            <article class="product-card">
-              <div class="product-card__image-placeholder">
-                <img src="{{asset('images/3.jpg')}}" alt="Apple iPad Air">
+              <div class="col-md-4">
+                <div class="product-card">
+                  <div class="product-card__image-placeholder">
+                    <img src="{{asset('images/3.jpg')}}" alt="Apple iPad Air">
+                  </div>
+                  <h3 class="product-card__title">Apple 11" iPad Air(2024)</h3>
+                  <p class="product-card__price">£599.00</p>
+                </div>
               </div>
-              <h3 class="product-card__title">Apple 11" iPad Air(2024)</h3>
-              <p class="product-card__price">£599.00</p>
-            </article>
-
-            <!-- Product Card 4 -->
-            <article class="product-card">
-              <div class="product-card__image-placeholder">
-                <img src="{{asset('images/7.jpg')}}" alt="Lenovo Thinkpad">
+            </div>
+          </div>
+          <!-- Second slide -->
+          <div class="carousel-item">
+            <div class="row justify-content-center">
+              <div class="col-md-4">
+                <div class="product-card">
+                  <div class="product-card__image-placeholder">
+                    <img src="{{asset('images/7.jpg')}}" alt="Lenovo Thinkpad">
+                  </div>
+                  <h3 class="product-card__title">Lenovo Thinkpad IdeaPad Gaming</h3>
+                  <p class="product-card__price">£799.00</p>
+                </div>
               </div>
-              <h3 class="product-card__title">Lenovo Thinkpad IdeaPad Gaming</h3>
-              <p class="product-card__price">£799.00</p>
-            </article>
+            </div>
           </div>
         </div>
 
-        <button class="popular-products-carousel__button popular-products-carousel__button--right" aria-label="Next slide">→</button>
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#popularProductsCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#popularProductsCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
     </section>
 
