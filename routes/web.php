@@ -25,7 +25,7 @@ Route::get('/', function(){
     return redirect('/home');
 });
 
-Route::get('/customer-dash', function(){
+Route::get('/dashboard', function(){
   return view('customer-dash');
 });
 

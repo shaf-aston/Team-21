@@ -1,80 +1,192 @@
-.dark-mode .MacbookAir2 {
-  background: #1a1a1a;
+:root {
+  --dark-background: #121212;
+  --dark-surface: #1e1e1e;
+  --dark-text: #e0e0e0;
+  --dark-border: #333333;
+  --dark-accent: #bb86fc;
+  --dark-hover: #3700b3;
+  --dark-error: #cf6679;
+  --dark-shadow: rgba(0, 0, 0, 0.5);
 }
 
-.dark-mode .left-sidepanel {
-  background: linear-gradient(180deg, #2d4059, #34495e);
+/* General Dark Mode Styles */
+.dark-mode body {
+  background: var(--dark-background);
+  color: var(--dark-text);
 }
 
-.dark-mode .DashboardContentsInner {
-  background: linear-gradient(180deg, #2d4059, #34495e);
-  border-color: #2c3e50;
+.dark-mode .dashboard-content {
+  background: var(--dark-surface);
+  box-shadow: 0 4px 15px var(--dark-shadow);
 }
 
-.dark-mode .Rectangle16 {
-  background: #2c3e50;
+.dark-mode .dashboard-nav {
+  background: linear-gradient(180deg, var(--dark-surface) 0%, var(--dark-hover) 100%);
+  box-shadow: 0 4px 12px var(--dark-shadow);
 }
 
-.dark-mode .section-content {
-  background: rgba(28, 28, 28, 0.95);
+.dark-mode .nav-item {
+  color: var(--dark-text);
 }
 
-.dark-mode .section-content h2 {
-  color: #8ca9f2;
-}
-
-.dark-mode .info-group label {
-  color: #8ca9f2;
-}
-
-.dark-mode .info-group p {
-  color: #e1e8ff;
-}
-
-.dark-mode .form-group label {
-  color: #e1e8ff;
-}
-
-.dark-mode .form-group input,
-.dark-mode .form-group select,
-.dark-mode .form-group textarea {
-  background: #2c3e50;
-  border-color: #34495e;
-  color: #e1e8ff;
-}
-
-.dark-mode #credentials-form {
-  background: rgba(28, 28, 28, 0.5);
-}
-
-.dark-mode .submit-btn,
-.dark-mode .save-btn {
-  background: #8ca9f2;
-  color: #1a1a1a;
-}
-
-.dark-mode .submit-btn:hover,
-.dark-mode .save-btn:hover {
-  background: #6384e4;
-}
-
-.dark-mode .empty-message {
-  color: #999;
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.dark-mode .menu-container {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-.dark-mode .menu-item:hover {
+.dark-mode .nav-item:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
-.dark-mode .menu-item.active {
-  background: rgba(255, 255, 255, 0.15);
+.dark-mode .nav-item.active {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 8px var(--dark-shadow);
 }
 
-.dark-mode .Dashboard {
-  color: #e1e8ff;
+/* Content Section */
+.dark-mode .content-section {
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+  box-shadow: 0 4px 15px var(--dark-shadow);
+}
+
+.dark-mode .section-title {
+  color: var(--dark-accent);
+  border-bottom: 2px solid var(--dark-border);
+}
+
+/* Info Groups */
+.dark-mode .info-group {
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+}
+
+.dark-mode .info-group:hover {
+  box-shadow: 0 5px 15px var(--dark-shadow);
+}
+
+.dark-mode .info-group label {
+  color: var(--dark-accent);
+}
+
+.dark-mode .info-group p {
+  color: var(--dark-text);
+}
+
+/* Forms */
+.dark-mode .form-group input {
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+  color: var(--dark-text);
+}
+
+.dark-mode .form-group input:focus {
+  border-color: var(--dark-accent);
+  box-shadow: 0 0 0 2px rgba(187, 134, 252, 0.3);
+}
+
+.dark-mode .submit-btn, .dark-mode .save-btn {
+  background: var(--dark-accent);
+  color: var(--dark-background);
+}
+
+.dark-mode .submit-btn:hover, .dark-mode .save-btn:hover {
+  background: var(--dark-hover);
+}
+
+/* Orders Section */
+.dark-mode .order-item {
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+}
+
+.dark-mode .order-item:hover {
+  box-shadow: 0 5px 15px var(--dark-shadow);
+}
+
+.dark-mode .order-header {
+  background: var(--dark-accent);
+  color: var(--dark-background);
+}
+
+.dark-mode .order-status {
+  background: var(--dark-hover);
+  color: var(--dark-text);
+}
+
+.dark-mode .order-summary {
+  border-top: 1px solid var(--dark-border);
+}
+
+.dark-mode .order-total span {
+  color: var(--dark-accent);
+}
+
+.dark-mode .order-detail-btn {
+  background: var(--dark-accent);
+  color: var(--dark-background);
+}
+
+.dark-mode .order-detail-btn:hover {
+  background: var(--dark-hover);
+}
+
+/* Wishlist Section */
+.dark-mode .wishlist-item {
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+}
+
+.dark-mode .wishlist-item:hover {
+  box-shadow: 0 5px 15px var(--dark-shadow);
+}
+
+.dark-mode .remove-wishlist {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--dark-error);
+}
+
+.dark-mode .remove-wishlist:hover {
+  background: var(--dark-error);
+  color: var(--dark-background);
+}
+
+.dark-mode .wishlist-item-info h3 {
+  color: var(--dark-accent);
+}
+
+.dark-mode .wishlist-price {
+  color: var(--dark-accent);
+}
+
+.dark-mode .view-btn {
+  background: var(--dark-border);
+  color: var(--dark-text);
+}
+
+.dark-mode .view-btn:hover {
+  background: var(--dark-hover);
+}
+
+.dark-mode .add-to-cart-btn {
+  background: var(--dark-accent);
+  color: var(--dark-background);
+}
+
+.dark-mode .add-to-cart-btn:hover {
+  background: var(--dark-hover);
+}
+
+/* Empty State */
+.dark-mode .empty-state {
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+}
+
+.dark-mode .empty-message {
+  color: var(--dark-text);
+}
+
+.dark-mode .action-button {
+  background: var(--dark-accent);
+  color: var(--dark-background);
+}
+
+.dark-mode .action-button:hover {
+  background: var(--dark-hover);
 }
