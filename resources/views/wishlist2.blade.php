@@ -25,7 +25,7 @@
     <div class="container wishlist-page">
       <!-- Status message area for AJAX feedback -->
       <div id="status-messages" aria-live="polite"></div>
-      
+
       <!-- Wishlist Header -->
       <h2 class="wishlist-title">Your Wishlist (<span id="item-count-header">{{ count($wishListItems) }}</span> <span id="item-label">{{ count($wishListItems) == 1 ? 'item' : 'items' }}</span>)</h2>
 
@@ -42,7 +42,7 @@
               <img src="{{ asset('images/' . $item->product->img_id . '.jpg') }}" alt="{{ $item->product->product_name }}" class="product-image">
 
               <!-- Product Details -->
-               <div class="product-details">
+              <div class="product-details">
                 <div class="product-name">
                   <a href="{{ url('productdesc', $item->product->product_id) }}" class="product-link">
                     {{ $item->product->product_name }}
@@ -61,7 +61,7 @@
                       class="quantity quantity-input"
                       style="width: 70px;">
                   </div>
-                
+
                   <!-- Add to Basket form -->
                   <form method="POST" action="{{ route('basket.add') }}" class="basket-form">
                     @csrf
@@ -71,19 +71,19 @@
                       Add to Basket
                     </button>
                   </form>
-                
+
                   <!-- Remove link -->
-                  <a href="#" 
-                     class="remove-link" 
-                     onclick="showRemovePopup(this); return false;"
-                     aria-label="Remove {{ $item->product->product_name }} from wishlist">
+                  <a href="#"
+                    class="remove-link"
+                    onclick="showRemovePopup(this); return false;"
+                    aria-label="Remove {{ $item->product->product_name }} from wishlist">
                     Remove item
                   </a>
                   <form action="{{ route('wishlist.remove', $item->id) }}" method="POST" class="hidden-form">
                     @csrf
                     @method('DELETE')
                   </form>
-                  
+
                   <!-- Price -->
                   <div class="price" aria-label="Price: £{{ number_format($item->product->product_price, 2) }}">
                     £{{ number_format($item->product->product_price, 2) }}

@@ -125,49 +125,34 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
     
-        console.log(`Updating wishlist item ${itemId} to quantity ${quantity}`);
-        console.log(`Using CSRF token: ${token.content.substring(0, 10)}...`);
-    
         try {
             const controller = new AbortController();
             activeRequests[itemId] = controller;
     
-            // Create the request payload
-            const payload = JSON.stringify({ quantity: quantity });
-            console.log(`Request payload: ${payload}`);
+            // Create FormData instead of JSON
+            const formData = new FormData();
+            formData.append('quantity', quantity);
+            formData.append('_token', token.content);
     
             const response = await fetch(`/wishlist/update/${itemId}`, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
-                    "X-CSRF-TOKEN": token.content,
-                    Accept: "application/json",
+                    'X-CSRF-TOKEN': token.content,
+                    'Accept': 'application/json'
                 },
-                body: payload,
-                signal: controller.signal,
+                body: formData,
+                signal: controller.signal
             });
     
             delete activeRequests[itemId];
     
-            // Log the response status to help with debugging
-            console.log(`Response status: ${response.status} ${response.statusText}`);
-            
-            // Check if the response can be parsed as JSON
-            let responseText;
-            try {
-                responseText = await response.text();
-                console.log("Raw response:", responseText);
-                
-                // Parse the JSON response
-                const data = JSON.parse(responseText);
-                
-                if (!response.ok) {
-                    throw new Error(data.message || "Failed to update quantity");
-                }
-                
-                console.log("Update successful:", data);
-                showMessage("Quantity updated successfully", "success");
-                
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+    
+            const data = await response.json();
+    
+            if (data.success) {
                 // Update the basket form quantity to match
                 const basketForm = document
                     .querySelector(`.quantity[data-item-id="${itemId}"]`)
@@ -177,19 +162,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (basketForm) {
                     basketForm.value = quantity;
                 }
-                
+    
                 updateTotals();
-                
-            } catch (parseError) {
-                console.error("Error parsing response:", parseError, responseText);
-                // Check if the response is an HTML page (like a login page)
-                if (responseText.includes("<!DOCTYPE html>")) {
-                    console.error("Received HTML instead of JSON. You might be logged out.");
-                    showMessage("Session expired. Please refresh the page and log in again.", "error");
-                } else {
-                    throw new Error("Server returned an invalid response. Try refreshing the page.");
-                }
+                showMessage("Quantity updated successfully", "success");
+            } else {
+                throw new Error(data.message || "Failed to update quantity");
             }
+    
         } catch (error) {
             if (error.name === "AbortError") return;
     
