@@ -59,11 +59,12 @@
       @foreach ($products as $product)
       <div class="product-section">
         <div class="product">
-          <img src="{{ asset('images/'.$product->img_id.'.jpg') }}" alt="Product" class="iPadAir">
-          <div class="product-info">
-            <div class="product-info-text">
-              <h3 class="product-title">{{ $product->product_name }}</h3>
-              <p class="product-price">£{{ $product->product_price }}</p>
+            <a href="{{ url('productdesc', $product->product_id) }}" class="product-link">
+                <img src="{{ asset('images/'.$product->img_id.'.jpg') }}" alt="Product" class="iPadAir">
+                <div class="product-info">
+                    <div class="product-info-text">
+                        <h3 class="product-title">{{ $product->product_name }}</h3>
+                        <p class="product-price">£{{ $product->product_price }}</p>
 
               <!-- Low stock alert message -->
               @if(isset($product->stock_quantity) && $product->stock_quantity <= 5 && $product->stock_quantity > 0)
@@ -74,8 +75,6 @@
             </div>
 
             <div class="product-buttons">
-              <!-- view button -->
-              <button class="view-button" type="submit" id="viewprod" onclick="window.location='{{ url('productdesc', $product->product_id) }}'">View Product</button>
 
               <!-- Add to Basket -->
               <div class="card-footer text-center">

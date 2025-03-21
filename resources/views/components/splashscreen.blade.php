@@ -95,7 +95,7 @@
 
         images[0].classList.add('active');
 
-        const frameInterval = 150; 
+        const frameInterval = 75; 
         const interval = setInterval(() => {
           images[currentFrame].classList.remove('active');
           currentFrame = (currentFrame + 1) % totalFrames;
