@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class ForgotPasswordControllerTest extends TestCase
 {
    
-
+    /** @test */
     public function test_reset_password_with_valid_data()
     {
         $user = User::factory()->create([
@@ -29,7 +29,7 @@ class ForgotPasswordControllerTest extends TestCase
 
         $this->assertTrue(Hash::check('newsecurepassword', $user->fresh()->password));
     }
-
+    /** @test */
     public function test_reset_password_with_invalid_email()
     {
         $response = $this->post(route('forgot.password.reset'), [
@@ -40,7 +40,8 @@ class ForgotPasswordControllerTest extends TestCase
 
         $response->assertSessionHasErrors(['email']);
     }
-
+    
+    /** @test */
     public function test_reset_password_with_unconfirmed_password()
     {
         $user = User::factory()->create([

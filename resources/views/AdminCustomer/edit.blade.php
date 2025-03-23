@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Updating product information | Gadget Grads</title>
+  <title>Updating user information | Gadget Grads</title>
   <link rel="stylesheet" href="{{asset('css/checkout.css')}}">
   <link rel="stylesheet" href="{{asset('css/NavBar.css')}}">
   <link rel="stylesheet" href="{{asset('css/editcustomerdetailsform.css')}}">

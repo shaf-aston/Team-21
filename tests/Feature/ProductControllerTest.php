@@ -35,23 +35,7 @@ class ProductControllerTest extends TestCase
         $this->assertDatabaseMissing('products', ['product_id' => $product->product_id]);
     }
 
-    // /** @test */
-    // public function it_creates_a_new_product()
-    // {
-    //     $data = [
-    //         'product_name' => 'Test Product',
-    //         'product_price' => 100.50,
-    //         'stock_quantity' => 10,
-    //         'product_description' => 'A test product description.',
-    //         'img_id' => 1,
-    //         'category_id' => 1,
-    //     ];
 
-    //     $response = $this->post(route('products.store'), $data);
-
-    //     $response->assertRedirect(route('adminproducts.index'));
-    //     $this->assertDatabaseHas('products', ['product_name' => 'Test Product']);
-    // }
 
     // /** @test */
     public function it_updates_stock_and_price()

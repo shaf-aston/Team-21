@@ -11,6 +11,8 @@ use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Shipping;
+use App\Models\Payments;
+use Illuminate\Support\Facades\Hash;
 
 class CheckoutController extends Controller
 {
@@ -39,9 +41,11 @@ class CheckoutController extends Controller
         //calculate the number of items in the basket
         $items = BasketItem::where('user_id', Auth::id())->with('product')->get();
         $itemstotal = 0;
+        $itemTotalAmount = 0;
 
         foreach ($items as $item){
             $itemstotal += $item->quantity;
+            $itemTotalAmount += $item->quantity * $item->product->product_price;
         }
 
 
@@ -50,23 +54,33 @@ class CheckoutController extends Controller
 
         $userId = Auth::id();
         //create an order for the orders table
-        $order = Order::create(['user_id' => $userId,'order_date'=> now()->format('Y-m-d H:i'), 'order_status'=> 'PENDING', 'total_amount'=>$itemstotal]);
+        $order = Order::create(['user_id' => $userId,'order_date'=> now()->format('Y-m-d H:i'), 'order_status'=> 'PENDING', 'total_amount'=>$itemTotalAmount]);
         //create a shippingentry for the shipping table
         $shippingentry = Shipping::create(['order_id'=>$order->order_id,'shipping_address'=>($request->input('address').' '.$request->input('city').' '.$request->input('zip')),'shipping_status'=>'PENDING','shipping_date'=>now()->format('Y-m-d H:i')]);
 
         //create an orderitem for the orderitems table
         foreach ($items as $item){
+            //change popularity ranking of product 
+            $product = Product::find($item->product_id);
+            $product->popularityranking = $product->popularityranking + $item->quantity;
+            $product->save();
+
+            
             $productprice = Product::where('product_id', $item->product_id)->value('product_price');
             OrderItem::create(['order_id'=>$order->order_id, 'product_id'=>$item->product_id, 'quantity'=>$item->quantity, 'unit_price'=>$productprice]);
-            $product = Product::find($item->product_id);
+            
             if ($product) {
                 $product->decrement('stock_quantity', $item->quantity);
             }
         }
 
         BasketItem::where('user_id', Auth::id())->delete();
-        //if(payment){insert data in payments table
-        //}
+   
+
+        $paymentsentry = Payments::create(['order_id'=>$order->order_id,'payment_date'=>now()->format('Y-m-d H:i'),'amount_paid'=>$itemTotalAmount,'payment_method'=>'card','cardName' => Hash::make($request->input('cardName')) ,'cardNumber'=>Hash::make($request->input('cardNumber')),'expirydate'=>$request->input('expiryDate'),'cvv'=>Hash::make($request->input('cvv'))]);
+
         return redirect()->route('checkout.show')->with('success', 'Payment processed successfully!');
+
+        
     }
 }

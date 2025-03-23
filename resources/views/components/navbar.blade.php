@@ -22,45 +22,65 @@
           <p class="navbar-subtitle">Graduate with better tech!</p>
         </div>
       </div>
-  
+
       <div class="search-container">
         <form class="search-form" action="{{ route('search') }}" method="GET">
           <input type="text" class="search-input" name="query" placeholder="Search for products..." required>
           <button class="search-button" type="submit">Search</button>
         </form>
       </div>
-  
       <div class="icons">
-        <div class="profile-dropdown">
-          <a href="#" class="user-icon" title="My Profile">
-            <img src="{{ asset('images/user-1.svg') }}" height="30" alt="User icon">
-          </a>
-          <div class="dropdown-content">
-            @auth
-            <a href="{{ url('/dashboard') }}">My Profile</a>
-            <a href="{{ url('/order') }}">My Orders</a>
-            <a href="{{ route('logout') }}"
-              onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-              Logout
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              @csrf
-            </form>
-            @else
-            <a href="#" class="login-btn">Login</a>
-            <a href="#" class="register-btn">Register</a>
-            @endauth
-          </div>
-        </div>
-        <a href="{{ url('/wishlist') }}" class="wishlist-icon" title="Wishlist">
-          <img src="{{ asset('images/heart.svg') }}" height="30" alt="Wishlist icon">
-        </a>
-        <a href="{{ url('/basket') }}" class="cart-icon" title="Basket">
-          <img src="{{ asset('images/basket.svg') }}" height="30" alt="Basket icon">
-        </a>
-      </div>
+              <div class="profile-dropdown">
+                @auth
+                @if(Auth::user()->user_type == 'admin')
+                <a href="{{ url('/adminproducts') }}" class="user-icon" title="Admin Dashboard">
+                  <img src="{{ asset('images/user-1.svg') }}" height="30" alt="Admin icon">
+                </a>
+                @else
+                <a href="{{ url('/dashboard') }}" class="user-icon" title="My Profile">
+                  <img src="{{ asset('images/user-1.svg') }}" height="30" alt="User icon">
+                </a>
+                @endif
+                @else
+                <a href="#" class="user-icon" title="My Profile">
+                  <img src="{{ asset('images/user-1.svg') }}" height="30" alt="User icon">
+                </a>
+                @endauth
+                <div class="dropdown-content">
+                  @auth
+                  @if(Auth::user()->user_type == 'admin')
+                  <a href="{{ url('/adminproducts') }}">Admin Dashboard</a>
+                  <a href="{{ url('/adminusers') }}">Manage Users</a>
+                  <a href="{{ url('/orders/admin') }}">Manage Orders</a>
+                  <a href="{{ url('/supplier-orders') }}">Supplier Orders</a>
+                  <a href="{{ url('/sales-report') }}">Sales Report</a>
+                  <a href="{{ url('/stock-report') }}">Stock Report</a>
+                  @else
+                  <a href="{{ url('/dashboard') }}">My Profile</a>
+                  <a href="{{ url('/orders') }}">My Orders</a>
+                  @endif
+                  <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Logout
+                  </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                  </form>
+                  @else
+                  <a href="#" class="login-btn">Login</a>
+                  <a href="#" class="register-btn">Register</a>
+                  @endauth
+                </div>
+              </div>
+              <a href="{{ url('/wishlist') }}" class="wishlist-icon" title="Wishlist">
+                <img src="{{ asset('images/heart.svg') }}" height="30" alt="Wishlist icon">
+              </a>
+              <a href="{{ url('/basket') }}" class="cart-icon" title="Basket">
+                <img src="{{ asset('images/basket.svg') }}" height="30" alt="Basket icon">
+              </a>
+            </div>
     </header>
-  
+
     <nav class="navigation-banner">
       <ul>
         <li><a href="{{ url('/home') }}">Home</a></li>

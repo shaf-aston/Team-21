@@ -10,7 +10,7 @@ use App\Models\User;
 
 class ForgotPasswordController extends Controller
 {
-    //
+    
 
     public function resetPassword(Request $request){
         $validated = $request->validate([

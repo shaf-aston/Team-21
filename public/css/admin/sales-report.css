@@ -13,7 +13,181 @@ body>h1 {
   margin-top: 30px;
   margin-bottom: 20px;
 }
+/* >>> CARDS GRID <<< */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  width: 90%;
+  max-width: 1400px;
+  margin: 30px auto;
+}
 
+.card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  padding-bottom: 0px;
+  height: auto;
+  width: 300px;
+  min-height: 200px; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  margin: 15px auto;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  display: flex;
+  align-items: center;
+  font-family: "Dela Gothic One", cursive;
+  color: #2d4059;
+  margin-top: 0;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #f2f2f2;
+  padding-bottom: 10px;
+}
+
+.card h3::before {
+  margin-right: 10px;
+  font-size: 1.4rem;
+}
+
+.card.top-selling h3::before {
+  content: "🔝";
+}
+
+.card.least-selling h3::before {
+  content: "📉";
+}
+
+.card.revenue h3::before {
+  content: "💰";
+}
+
+.card.costs h3::before {
+  content: "💸";
+}
+
+.card.profit h3::before {
+  content: "📈";
+}
+
+.metric-value {
+  font-size: 1.8rem;
+  color: #2d4059;
+  font-weight: 800;
+  margin: 15px 0;
+  letter-spacing: -0.5px;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+
+.metric-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-family: "Dela Gothic One", cursive;
+  color: #2d4059;
+  margin-top: 0;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #f2f2f2;
+  padding-bottom: 10px;
+}
+
+.card p {
+  margin: 8px 0;
+  color: #333;
+  font-size: 15px;
+}
+
+.card strong {
+  color: #2d4059;
+}
+
+.low-stock-container {
+  max-width: 600px;
+  background: #fff;
+  border-left: 5px solid red;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px auto 30px;
+}
+
+.low-stock-title {
+  font-size: 20px;
+  font-weight: 900;
+  color: #e63946;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #ffcccb;
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.low-stock-title::before {
+  content: "📉";
+  margin-right: 8px;
+  font-size: 22px;
+}
+
+.low-stock-list {
+  list-style: none;
+  padding: 0;
+}
+
+.low-stock-list li {
+  padding: 8px 0;
+  font-size: 16px;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.low-stock-list li:last-child {
+  border-bottom: none;
+}
+
+/* Color Coding */
+.critical {
+  color: red;
+  font-weight: bold;
+}
+
+.warning {
+  color: orange;
+  font-weight: bold;
+}
+
+.alert {
+  color: darkgoldenrod;
+  font-weight: bold;
+}
+
+/* Apply color to low stock rows in the table */
+.sales-table .critical {
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+.sales-table .warning {
+  background-color: rgba(255, 165, 0, 0.1);
+}
+
+.sales-table .alert {
+  background-color: rgba(184, 134, 11, 0.1);
+}
+
+
+/* >>> SALES TABLE <<< */
 .sales-table {
   width: 80%;
   margin: 0 auto 30px;
@@ -47,31 +221,4 @@ body>h1 {
 
 .sales-table tbody tr:hover {
   background-color: #e9ecef;
-}
-
-.card {
-  background-color: white;
-  border-radius: 8px;
-  padding: 20px;
-  width: 300px;
-  margin: 15px auto;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.card h3 {
-  font-family: "Dela Gothic One", cursive;
-  color: #2d4059;
-  margin-top: 0;
-  font-size: 1.2rem;
-  border-bottom: 2px solid #f2f2f2;
-  padding-bottom: 10px;
-}
-
-.card p {
-  margin: 8px 0;
-  color: #333;
-}
-
-.card strong {
-  color: #2d4059;
 }

@@ -1,55 +1,46 @@
 .total-box-container {
-  display: flex;
-  justify-content: flex-end;
-  /* Aligns the total-box to the right */
-  width: 30%;
-  /* Make sure it fits within the parent container */
+    display: flex;
+    justify-content: flex-end; /* Aligns the total-box to the right */
+    width: 30%; /* Make sure it fits within the parent container */
 }
 
 .total-box {
-  width: 100%;
-  /* Adjust width as needed */
-  background-color: #1d4056;
-  /* Updated navy color */
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    width: 100%; /* Adjust width as needed */
+    background-color: #1d4056; /* Updated navy color */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .total-box p {
-  font-size: 1.2em;
-  margin-bottom: 20px;
-  /* Space below paragraphs */
+    font-size: 1.2em;
+    margin-bottom: 20px; /* Space below paragraphs */
 }
 
 .total-box .basket-btn {
-  background-color: #0a7be5;
-  /* Updated button color */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-bottom: 20px;
+    background-color: #0a7be5; /* Updated button color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
 }
 
 .total-box .basket-btn:hover {
-  background-color: #0b59a2;
-  /* Change button color on hover */
+    background-color: #0b59a2; /* Change button color on hover */
 }
 
 .continue-shopping {
-  color: #3678b6;
-  /* Updated link color */
-  text-decoration: none;
-  margin-top: 10px;
+    color: #3678b6; /* Updated link color */
+    text-decoration: none;
+    margin-top: 10px;
 }
 
 .continue-shopping:hover {
-  text-decoration: underline;
-  /* Underline link on hover */
+    text-decoration: underline; /* Underline link on hover */
 }

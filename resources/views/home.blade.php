@@ -22,7 +22,7 @@
 <body style="padding-top: 7.5rem">
   <main>
     @include('components.navbar')
-<x-splashscreen />
+<x-splashscreen/>
     <!-- Top Deals Banner Section -->
     <section class="top-deals-banner">
       <!-- Call To Action Banner -->
@@ -226,56 +226,34 @@
           <div class="section-header__title-underline"></div>
         </div>
       </div>
-
       <div id="popularProductsCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <!-- First slide -->
-          <div class="carousel-item active">
-            <div class="row justify-content-center">
-              <div class="col-md-4">
-                <div class="product-card">
-                  <div class="product-card__image-placeholder">
-                    <img src="{{asset('images/2.jpg')}}" alt="Apple Watch Series 10">
-                  </div>
-                  <h3 class="product-card__title">Apple Watch Series 10 - 42mm</h3>
-                  <p class="product-card__price">£399.00</p>
+    <div class="carousel-inner">
+        @php
+            // Get the top 6 products sorted by popularity
+            $sortedProducts = $popularproducts->sortByDesc('popularityranking')->take(6)->values();
+            $chunks = [$sortedProducts->slice(0, 3), $sortedProducts->slice(3, 3)]; // First slide (3), Second slide (3)
+            $first = true;
+        @endphp
+
+        @foreach($chunks as $chunk)
+            <div class="carousel-item {{ $first ? 'active' : '' }}">
+                <div class="row justify-content-center">
+                    @foreach($chunk as $product)
+                        <div class="col-md-4">
+                            <div class="product-card">
+                                <div class="product-card__image-placeholder">
+                                    <img src="Images/{{$product->img_id}}.jpg" alt="{{ $product->product_name }}">
+                                </div>
+                                <h3 class="product-card__title">{{ $product->product_name }}</h3>
+                                <p class="product-card__price">£{{ $product->product_price }}</p>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-              </div>
-              <div class="col-md-4">
-                <div class="product-card">
-                  <div class="product-card__image-placeholder">
-                    <img src="{{asset('images/4.jpg')}}" alt="Apple iPhone 16 Pro Max">
-                  </div>
-                  <h3 class="product-card__title">Apple iPhone 16 Pro Max</h3>
-                  <p class="product-card__price">£1199.00</p>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="product-card">
-                  <div class="product-card__image-placeholder">
-                    <img src="{{asset('images/3.jpg')}}" alt="Apple iPad Air">
-                  </div>
-                  <h3 class="product-card__title">Apple 11" iPad Air(2024)</h3>
-                  <p class="product-card__price">£599.00</p>
-                </div>
-              </div>
             </div>
-          </div>
-          <!-- Second slide -->
-          <div class="carousel-item">
-            <div class="row justify-content-center">
-              <div class="col-md-4">
-                <div class="product-card">
-                  <div class="product-card__image-placeholder">
-                    <img src="{{asset('images/7.jpg')}}" alt="Lenovo Thinkpad">
-                  </div>
-                  <h3 class="product-card__title">Lenovo Thinkpad IdeaPad Gaming</h3>
-                  <p class="product-card__price">£799.00</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+            @php $first = false; @endphp
+        @endforeach
+    </div>
 
         <!-- Controls -->
         <button class="carousel-control-prev" type="button" data-bs-target="#popularProductsCarousel" data-bs-slide="prev">

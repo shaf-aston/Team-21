@@ -31,83 +31,75 @@
   </nav>
 
   <div class="product-container">
-    <div class="actions-header">
-      <!-- sort function -->
-      <div class="sort-section">
-        <label for="sort">Sort by:</label>
-        <form method="POST" action="/productssort">
-          @csrf
-          <select id="sort" name="sort">
-            <option {{ request()->sortby }} value="default">Default</option>
-            <option {{ request()->sortby }} value="priceasc">Price: Low to High</option>
-            <option {{ request()->sortby }} value="pricedesc">Price: High to Low</option>
-            <option {{ request()->sortby }} value="nameasc">Name: A to Z</option>
-            <option {{ request()->sortby }} value="namedesc">Name: Z to A</option>
-          </select>
-          <button type="submit">Sort!</button>
-        </form>
-      </div>
-
-      <!-- View toggle -->
-      @include('components.list-toggle')
-    </div>
-
-
-    <!-- product display -->
-    <div class="products-wrapper grid-layout">
-      @include('components.filters')
-      @foreach ($products as $product)
-      <div class="product-section">
-        <div class="product">
+    <div class="main-content">
+      <!-- Filters -->
+      <aside class="sidebar-container">
+        @include('components.filters')
+      </aside>
+      
+      <!-- Product display -->
+      <div class="products-wrapper grid-layout">
+        @foreach ($products as $product)
+        <div class="product-section">
+          <div class="product">
+            <!-- Make image clickable -->
             <a href="{{ url('productdesc', $product->product_id) }}" class="product-link">
-                <img src="{{ asset('images/'.$product->img_id.'.jpg') }}" alt="Product" class="iPadAir">
-                <div class="product-info">
-                    <div class="product-info-text">
-                        <h3 class="product-title">{{ $product->product_name }}</h3>
-                        <p class="product-price">£{{ $product->product_price }}</p>
+              <img src="{{ asset('images/'.$product->img_id.'.jpg') }}" alt="Product" class="iPadAir">
+            </a>
+            <div class="product-info">
+              <div class="product-info-text">
+                <!-- Make title clickable -->
+                <h3 class="product-title">
+                  <a href="{{ url('productdesc', $product->product_id) }}" class="product-link">
+                    {{ $product->product_name }}
+                  </a>
+                </h3>
+                <p class="product-price">£{{ $product->product_price }}</p>
 
-              <!-- Low stock alert message -->
-              @if(isset($product->stock_quantity) && $product->stock_quantity <= 5 && $product->stock_quantity > 0)
-                <p class="text-warning">Hurry! Only {{$product->stock_quantity}} left in stock.</p>
+                <!-- Low stock alert message -->
+                @if(isset($product->stock_quantity) && $product->stock_quantity <= 5 && $product->stock_quantity > 0)
+                  <p class="text-warning">Hurry! Only {{$product->stock_quantity}} left in stock.</p>
                 @elseif(isset($product->stock_quantity) && $product->stock_quantity == 0)
-                <p class="text-danger">Out of stock</p>
-                @endif
-            </div>
-
-            <div class="product-buttons">
-
-              <!-- Add to Basket -->
-              <div class="card-footer text-center">
-                @if(Auth::check())
-                <form method="POST" action="{{ route('basket.add') }}">
-                  @csrf
-                  <input type="hidden" name="product_id" value="{{ $product->product_id }}">
-                  <input type="hidden" name="quantity" value="1">
-                  <button type="submit" class="add-button btn-primary">Add to Basket</button>
-                </form>
-                @else
-                <a href="#" class="btn btn-primary login-btn">Log in to Add to Basket</a>
+                  <p class="text-danger">Out of stock</p>
                 @endif
               </div>
 
-              <!-- Add to Wishlist -->
-              <div class="card-footer text-center">
-                @if(Auth::check())
-                <form method="POST" action="{{ route('wishlist.add') }}">
-                  @csrf
-                  <input type="hidden" name="product_id" value="{{ $product->product_id }}">
-                  <input type="hidden" name="quantity" value="1">
-                  <button type="submit" class="add-button btn-primary">Add to Wishlist</button>
-                </form>
-                @else
-                <a href="#" class="btn btn-primary login-btn">Log in to Add to Wishlist</a>
-                @endif
+              <div class="product-buttons">
+                <!-- View Product button removed -->
+
+                <!-- Add to Basket -->
+                <div class="card-footer text-center">
+                  @if(Auth::check())
+                  <form method="POST" action="{{ route('basket.add') }}">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->product_id }}">
+                    <input type="hidden" name="quantity" value="1">
+                    <button type="submit" class="add-button btn-primary">Add to Basket</button>
+                  </form>
+                  @else
+                  <a href="#" class="btn btn-primary login-btn">Log in to Add to Basket</a>
+                  @endif
+                </div>
+
+                <!-- Add to Wishlist -->
+                <div class="card-footer text-center">
+                  @if(Auth::check())
+                  <form method="POST" action="{{ route('wishlist.add') }}">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->product_id }}">
+                    <input type="hidden" name="quantity" value="1">
+                    <button type="submit" class="add-button btn-primary">Add to Wishlist</button>
+                  </form>
+                  @else
+                  <a href="#" class="btn btn-primary login-btn">Log in to Add to Wishlist</a>
+                  @endif
+                </div>
               </div>
             </div>
           </div>
         </div>
+        @endforeach
       </div>
-      @endforeach
     </div>
   </div>
   @include('components.Footer')

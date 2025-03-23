@@ -35,81 +35,77 @@
   </nav>
 
   <div class="product-container">
-    <div class="actions-header">
-      <!-- sort function -->
-      <div class="sort-section">
-        <label for="sort">Sort by:</label>
-        <form method="POST" action="/productssort">
-          @csrf
-          <select id="sort" name="sort">
-            <option {{ request()->sortby }} value="default">Default</option>
-            <option {{ request()->sortby }} value="priceasc">Price: Low to High</option>
-            <option {{ request()->sortby }} value="pricedesc">Price: High to Low</option>
-            <option {{ request()->sortby }} value="nameasc">Name: A to Z</option>
-            <option {{ request()->sortby }} value="namedesc">Name: Z to A</option>
-          </select>
-          <button type="submit">Sort!</button>
-        </form>
-      </div>
+    <div class="main-content">
+      <!-- Filters -->
+      <aside class="sidebar-container">
+        @include('components.filters')
+      </aside>
       
-      <!-- View toggle -->
-      @include('components.list-toggle')
-    </div>
-    
-    <!-- product display -->
-    <div class="products-wrapper grid-layout">
-      @foreach ($products as $product)
-      @if ($product->category_id != 2)
-      @else
-      <div class="product-section">
-        <div class="product">
-          <img src="Images\{{$product->img_id}}.jpg" alt="Product" class="iPadAir">
-          <div class="product-info">
-            <div class="product-info-text">
-              <h3 class="product-title"> {{$product->product_name}}</h3>
-              <p class="product-price">£{{$product->product_price}}</p>
+      <!-- Product display -->
+      <div class="products-wrapper grid-layout">
+        @foreach ($products as $product)
+        @if ($product->category_id != 2)
+        @else
+        <div class="product-section">
+          <div class="product">
+            <!-- Make image clickable -->
+            <a href="{{ url('productdesc', $product->product_id) }}" class="product-link">
+              <img src="Images\{{$product->img_id}}.jpg" alt="Product" class="iPadAir">
+            </a>
+            <div class="product-info">
+              <div class="product-info-text">
+                <!-- Make title clickable -->
+                <h3 class="product-title">
+                  <a href="{{ url('productdesc', $product->product_id) }}" class="product-link">
+                    {{$product->product_name}}
+                  </a>
+                </h3>
+                <p class="product-price">£{{$product->product_price}}</p>
               
-              @if(isset($product->stock_quantity) && $product->stock_quantity <= 5 && $product->stock_quantity > 0)
-                <p class="text-warning">Hurry! Only {{$product->stock_quantity}} left in stock.</p>
-              @elseif(isset($product->stock_quantity) && $product->stock_quantity == 0)
-                <p class="text-danger">Out of stock</p>
-              @endif
-            </div>
-            
-            <div class="product-buttons">
-              <button class="view-button" type="submit" id="viewprod" onclick="window.location='{{url('productdesc',$product->product_id)}}'">View Product</button>
-              <!-- Add to Basket -->
-              <div class="card-footer text-center">
-                @if(Auth::check())
-                <form method="POST" action="{{ route('basket.add') }}">
-                  @csrf
-                  <input type="hidden" name="product_id" value="{{ $product->product_id }}">
-                  <input type="hidden" name="quantity" value="1">
-                  <button type="submit" class="add-button btn-primary">Add to Basket</button>
-                </form>
-                @else
-                <a href="{{ route('login') }}" class="btn btn-primary">Log in to Add to Basket</a>
+                @if(isset($product->stock_quantity) && $product->stock_quantity <= 5 && $product->stock_quantity > 0)
+                  <p class="text-warning">Hurry! Only {{$product->stock_quantity}} left in stock.</p>
+                @elseif(isset($product->stock_quantity) && $product->stock_quantity == 0)
+                  <p class="text-danger">Out of stock</p>
                 @endif
               </div>
-              <!-- Add to Wishlist -->
-              <div class="card-footer text-center">
-                @if(Auth::check())
-                <form method="POST" action="{{ route('wishlist.add') }}">
-                  @csrf
-                  <input type="hidden" name="product_id" value="{{ $product->product_id }}">
-                  <input type="hidden" name="quantity" value="1">
-                  <button type="submit" class="add-button btn-primary">Add to Wishlist</button>
-                </form>
-                @else
-                <a href="{{ route('login') }}" class="btn btn-primary">Log in to Add to Wishlist</a>
-                @endif
+              
+              <div class="product-buttons">
+                <!-- View Product button removed -->
+                
+                <!-- Add to Basket -->
+                <div class="card-footer text-center">
+                  @if(Auth::check())
+                  <form method="POST" action="{{ route('basket.add') }}">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->product_id }}">
+                    <input type="hidden" name="quantity" value="1">
+                    <button type="submit" class="add-button btn-primary">Add to Basket</button>
+                  </form>
+                  @else
+                  <a href="{{ route('login') }}" class="btn btn-primary">Log in to Add to Basket</a>
+                  @endif
+                </div>
+                
+                <!-- Add to Wishlist -->
+                <div class="card-footer text-center">
+                  @if(Auth::check())
+                  <form method="POST" action="{{ route('wishlist.add') }}">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->product_id }}">
+                    <input type="hidden" name="quantity" value="1">
+                    <button type="submit" class="add-button btn-primary">Add to Wishlist</button>
+                  </form>
+                  @else
+                  <a href="{{ route('login') }}" class="btn btn-primary">Log in to Add to Wishlist</a>
+                  @endif
+                </div>
               </div>
             </div>
           </div>
         </div>
+        @endif
+        @endforeach
       </div>
-      @endif
-      @endforeach
     </div>
   </div>
   @include('components.Footer')

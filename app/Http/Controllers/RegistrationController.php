@@ -37,7 +37,7 @@ class RegistrationController extends Controller
                 
 
 
-                return redirect('/nav')->with('success', 'You have completed Registration');
+                return redirect('/home')->with('success', 'You have completed Registration');
             }
             catch(PDOexception $ex){
                 return back()->withInput()->withErrors(['An error occurred' => 'Please try again. Registration failed']);

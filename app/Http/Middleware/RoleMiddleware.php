@@ -11,6 +11,7 @@ class RoleMiddleware
     /**
      * Handle an incoming request.
      */
+    //handling the two types of users
     public function handle(Request $request, Closure $next, string $userType)
     {
         if (!Auth::check() || Auth::user()->user_type !== $userType) {

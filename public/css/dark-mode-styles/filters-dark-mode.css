@@ -1,36 +1,205 @@
+/* Dark mode styles for filters */
 .dark-mode .sidebar {
   background-color: #2c3e50;
-  color: #e1e8ff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border-color: #34495e;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+.dark-mode .sidebar-header {
+  border-bottom-color: #34495e;
+}
+
+.dark-mode .sidebar h2 {
+  color: #8ca9f2;
+}
+
+.dark-mode .main-content.list-mode .sidebar-header {
+  background-color: #2c3e50;
+  border-bottom-color: #34495e;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode #sort {
+  background-color: #34495e;
+  color: #e1e8ff;
+  border-color: #3d5a7d;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode #sort:hover {
+  border-color: #8ca9f2;
+}
+
+.dark-mode #sort:focus {
+  border-color: #8ca9f2;
+  box-shadow: 0 0 0 2px rgba(140, 169, 242, 0.2);
+}
+
+.dark-mode #sort option {
+  background-color: #2c3e50;
+  color: #e1e8ff;
+}
+
+.dark-mode .filter-actions .toggle-button {
+  background-color: #34495e;
+  border-color: #3d5a7d;
+  color: #e1e8ff;
+}
+
+.dark-mode .filter-actions .toggle-button:hover {
+  background-color: #3d5a7d;
+}
+
+.dark-mode .filter-actions .toggle-button.active {
+  background-color: #8ca9f2;
+  color: #1a1a1a;
+}
+
+.dark-mode .collapse-sidebar-btn {
+  color: #8ca9f2;
+}
+
+.dark-mode .collapse-sidebar-btn:hover {
+  background-color: #34495e;
+}
+
+/* Sort container */
+.dark-mode .sort-container label {
+  color: #e1e8ff;
+}
+
+.dark-mode .sort-container select {
+  background-color: #34495e;
+  color: #e1e8ff;
+  border-color: #3d5a7d;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .sort-container select:hover {
+  border-color: #8ca9f2;
+}
+
+.dark-mode .sort-container select:focus {
+  border-color: #8ca9f2;
+  box-shadow: 0 0 0 2px rgba(140, 169, 242, 0.2);
+}
+
+/* Filter title buttons */
 .dark-mode .filter-title {
+  background-color: #3d5a7d;
+  color: #e1e8ff;
+  border: 1px solid #34495e;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .filter-title:hover {
+  background-color: #4a6a8f;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Filter content */
+.dark-mode .filter-content {
+  background-color: #2c3e50;
+  border-color: #34495e;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  color: #e1e8ff;
+}
+
+.dark-mode .filter-content label {
+  color: #e1e8ff;
+  background-color: transparent;
+}
+
+.dark-mode .filter-content label:hover {
   background-color: #34495e;
   color: #8ca9f2;
 }
 
-.dark-mode .sidebar h2 {
-  color: #ffffff;
-  background-color: #2d4059;
-  border-bottom: 2px solid #8ca9f2;
-  font-size: 22px;
-  font-weight: bold;
-  text-align: center;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+.dark-mode .filter-content input[type="checkbox"] {
+  accent-color: #8ca9f2;
+  background-color: #34495e;
+  border-color: #3d5a7d;
 }
 
+/* Price range inputs */
+.dark-mode .price-inputs input {
+  background-color: #34495e;
+  color: #e1e8ff;
+  border-color: #3d5a7d;
+}
 
-.dark-mode .filter-content {
-  background-color: #1a1a1a;
-  border: 1px solid #34495e;
+.dark-mode .price-inputs input:focus {
+  border-color: #8ca9f2;
+}
+
+.dark-mode .price-inputs span,
+.dark-mode .price-values {
   color: #e1e8ff;
 }
 
+.dark-mode .price-values span,
+.dark-mode .price-display {
+  color: #e1e8ff;
+}
+
+.dark-mode .price-display {
+  background-color: #34495e;
+}
+
+.dark-mode #priceRange {
+  accent-color: #8ca9f2;
+}
+
+/* Apply filters button */
 .dark-mode #applyFilters {
   background-color: #8ca9f2;
   color: #1a1a1a;
-  border-color: #8ca9f2;
-  box-shadow: 0 2px 4px rgba(99, 132, 228, 0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+
+.dark-mode #applyFilters:hover {
+  background-color: #6384e4;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(99, 132, 228, 0.3);
+}
+
+/* Scrollbar styling */
+.dark-mode .sidebar::-webkit-scrollbar-track,
+.dark-mode .filter-content::-webkit-scrollbar-track {
+  background-color: #2c3e50;
+}
+
+.dark-mode .sidebar::-webkit-scrollbar-thumb,
+.dark-mode .filter-content::-webkit-scrollbar-thumb {
+  background-color: #3d5a7d;
+  border-radius: 10px;
+}
+
+.dark-mode .sidebar::-webkit-scrollbar-thumb:hover,
+.dark-mode .filter-content::-webkit-scrollbar-thumb:hover {
+  background-color: #4a6a8f;
+}
+
+.dark-mode .filter-section {
+  background-color: transparent;
+}
+
+.dark-mode .dot.white {
+  border-color: #3d5a7d;
+}
+
+.dark-mode .filters-container {
+  background-color: transparent;
+}
+
+.dark-mode .filter-groups {
+  background-color: transparent;
+}
+
+.dark-mode * {
+  transition: background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }

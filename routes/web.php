@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -16,6 +16,7 @@ use App\Http\Controllers\CustomerDetailsController;
 use App\Http\Controllers\SalesReportController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SupplierOrderController;
+use App\Http\Controllers\StockReportController;
 use App\Http\Controllers\WebsiteReviewController;
 use App\Http\Middleware\RoleMiddleware;
 
@@ -25,10 +26,6 @@ Route::get('/', function(){
     return redirect('/home');
 });
 
-Route::get('/dashboard', function(){
-  return view('customer-dash');
-});
-
 //return search bar form
 Route::get('/searchbar', function(){
     return view('search.form');
@@ -36,11 +33,12 @@ Route::get('/searchbar', function(){
 
 //return search value
 Route::get('/search', [SearchController::class, 'search'])->name('search');
-Route::get('/adminproduct/search', [SearchController::class, 'productSearch'])->name('adminproductsearch');
+Route::middleware(['auth', RoleMiddleware::class.':admin'])->group(function(){
+    Route::get('/adminproduct/search', [SearchController::class, 'productSearch'])->name('adminproductsearch');
 
-//return order search value
-Route::get('/admin/search', [SearchController::class, 'searchOrders'])->name('adminsearch');
-
+    //return order search value
+    Route::get('/admin/search', [SearchController::class, 'searchOrders'])->name('adminsearch');
+});
 //return the main page
 Route::get('/nav', function(){
     return view('signup');
@@ -48,7 +46,9 @@ Route::get('/nav', function(){
 
 // Show the login form
 Route::get('/login', function () {
-    return view('signup');  // Using 'signup' as the view for login
+    $products = DB::table('products')->get();
+    $popularproducts = $products->sortBy('popularityranking');
+    return view('home', ['popularproducts' => $popularproducts]);  // Using 'signup' as the view for login
 })->name('login');
 
 // Process the login request
@@ -68,10 +68,13 @@ Route::post('/register', [RegistrationController::class, 'register'])->name('reg
 // For logout (optional if needed)
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-//return basket view
-Route::get('/basket', function(){
-    return view('basket');
-});
+
+    //return basket view
+    Route::get('/basket', function(){
+        return view('basket');
+    });
+
+    
 
 
 //return about view
@@ -87,9 +90,10 @@ Route::get('/checkout2', function(){
 
 
 //checkout form
-Route::get('/checkout', [CheckoutController::class, 'showCheckout'])->name('checkout.show');
-Route::post('/checkout', [CheckoutController::class, 'verifyCheckout'])->name('checkout.verify');
-
+Route::middleware(['auth', RoleMiddleware::class.':user'])->group(function(){
+    Route::get('/checkout', [CheckoutController::class, 'showCheckout'])->name('checkout.show');
+    Route::post('/checkout', [CheckoutController::class, 'verifyCheckout'])->name('checkout.verify');
+});
 //routes for the contact form
 Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
@@ -119,7 +123,9 @@ Route::delete('/basket/clear', [BasketController::class, 'clear'])->name('basket
 
 
 Route::get('/home',  function(){
-    return view('home');
+    $products = DB::table('products')->get();
+    $popularproducts = $products->sortBy('popularityranking');
+    return view('home', ['popularproducts' => $popularproducts]);
 });
 
 
@@ -284,9 +290,6 @@ Route::delete('/wishlist/{item}', [WishListController::class, 'remove'])->name('
 // Clear wish
 Route::delete('/wishlist/clear', [WishListController::class, 'clear'])->name('wishlist.clear');
 
-//creating a new product
-Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
 
 
 
@@ -327,6 +330,7 @@ Route::post('delete', [CustomerDetailsController::class, 'delete'])->name('delet
 //Displays the sale report to the admin
 Route::middleware(['auth', RoleMiddleware::class.':admin'])->group(function(){
     Route::get('/sales-report', [SalesReportController::class, 'report']);
+    Route::get('/stock-report', [StockReportController::class, 'stock_report']);
 });
 
 
@@ -382,12 +386,61 @@ Route::middleware(['auth', RoleMiddleware::class.':admin'])->group(function(){
     Route::get('/adminsort/result',[OrderController::class, 'sortResults'])->name('adminsort.result');
 });
 
+Route::middleware(['auth', RoleMiddleware::class.':user'])->group(function(){
+    Route::get('/dashboard', [CustomerDetailsController::class, 'dashboard'])->name('customer.dashboard');
+});
 
 
+Route::put('/update-credentials', [CustomerDetailsController::class, 'updateCredentials'])->name('update.credentials');
+
+Route::middleware(['auth', RoleMiddleware::class.':admin'])->group(function(){
+    Route::get('/addproduct', function(){
+        return view('addproduct');
+    })->name('addproduct');
+    Route::get('/addproduct', [ProductController::class, 'create'])->name('addproduct');
+    //Route::view('/addproduct', 'addproduct')->name('addproduct');
+    Route::post('/addproduct', [ProductController::class, 'addproduct'])->name('addproduct');
+    //Route::post('/addproduct', [ProductController::class, 'submit'])->name('products.submit');
+
+});
 
 
+  
+  Route::get('/changeCredentials', function () {
+    return view('changeCredentials');
+  })->name('changeCredentials');
+  
+  
+  Route::get('/statistics', function () {
+    $sales = Testingsale::all();
+    $orders = Testingorders::all();
+    $revnue = TestingRevnue::all();
+    return view('statistics', compact('sales', 'orders','revnue'));
+  })->name('statistics');
 
 
-//Shaf adding
-Route::post('basket/update/{id}', [BasketController::class, 'update'])->name('basket.update');
-Route::post('/wishlist/update/{item}', [WishListController::class, 'update'])->name('wishlist.update');
+//route to filter products
+Route::post('/productsfilter',function() {
+    if (request()->has('submit')) {
+    $query = DB::table('products');
+    //$products = DB::table('products')->get();
+    if ($ram = request('ram', [])) {
+        $query->where('ram', $ram);
+    }
+    if ($brand = request('brand', [])) {
+        $query->where('brand', $brand);
+    }
+    if ($minPrice = request('minPrice')) {
+        $query->where('product_price', '>=', $minPrice);
+    }
+    if ($maxPrice = request('maxPrice')) {
+        $query->where('product_price', '<=', $maxPrice);
+    }
+    if ($colour = request('colour', [])) {
+        $query->where('colour', $colour);
+    }
+    $productsfiltered = $query->get();
+
+    return view('products', ['products' => $productsfiltered, 'ram' => $ram,'brand' => $brand,'minPrice' => $minPrice,'maxPrice' => $maxPrice,'colour' => $colour ]);
+}
+});

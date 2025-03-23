@@ -144,6 +144,7 @@
 
   @include('components.footer')
   <script src="{{ asset('js/Wishlist.js') }}"></script>
+  <script src="{{ asset('js/TotalBox.js') }}"></script>
 </body>
 
 </html>

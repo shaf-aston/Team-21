@@ -9,13 +9,14 @@ use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
 {
-    //
-
+    
+    //show all orders
     public function adminIndex(){
         $orders = Order::with(['user', 'orderItems.product'])->get();
         return view('orders.adminIndex', compact('orders'));
     }
 
+    //show the all orders
     public function index(){
         $user = auth()->user();
 
@@ -26,23 +27,27 @@ class OrderController extends Controller
         return view('orders.index', compact('orders'));
     }
 
+    //admin view of individual orders
     public function adminShow($order_id)
 {
     $order = Order::with(['orderItems.product'])->findOrFail($order_id);
     return view('orders.adminShow', compact('order'));
 }
 
+    //customer view of individual orders
     public function show($order_id)
 {
     $order = Order::with(['orderItems.product'])->findOrFail($order_id);
     return view('orders.show', compact('order'));
 }
 
+    //edit the status of orders shows the form
     public function editStatus(Order $order){
         return view('orders.editstatus', compact('order'));
 
     }
 
+    //updates the status of the form
     public function updateStatus(Request $request, Order $order)
     {
        
@@ -60,57 +65,58 @@ class OrderController extends Controller
     }
 
 
+    //return item
+    public function returnItem($itemId)
+    {
 
-public function returnItem($itemId)
-{
+
+        // Load the order item with product data
+        $item = OrderItem::with('product', 'order')->find($itemId);
+
+        if (!$item) {
+
+            return redirect()->back()->with('error', 'Item not found.');
+        }
 
 
-    // Load the order item with product data
-    $item = OrderItem::with('product', 'order')->find($itemId);
 
-    if (!$item) {
+        // Ensure the order is delivered before allowing return
+        if ($item->order->order_status !== 'delivered') {
 
-        return redirect()->back()->with('error', 'Item not found.');
+            return redirect()->back()->with('error', 'You can only return items from delivered orders.');
+        }
+
+        // Restore stock quantity for the product
+        if ($item->product) {
+
+            $item->product->increment('stock_quantity', $item->quantity);
+        }
+
+        // Delete the item from the order
+
+        $item->delete();
+
+        // Check if the order is now empty and update status
+        if ($item->order->orderItems()->count() == 0) {
+
+            $item->order->update(['order_status' => 'canceled']);
+        }
+
+        return redirect()->back()->with('success', 'Item returned successfully. Stock updated.');
     }
 
+    //sorting orders
+    public function sortResults(Request $request)
+    {
+        // Get sorting parameters
+        $sortBy = $request->query('sort_by', 'order_id');
+        $sortOrder = $request->query('sort_order', 'asc');
 
+        // Retrieve and sort all orders
+        $orders = Order::orderBy($sortBy, $sortOrder)->get();
 
-    // Ensure the order is delivered before allowing return
-    if ($item->order->order_status !== 'delivered') {
-
-        return redirect()->back()->with('error', 'You can only return items from delivered orders.');
+        return view('adminsort.result', compact('orders', 'sortBy', 'sortOrder'));
     }
-
-    // Restore stock quantity for the product
-    if ($item->product) {
-
-        $item->product->increment('stock_quantity', $item->quantity);
-    }
-
-    // Delete the item from the order
-
-    $item->delete();
-
-    // Check if the order is now empty and update status
-    if ($item->order->orderItems()->count() == 0) {
-
-        $item->order->update(['order_status' => 'canceled']);
-    }
-
-    return redirect()->back()->with('success', 'Item returned successfully. Stock updated.');
-}
-
-public function sortResults(Request $request)
-{
-    // Get sorting parameters
-    $sortBy = $request->query('sort_by', 'order_id');
-    $sortOrder = $request->query('sort_order', 'asc');
-
-    // Retrieve and sort all orders
-    $orders = Order::orderBy($sortBy, $sortOrder)->get();
-
-    return view('adminsort.result', compact('orders', 'sortBy', 'sortOrder'));
-}
 
 
 }

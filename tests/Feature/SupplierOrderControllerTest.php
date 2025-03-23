@@ -20,7 +20,7 @@ class SupplierOrderControllerTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        $product = Product::factory()->create();  // Assuming a Product factory exists
+        $product = Product::factory()->create();  
 
         $response = $this->get('/supplier-orders/create');
 
@@ -37,9 +37,9 @@ class SupplierOrderControllerTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        $product = Product::factory()->create(['product_price' => 100]);  // Assuming a Product factory exists
+        $product = Product::factory()->create(['product_price' => 100]);  
 
-        // Simulate a valid request for supplier order creation
+       
         $response = $this->post(route('supplier-orders.store'), [
             'supplier_name' => 'Supplier A',
             'product_id' => [$product->product_id],
@@ -49,7 +49,7 @@ class SupplierOrderControllerTest extends TestCase
         $response->assertRedirect(route('supplier-orders.index'));
         $response->assertSessionHas('success', 'Supplier order placed successfully!');
 
-        // Check that the supplier order is stored in the database
+        
         $this->assertDatabaseHas('supplier_orders', [
             'supplier_name' => 'Supplier A',
             'total_amount' => 160,  // Assuming a 20% discount on the product price (100 * 0.8 * 2)
@@ -58,7 +58,7 @@ class SupplierOrderControllerTest extends TestCase
         $this->assertDatabaseHas('supplier_order_items', [
             'product_id' => $product->product_id,
             'quantity' => 2,
-            'unit_price' => 80,  // Discounted price (100 * 0.8)
+            'unit_price' => 80,  
 
         ]);
     }

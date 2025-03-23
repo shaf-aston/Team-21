@@ -25,6 +25,10 @@ class Product extends Model
         'category_id',
         'updated_at',
         'created_at',
+        'popularityranking',
+        'brand',
+        'colour',
+        'ram',
     ];
 
     public function reviews(){
@@ -35,6 +39,21 @@ class Product extends Model
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class, 'product_id', 'product_id');
+    }
+
+    public function wishlistItems()
+    {
+        return $this->hasMany(WishListItem::class, 'product_id', 'product_id');
+    }
+
+    // Automatically delete related wishlist items when a product is deleted
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($product) {
+            $product->wishlistItems()->delete();
+        });
     }
 
     

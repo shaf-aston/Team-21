@@ -65,7 +65,8 @@
       <li><a href="{{ url('/admin') }}">Admin Dashboard</a></li>
       <li><a href="{{ url('/adminproducts') }}">Products</a></li>
       <li><a href="{{ url('/adminorders') }}">Orders</a></li>
-      <li><a href="{{ url('/sales-report') }}">Reports</a></li>
+      <li><a href="{{ url('/sales-report') }}">Sales</a></li>
+      <li><a href="{{url('/stock-report')}}"> Stock </a></li>
       <li><a href="{{ url('/supplier-orders')}}">Supplier Orders</a></li>
       <li><a href="{{ url('/adminusers') }}">Manage Customers</a></li>
       <li><a href="{{ url('/home') }}">Return to Homepage</a></li>

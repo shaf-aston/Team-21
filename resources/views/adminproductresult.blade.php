@@ -32,7 +32,7 @@
     @foreach ($products as $product)
     <div class="product-section">
       <div class="product">
-        <img src="Images\{{$product->img_id}}.jpg" alt="Product" class="iPadAir">
+
         <div class="product-info">
           <h3 class="product-title"> {{$product->product_name}}</h3>
           <p class="product-price">{{$product->product_price}}</p>

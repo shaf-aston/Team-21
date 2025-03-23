@@ -33,7 +33,7 @@
       @foreach($orders as $order)
       <tr>
         <td>{{ $order->order_id }}</td>
-        <td>${{ number_format($order->total_amount, 2) }}</td>
+        <td>£{{ number_format($order->total_amount, 2) }}</td>
         <td>
           @if($order->order_status == 'pending')
           <span class="badge bg-warning">Pending</span>

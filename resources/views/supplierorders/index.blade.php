@@ -34,7 +34,7 @@
         <td>{{ $order->id }}</td>
         <td>{{ $order->supplier_name }}</td>
         <td>{{ $order->order_date }}</td>
-        <td>${{ number_format($order->total_amount, 2) }}</td>
+        <td>£{{ number_format($order->total_amount, 2) }}</td>
         <td>
           <a href="{{ route('supplier-orders.show', $order->id) }}" class="btn btn-info">View</a>
         </td>
@@ -44,4 +44,4 @@
   </table>
 </div>
 
-<a href="{{ route('supplierorders.create') }}" class="btn btn-primary">Create Supplier Order</a>
+<a href="{{ route('supplierorders.create') }}" id="supplier-order-btn-container" class="btn btn-primary">Create Supplier Order</a>

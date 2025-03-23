@@ -45,7 +45,7 @@
       </div>
 
       <div class="add-product-container">
-        <button class="add-product-button" onclick="window.location='{{url('/products/create')}}'">Add product</button>
+        <button class="add-product-button" onclick="window.location='{{url('/addproduct')}}'">Add product</button>
       </div>
     </div>
 

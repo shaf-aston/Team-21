@@ -24,7 +24,7 @@ class SearchController extends Controller
         
     }
 
-
+    //admin product search
     public function productSearch(Request $request){
         $request->validate([
             'query' => 'required|string'
@@ -40,6 +40,7 @@ class SearchController extends Controller
         
     }
 
+    //search orders 
     public function searchOrders(Request $request)
     {
         

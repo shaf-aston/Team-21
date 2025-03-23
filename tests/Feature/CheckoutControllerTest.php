@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Session;
 class CheckoutControllerTest extends TestCase
 {
   
-
+    /** @test */
     public function test_checkout_page_loads_correctly()
     {
         $response = $this->get(route('checkout.show'));
@@ -24,6 +24,7 @@ class CheckoutControllerTest extends TestCase
         $response->assertViewIs('checkout2');
     }
 
+    /** @test */
     public function test_checkout_fails_with_invalid_data()
     {
         $user = User::factory()->create();
@@ -36,6 +37,7 @@ class CheckoutControllerTest extends TestCase
         ]);
     }
 
+    /** @test */
     public function test_checkout_succeeds_with_valid_data()
     {
         $user = User::factory()->create();

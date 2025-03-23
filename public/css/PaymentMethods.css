@@ -1,157 +1,130 @@
 .total-box-container {
-  display: flex;
-  justify-content: flex-end;
-  /* Aligns the total-box to the right */
-  width: 30%;
-  /* Make sure it fits within the parent container */
+    display: flex;
+    justify-content: flex-end; /* Aligns the total-box to the right */
+    width: 30%; /* Make sure it fits within the parent container */
 }
 
 .total-box {
-  width: 100%;
-  /* Adjust width as needed */
-  background-color: #1d4056;
-  /* Updated navy color */
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    width: 100%; /* Adjust width as needed */
+    background-color: #1d4056; /* Updated navy color */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .payment-options {
-  display: flex;
-  justify-content: space-between;
-  /* Space out payment options */
-  width: 100%;
-  margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between; /* Space out payment options */
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .payment-options label {
-  display: flex;
-  align-items: center;
-  /* Align text with checkboxes */
+    display: flex;
+    align-items: center; /* Align text with checkboxes */
 }
 
 .payment-checkbox {
-  margin-right: 10px;
-  /* Space between checkbox and label */
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  /* Make the checkbox circular */
-  appearance: none;
-  /* Remove default appearance */
-  background-color: white;
-  border: 2px solid var(--primary-color);
-  outline: none;
-  cursor: pointer;
-  /* Change cursor to pointer on hover */
-  transition: background-color 0.2s;
-  /* Smooth transition for background color change */
+    margin-right: 10px; /* Space between checkbox and label */
+    width: 16px;
+    height: 16px;
+    border-radius: 50%; /* Make the checkbox circular */
+    appearance: none; /* Remove default appearance */
+    background-color: white;
+    border: 2px solid var(--primary-color);
+    outline: none;
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.2s; /* Smooth transition for background color change */
 }
 
 .payment-checkbox:checked {
-  background-color: var(--primary-color);
-  /* Change background color when checked */
+    background-color: var(
+        --primary-color
+    ); /* Change background color when checked */
 }
 
 .payment-info-box {
-  background-color: rgba(10,
-      123,
-      229,
-      0.25);
-  /* Change background colour with it's opacity independant of text */
-  color: white;
-  /* Text color */
-  padding: 15px;
-  /* Padding around the content */
-  margin-bottom: 5px;
-  /* Space below the box */
-  border-radius: 5px;
+    background-color: rgba(
+        10,
+        123,
+        229,
+        0.25
+    ); /* Change background colour with it's opacity independant of text */
+    color: white; /* Text color */
+    padding: 15px; /* Padding around the content */
+    margin-bottom: 5px; /* Space below the box */
+    border-radius: 5px;
 }
 
 .payment-details {
-  padding: 10px;
-  margin-bottom: 20px;
-  width: 100%;
-  text-align: left;
-  /* Align text to the left */
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: left; /* Align text to the left */
 }
 
 .payment-details p {
-  margin: 0 0 10px;
-  /* Margin below paragraph */
+    margin: 0 0 10px; /* Margin below paragraph */
 }
 
 .payment-details ul {
-  list-style: disc inside;
-  /* Style list items with discs */
-  padding: 0;
+    list-style: disc inside; /* Style list items with discs */
+    padding: 0;
 }
 
 .payment-details li {
-  margin-bottom: 10px;
-  /* Space between list items */
+    margin-bottom: 10px; /* Space between list items */
 }
 
 .total-box p {
-  font-size: 1.2em;
-  margin-bottom: 20px;
-  /* Space below paragraphs */
+    font-size: 1.2em;
+    margin-bottom: 20px; /* Space below paragraphs */
 }
 
 .total-box .checkout-btn {
-  background-color: #0a7be5;
-  /* Updated button color */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-bottom: 20px;
+    background-color: #0a7be5; /* Updated button color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
 }
 
 .total-box .checkout-btn:hover {
-  background-color: #0b59a2;
-  /* Change button color on hover */
+    background-color: #0b59a2; /* Change button color on hover */
 }
 
 .payment-icons {
-  display: flex;
-  justify-content: space-between;
-  /* Space out payment icons */
-  width: 100%;
-  /* Adjust width as needed */
-  margin-bottom: 20px;
-  /* Add space below icons */
+    display: flex;
+    justify-content: space-between; /* Space out payment icons */
+    width: 100%; /* Adjust width as needed */
+    margin-bottom: 20px; /* Add space below icons */
 }
 
 .payment-icons img {
-  width: 50px;
-  /* Adjust size as needed */
-  height: auto;
+    width: 50px; /* Adjust size as needed */
+    height: auto;
 }
 
 .continue-shopping {
-  color: #3678b6;
-  /* Updated link color */
-  text-decoration: none;
-  margin-top: 10px;
+    color: #3678b6; /* Updated link color */
+    text-decoration: none;
+    margin-top: 10px;
 }
 
 .continue-shopping:hover {
-  text-decoration: underline;
-  /* Underline link on hover */
+    text-decoration: underline; /* Underline link on hover */
 }
 
 .disclaimer {
-  font-size: 0.9em;
-  margin-top: 20px;
-  /* Space above disclaimer */
-  text-align: left;
-  /* Align text to the left */
-  width: 100%;
-  color: white;
+    font-size: 0.9em;
+    margin-top: 20px; /* Space above disclaimer */
+    text-align: left; /* Align text to the left */
+    width: 100%;
+    color: white;
 }

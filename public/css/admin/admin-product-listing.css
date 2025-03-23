@@ -51,8 +51,7 @@ button.view-button#viewprod[onclick*="products/create"]:hover {
 .products-grid {
   display: flex;
   flex-wrap: wrap;
-  margin: -10px;
-  /* Negative margin to offset the padding on product-section */
+  margin: -10px; /* Negative margin to offset the padding on product-section */
   clear: both;
 }
 
@@ -75,8 +74,7 @@ body .product-section {
   margin-top: auto;
 }
 
-.view-button,
-.remove-link {
+.view-button, .remove-link {
   margin-bottom: 8px;
 }
 

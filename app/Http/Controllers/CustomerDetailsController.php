@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Order;
+use App\Models\WishListItem;
 
 class CustomerDetailsController extends Controller
 {
@@ -18,11 +20,13 @@ class CustomerDetailsController extends Controller
             return view('customerUpdate');
         }
 
+        //admin form
         public function adminedit($id) {
             $user = User::findOrFail($id);
             return view('admincustomer.edit', compact('user'));
         }
 
+        //all users display
         public function index(Request $request)
         {
             
@@ -31,14 +35,18 @@ class CustomerDetailsController extends Controller
             return view('admincustomer.index', compact('users'));
         }
 
+        //indvidual customer view of detail
         public function show($user_id){
             return view('admincustomer.show', ['user' => User::find($user_id)]);
         }
 
-
+        //customer being removed
         public function remove($user_id){
             $user = User::findorFail($user_id);
             $user->basketItems()->delete();
+            $user->reviews()->delete();
+            $user->websiteReviews()->delete();
+            $user->orders()->delete();
             $user->delete();
             
     
@@ -49,22 +57,39 @@ class CustomerDetailsController extends Controller
 
     
         // Update the customer's details
-        // public function update(Request $request)
-        // {
-        //     $customer = Auth::user();
+        public function updateCredentials(Request $request)
+        {
+            $user = Auth::user();
     
-        //     // Validate the input data
-        //     $validatedData = $request->validate([
-        //         'name' => 'required|string|max:255',
-        //         'email' => 'required|email|max:255|unique:users,email,',
-        //         'phone' => 'required|string|min:10|max:15|regex:/^[0-9+\-\s()]*$/',
-        //     ]);
+            // Validate input fields
+            $request->validate([
+                'new_email' => 'nullable|email|unique:users,email,' . $user->id,
+                'current_password' => 'required',
+                'new_password' => 'nullable|min:8',
+            ]);
     
-        //     // Update the customer's details
-        //     $customer->update($validatedData);
+            // Check if current password matches
+            if (!Hash::check($request->current_password, $user->password)) {
+                throw ValidationException::withMessages(['current_password' => 'Incorrect password.']);
+            }
     
-        //     return redirect()->route('edit')->with('success', 'Your details have been updated successfully.');
-        // }
+            // Update email if provided
+            if ($request->filled('new_email')) {
+                $user->email = $request->new_email;
+            }
+    
+            // Update password if provided
+            if ($request->filled('new_password')) {
+                $user->password = Hash::make($request->new_password);
+            }
+    
+            $user->save();
+    
+            return redirect()->back()->with('success', 'Credentials updated successfully!');
+        }
+    
+
+
         public function update(Request $request){
             $customer = Auth::user();
 
@@ -136,6 +161,27 @@ class CustomerDetailsController extends Controller
             $customer->delete();
     
             return redirect('/home')->with('success', 'Your account has been deleted successfully.');
+        }
+
+        //shows the customer dashboard
+        public function dashboard()
+        {
+            $user = Auth::user();
+            $orders = Order::where('user_id', $user->id)
+                            ->with('orderItems.product') // Load order items & product details
+                            ->latest()
+                            ->get();
+    
+            
+            // Fetch wishlist items
+            $wishlistItems = WishListItem::where('user_id', $user->id)
+            ->with('product') // Ensure product details are loaded
+            ->get();
+
+            return view('customer-dash', compact('user', 'orders', 'wishlistItems'));
+
+
+
         }
 
 

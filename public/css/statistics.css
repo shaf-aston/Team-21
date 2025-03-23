@@ -1,0 +1,15 @@
+.apple-content{
+    width: 50%; /* You can adjust this value as needed */
+    margin-right: 10px; /* Centers the container on the page */
+    padding: 20px; /* Adds some padding around the container */
+    position: flex;
+}
+ h2{
+  text-align: center;
+}
+
+/* Set the canvas to be 100% width and auto height */
+#horizontalBar {
+    width: 100%;
+    height: 400px; /* You can adjust the height as needed */
+}

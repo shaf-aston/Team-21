@@ -14,7 +14,7 @@ class OrderControllerTest extends TestCase
 {
 
 
-
+    /** @test */
     public function testUpdateStatus()
     {
         $user = User::factory()->create();

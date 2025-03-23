@@ -16,7 +16,7 @@
   <div class="order-info">
     <p><strong>Supplier Name:</strong> {{ $supplierOrder->supplier_name }}</p>
     <p><strong>Order Date:</strong> {{ \Carbon\Carbon::parse($supplierOrder->order_date)->format('F j, Y') }}</p>
-    <p><strong>Total Price:</strong> ${{ number_format($supplierOrder->total_amount, 2) }}</p>
+    <p><strong>Total Price:</strong> £{{ number_format($supplierOrder->total_amount, 2) }}</p>
   </div>
 
   <!-- Order Items -->
@@ -36,8 +36,8 @@
       <tr>
         <td>{{ $item->product->product_name }}</td>
         <td>{{ $item->quantity }}</td>
-        <td>${{ number_format($item->unit_price, 2) }}</td>
-        <td>${{ number_format($item->unit_price * $item->quantity, 2) }}</td>
+        <td>£{{ number_format($item->unit_price, 2) }}</td>
+        <td>£{{ number_format($item->unit_price * $item->quantity, 2) }}</td>
       </tr>
       @endforeach
     </tbody>

@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
 
-  <title>Admin Order View</title>
+  <title>Order View - Admin</title>
   <link rel="stylesheet" href="{{asset('css/admin/admin-orders.css')}}">
 </head>
 
@@ -56,7 +56,7 @@
           <td>{{ $item->product->product_name ?? 'Unknown Product' }}</td>
           <td>{{ $item->quantity }}</td>
           <td>${{ number_format($item->product->product_price, 2) }}</td>
-          <td>${{ number_format($item->quantity * $item->product->product_price, 2) }}</td>
+          <td>£{{ number_format($item->quantity * $item->product->product_price, 2) }}</td>
 
         </tr>
         @endforeach
@@ -67,8 +67,7 @@
     <a href="{{ route('orders.adminEditStatus', ['order' => $order->order_id]) }}" class="btn btn-warning">Change Order Status</a>
   </div>
 
-  <h4>Debug Information:</h4>
-  <pre>{{ print_r($order->orderItems->toArray(), true) }}</pre>
+
 </body>
 
 </html>

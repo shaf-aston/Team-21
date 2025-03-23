@@ -52,6 +52,6 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Session::flush(); // Remove all session data
-        return redirect('/login')->with('success', 'Logged out successfully');
+        return redirect('/home')->with('success', 'Logged out successfully');
     }
 }

@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
 
-  <title>Table of Orders - Admin</title>
+  <title>User view - Admin</title>
   <link rel="stylesheet" href="{{asset('css/admin/admin-orders.css')}}">
 </head>
 

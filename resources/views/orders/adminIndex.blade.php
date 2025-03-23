@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
 
-  <title>Table of Orders - Admin</title>
+  <title>Orders Table - Admin</title>
   <link rel="stylesheet" href="{{asset('css/admin/admin-orders.css')}}">
 </head>
 
@@ -35,7 +35,7 @@
         <tr>
           <td>{{ $order->order_id }}</td>
           <td>{{ $order->user->name ?? 'Guest' }}</td> <!-- Fetching user name -->
-          <td>${{ number_format($order->total_amount, 2) }}</td>
+          <td>£{{ number_format($order->total_amount, 2) }}</td>
           <td>{{ ucfirst($order->order_status) }}</td>
           <td>{{ \Carbon\Carbon::parse($order->order_date)->format('d M Y, h:i A') }}</td>
           <td>

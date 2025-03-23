@@ -60,4 +60,9 @@ class User extends Authenticatable
     public function basketItems(){
         return $this->hasMany(BasketItem::class, 'user_id');
     }
+
+
+    public function websiteReviews(){
+        return $this->hasMany(WebsiteReview::class, 'user_id');
+    }
 }

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
-    //
+    //storing the product reviews
     public function store(Request $request, $productId){
         $request->validate([
             'review' => 'required|string|max:500',

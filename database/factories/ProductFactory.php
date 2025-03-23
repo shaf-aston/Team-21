@@ -24,7 +24,7 @@ class ProductFactory extends Factory
             'stock_quantity' => $this->faker->numberBetween(1, 100), // Random quantity between 1 and 100
             'img_id' => $this->faker->randomNumber(), // Assuming img_id is a number
             'category_id' => $this->faker->numberBetween(1, 5), // Assuming category_id is a foreign key
-            'img_address' => $this->faker->imageUrl(),
+
         ];
     }
 }

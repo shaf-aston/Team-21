@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class WebsiteReviewController extends Controller
 {
-    //
+    //store website reviews 
     public function store(Request $request){
         $request->validate([
             'review' => 'required|string|max:500',
@@ -26,6 +26,7 @@ class WebsiteReviewController extends Controller
 
     }
 
+    //shows all the reviews
     public function index(){
         $websitereviews = WebsiteReview::all();
         return view('websitereview', compact('websitereviews'));

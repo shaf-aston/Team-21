@@ -10,6 +10,8 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  padding-bottom: 10px;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 body>h2 {
@@ -83,6 +85,23 @@ body>h2 {
   background-color: #5a6268;
 }
 
+#supplier-order-btn-container {
+  display: block;
+  width: fit-content;
+  margin: 0px auto;
+  margin-bottom: 30px;
+  padding: 12px 30px;
+  font-size: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#supplier-order-btn-container:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
 /* Animations */
 @keyframes fadeIn {
   from {
@@ -92,10 +111,6 @@ body>h2 {
   to {
     opacity: 1;
   }
-}
-
-.container {
-  animation: fadeIn 0.5s ease-in-out;
 }
 
 .table tbody tr {

@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="{{asset('css/admin/admin-orders.css')}}">
 </head>
 
+@include('components.navbar')
+
 
 <div class="container">
   <h2>Order Details</h2>
@@ -22,7 +24,7 @@
     </tr>
     <tr>
       <th>Total Amount:</th>
-      <td>${{ number_format($order->total_amount, 2) }}</td>
+      <td>£{{ number_format($order->total_amount, 2) }}</td>
     </tr>
     <tr>
       <th>Status:</th>
@@ -68,6 +70,3 @@
 
   <a href="{{ route('orders.index') }}" class="btn btn-primary">Back to Orders</a>
 </div>
-
-<h4>Debug Information:</h4>
-<pre>{{ print_r($order->orderItems->toArray(), true) }}</pre>

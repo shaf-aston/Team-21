@@ -1,214 +1,47 @@
-body.dark-mode {
-  background-color: #1a1a1a;
-  color: #e1e8ff;
-}
-
-.dark-mode * {
-  transition: background-color 0.3s ease, color 0.3s ease,
-    border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.dark-mode .container h2,
-.dark-mode .basket-title {
-  color: #8ca9f2;
-}
-
-.dark-mode .basket-container {
-  background-color: #2c3e50;
-  color: #e1e8ff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+.dark-mode body {
+    background: #1a1a1a;
+    color: #e1e8ff;
 }
 
 .dark-mode .basket-item {
-  border-bottom: 1px solid #34495e;
+    background: #2c3e50;
+    border-color: #34495e;
 }
 
 .dark-mode .product-name {
-  color: #8ca9f2;
-}
-
-.dark-mode .product-image {
-  border: 1px solid #34495e;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-}
-
-.dark-mode .action-link {
-  color: #8ca9f2;
-}
-
-.dark-mode .action-link:hover {
-  color: #6384e4;
-  text-decoration: underline;
+    color: #e1e8ff;
 }
 
 .dark-mode .price {
-  color: #8ca9f2;
-  background-color: #34495e;
+    color: #8ca9f2;
 }
 
-/* Quantity input styling */
-.dark-mode .quantity-section label {
-  color: #e1e8ff;
+.dark-mode .quantity {
+    background: #34495e;
+    color: #e1e8ff;
+    border-color: #8ca9f2;
 }
 
-.dark-mode .quantity-input {
-  background-color: #34495e;
-  color: #e1e8ff;
-  border: 1px solid #8ca9f2;
+.dark-mode .total-box-container {
+    background: #2c3e50;
+    border-color: #34495e;
 }
 
-/* Availability box */
-.dark-mode .availability,
-.dark-mode .white-box {
-  background-color: #34495e;
-  color: #e1e8ff;
-  border: 1px solid #4a6b8a;
-}
-
-.dark-mode .availability-item span {
-  color: #e1e8ff;
-}
-
-/* Icons filter for dark mode */
-.dark-mode .availability-icon {
-  filter: invert(0.8);
-}
-
-/* Total box styling */
-.dark-mode .total-box-container .total-box,
-.dark-mode .total-box {
-  background-color: #2c3e50;
-  color: #e1e8ff;
-  border: 1px solid #34495e;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-/* Payment options */
-.dark-mode .payment-options label {
-  display: flex;
-  align-items: center;
-  padding: 12px;
-  background: #34495e;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  transition: all 0.3s ease;
-}
-
-.dark-mode .payment-options label:hover {
-  background: #3d5871;
+.dark-mode .availability {
+    background: #34495e;
+    color: #e1e8ff;
 }
 
 .dark-mode .payment-checkbox {
-  background-color: #34495e;
-  border: 2px solid #8ca9f2;
+    accent-color: #8ca9f2;
 }
 
-.dark-mode .payment-checkbox:checked {
-  background-color: #8ca9f2;
+.dark-mode .btn-success {
+    background: #8ca9f2;
+    color: #1a1a1a;
+    border: none;
 }
 
-.dark-mode .payment-details {
-  background-color: #34495e;
-  border: 1px solid #4a6b8a;
-}
-
-.dark-mode .payment-details p {
-  color: #8ca9f2;
-}
-
-.dark-mode #monthly-payment,
-.dark-mode #buy-later-date {
-  color: #e1e8ff;
-}
-
-/* Button styling */
-.dark-mode .checkout-button {
-  background-color: #8ca9f2;
-  color: #1a1a1a;
-  border: none;
-}
-
-.dark-mode .checkout-button:hover {
-  background-color: #6384e4;
-  transform: translateY(-2px);
-}
-
-.dark-mode .continue-shopping {
-  color: #8ca9f2;
-}
-
-.dark-mode .continue-shopping:hover {
-  color: #6384e4;
-  background-color: #34495e;
-}
-
-/* Payment icons */
-.dark-mode .payment-icons {
-  background-color: #34495e;
-  padding: 15px;
-  border-radius: 8px;
-  margin: 15px 0;
-}
-
-.dark-mode .payment-icons img {
-  filter: brightness(0.9);
-}
-
-/* Disclaimer */
 .dark-mode .disclaimer {
-  color: #8ca9f2;
-  border-top: 1px solid #34495e;
-  padding-top: 15px;
-  margin-top: 15px;
-  font-size: 0.9em;
-}
-
-/* Remove popup styling */
-.dark-mode .popup {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-.dark-mode .popup-content {
-  background-color: #2c3e50;
-  color: #e1e8ff;
-  border: 1px solid #34495e;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.dark-mode .popup-content h4 {
-  color: #8ca9f2;
-}
-
-.dark-mode .remove-button {
-  background-color: #e74c3c;
-  border-color: #c0392b;
-}
-
-.dark-mode .cancel-button {
-  background-color: #566573;
-  border-color: #34495e;
-}
-
-/* Empty basket styles */
-.dark-mode .empty-basket {
-  background-color: #2c3e50;
-  color: #e1e8ff;
-  padding: 30px;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.dark-mode .empty-basket p {
-  color: #8ca9f2;
-  margin-bottom: 15px;
-}
-
-/* Error message */
-.dark-mode .error-message {
-  background-color: #e74c3c;
-  color: #e1e8ff;
-  border: 1px solid #c0392b;
-  border-radius: 8px;
-  padding: 12px;
-  margin-bottom: 15px;
+    color: #999;
 }
