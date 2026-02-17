@@ -1,0 +1,255 @@
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── LAYOUT AND CONTAINERS ── */
+.main-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.review-container, 
+.review-section {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+/* >>> HEADINGS <<< */
+h3 {
+  font-family: "Dela Gothic One", cursive;
+  color: #2d4059;
+  margin: 1rem 0 2rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+}
+
+h3:after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background-color: #2d4059;
+  margin: 0.8rem auto 0;
+  border-radius: 2px;
+}
+
+/* [ INDIVIDUAL REVIEW STYLING ] */
+.review-item {
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: #f8f9fa;
+  border-left: 4px solid #2d4059;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.review-item:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #2d4059, #2d4059);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.review-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.review-item:hover:before {
+  opacity: 1;
+}
+
+.review-user {
+  font-weight: 700;
+  color: #2d4059;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.review-user:before {
+  content: "👤";
+  margin-right: 8px;
+}
+
+.review-rating {
+  color: #ffaa00;
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  letter-spacing: 2px;
+}
+
+.review-text {
+  color: #444;
+  font-size: 1rem;
+  margin-top: 0.8rem;
+  line-height: 1.6;
+}
+
+/* No reviews message */
+.no-reviews {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  color: #666;
+  font-style: italic;
+}
+
+/*-------------------------*/
+/* Review form section */
+.review-section {
+  margin-top: 3rem;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/***** STAR RATING *****/ 
+.rating {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  cursor: pointer;
+  width: 1.1em;
+  font-size: 2rem;
+  color: #ddd;
+  transition: color 0.2s ease;
+}
+
+/* Half stars */
+.rating label.half {
+  width: 0.6em;
+  z-index: 2; 
+  overflow: hidden;
+  position: absolute;
+  margin-right: 0;
+  clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+}
+
+/* Position half stars next to their full stars */
+.rating label.half[for="star4-5"] {
+  margin-right: 1.1em;
+}
+.rating label.half[for="star3-5"] {
+  margin-right: 2.2em;
+}
+.rating label.half[for="star2-5"] {
+  margin-right: 3.3em;
+}
+.rating label.half[for="star1-5"] {
+  margin-right: 4.4em;
+}
+.rating label.half[for="star0-5"] {
+  margin-right: 5.5em;
+}
+
+/* Fill color logic for hover and checked */
+.rating:hover label:hover,
+.rating:hover label:hover ~ label,
+.rating input:checked ~ label {
+  color: #ffaa00;
+}
+
+.rating-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.rating-display {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2d4059;
+  min-width: 3rem;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+}
+/* Form Elements */
+textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  resize: vertical;
+  font-family: "Inter", sans-serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #2d4059;
+  box-shadow: 0 0 0 2px rgba(45, 64, 89, 0.2);
+}
+
+button[type="submit"] {
+  align-self: flex-start;
+  background-color: #2d4059;
+  color: white;
+  border: 2px solid #2d4059;
+  border-radius: 40px;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #ffffff;
+  color: #2d4059;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #eee;
+  margin: 1.5rem 0;
+}
+
+

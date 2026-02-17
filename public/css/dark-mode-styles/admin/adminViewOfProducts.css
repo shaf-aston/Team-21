@@ -1,0 +1,55 @@
+[data-theme="dark"] {
+    /* Base styles */
+    body {
+        background-color: #1a1a1a;
+        color: #ffffff;
+    }
+
+    /* Header styles */
+    #main-header {
+        background-color: #2d2d2d;
+    }
+
+    #main-header h1 {
+        color: #ffffff;
+    }
+
+    #main-header h2 {
+        color: #cccccc;
+    }
+
+    /* Product section */
+    .product {
+        background-color: #2d2d2d;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-title {
+        color: #ffffff;
+    }
+
+    .product-price {
+        color: #45a3ff;
+    }
+
+    .product-stock {
+        color: #cccccc;
+    }
+
+    /* Form elements */
+    .search-bar,
+    #sort {
+        background-color: #3d3d3d;
+        color: #ffffff;
+        border-color: #4d4d4d;
+    }
+
+    /* Buttons */
+    .view-button {
+        background-color: #0056b3;
+    }
+
+    .view-button:hover {
+        background-color: #003d80;
+    }
+}

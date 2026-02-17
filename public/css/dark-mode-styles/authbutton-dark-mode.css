@@ -1,0 +1,104 @@
+.dark-mode .auth-popup {
+    background-color: rgba(18, 18, 18, 0.9);
+}
+
+.dark-mode .auth-popup-content {
+    background-color: #1e1e1e;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode .login-title {
+    color: #ffffff;
+}
+
+.dark-mode .input-container {
+    background-color: #2d2d2d;
+    border: 1px solid #3d3d3d;
+}
+
+.dark-mode .input-container input,
+.dark-mode .input-container select {
+    color: #ffffff;
+    background: none;
+}
+
+.dark-mode .input-container label {
+    color: #ffffff;
+}
+
+.dark-mode .input-container:focus-within {
+    box-shadow: 0 0 0 2px #4a90e2;
+}
+
+.dark-mode .login-submit {
+    background-color: #4a90e2;
+    color: white;
+}
+
+.dark-mode .login-submit:hover {
+    background-color: #357abd;
+}
+
+.dark-mode .close-btn {
+    color: #ffffff;
+}
+
+.dark-mode .close-btn:hover {
+    background-color: #2d2d2d;
+}
+
+.dark-mode .signup-text {
+    color: #ffffff;
+}
+
+.dark-mode .signup-link,
+.dark-mode .forgot-password,
+.dark-mode .back-to-login {
+    color: #4a90e2;
+}
+
+.dark-mode .signup-link:hover,
+.dark-mode .forgot-password:hover,
+.dark-mode .back-to-login:hover {
+    color: #357abd;
+}
+
+.dark-mode .remember-me {
+    color: #ffffff;
+}
+
+.dark-mode .remember-me input[type="checkbox"] {
+    accent-color: #4a90e2;
+}
+
+.dark-mode .text-danger {
+    color: #ff6b6b;
+}
+
+.dark-mode .alert-danger {
+    background-color: rgba(255, 107, 107, 0.1);
+    color: #ff6b6b;
+    border-color: #ff6b6b;
+}
+
+.dark-mode .eye-icon {
+    filter: invert(1);
+}
+
+.dark-mode .eye-icon:hover {
+    opacity: 0.8;
+}
+
+.dark-mode .icon {
+    filter: invert(1);
+}
+
+/* Dark mode select dropdown */
+.dark-mode select {
+    border: 1px solid #3d3d3d;
+}
+
+.dark-mode select option {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}

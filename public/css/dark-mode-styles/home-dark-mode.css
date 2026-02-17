@@ -1,0 +1,132 @@
+.dark-mode {
+    background-color: #1a1a1a;
+    color: #e1e8ff;
+}
+
+.dark-mode main {
+    background-color: #1a1a1a;
+}
+
+/* Banner styles */
+.dark-mode .top-deals-banner {
+    background-color: #2c3e50;
+}
+
+.dark-mode .cta-banner__shop-now a {
+  background-color: #2d4059;
+  color: #e1e8ff;
+}
+/* Categories section */
+.dark-mode .top-categories-section {
+  background-color: #2d4059;
+}
+
+.dark-mode .section-header__title {
+    color: #e1e8ff;
+}
+
+.dark-mode .highlight {
+    color: #8ca9f2;
+}
+
+.dark-mode .view-all-link {
+    color: #8ca9f2;
+}
+
+.dark-mode .view-all-link:hover {
+    color: #a5beff;
+}
+
+.dark-mode .view-all-link svg {
+    stroke: #8ca9f2;
+}
+
+.dark-mode .categories-grid {
+    color: #e1e8ff;
+    background-color: transparent;
+}
+
+.dark-mode .categories-grid__list {
+    background-color: transparent;
+}
+
+
+
+.dark-mode .category-item__link {
+    color: #e1e8ff;
+}
+
+.dark-mode .category-item__label {
+    color: #e1e8ff;
+}
+
+.dark-mode .category-item__icon-wrapper {
+    background-color: #2c3e50;
+}
+
+/* Brand carousel */
+.dark-mode .brand-carousel {
+    background-color: #2c3e50;
+}
+
+.dark-mode .brand-carousel__button {
+    background-color: #34495e;
+    color: #1a1a1a;
+}
+
+.dark-mode .brand-carousel__button:hover {
+    background: #6384e4;
+}
+
+.dark-mode .brand-carousel__item {
+    background: #2c3e50;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.dark-mode .brand-carousel__item h3 {
+    color: #e1e8ff;
+}
+
+.dark-mode .brand-carousel img {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .brand-item {
+    background-color: #34495e;
+}
+
+.dark-mode .brand-item h3 {
+    color: #e1e8ff;
+}
+
+/* Popular products section */
+.dark-mode .popular-products-section {
+    background-color: #2c3e50;
+}
+
+.dark-mode .product-card {
+    background-color: #34495e;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .product-card__title {
+    color: #e1e8ff;
+}
+
+.dark-mode .product-card__price {
+    color: #8ca9f2;
+}
+.dark-mode .popular-products-section__popular-title {
+    color: #e1e8ff;
+}
+
+/* Dark mode toggle button */
+.dark-mode .dark-mode-toggle {
+    background-color: #34495e;
+    color: #e1e8ff;
+}
+
+.dark-mode .dark-mode-toggle:hover {
+    background-color: #2c3e50;
+}

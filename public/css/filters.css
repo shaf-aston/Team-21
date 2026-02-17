@@ -1,0 +1,589 @@
+/* === MAIN SIDEBAR STYLES === */
+.sidebar {
+  width: 100%;
+  background-color: #f8f9fa;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border: 1px solid #e9ecef;
+}
+
+/* Sidebar header with collapse button and actions */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.sidebar h2 {
+  font-size: 20px;
+  margin: 0;
+  font-weight: 600;
+  color: #2d4059;
+  display: inline-block;
+}
+
+/* Filter actions container */
+.filter-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Toggle button styling */
+.filter-actions .toggle-button {
+  height: 36px;
+  width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-actions .toggle-button.active {
+  background-color: #2d4059;
+  color: #ffffff;
+}
+
+.filter-actions .toggle-button:hover {
+  background-color: #e9ecef;
+}
+
+/* Collapse sidebar button */
+.collapse-sidebar-btn {
+  background: none;
+  border: none;
+  color: #2d4059;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.collapse-sidebar-btn:hover {
+  background-color: #e9ecef;
+}
+
+/* Sidebar content container */
+.sidebar-content {
+  transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+/* === GRID MODE SPECIFIC STYLES === */
+.main-content.grid-mode .sidebar {
+  padding: 12px 15px;
+}
+
+.main-content.grid-mode .sidebar-header {
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+}
+
+.main-content.grid-mode .filters-container {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.main-content.grid-mode .filter-groups {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: auto;
+  overflow-x: auto;
+  padding-bottom: 5px;
+  margin-bottom: -5px; /* Compensate for padding to maintain proper spacing */
+}
+
+.main-content.grid-mode .filter-section {
+  margin-right: 10px;
+  margin-bottom: 0;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.main-content.grid-mode .filter-title {
+  padding: 6px 12px;
+  min-width: 100px;
+}
+
+.main-content.grid-mode .sort-container {
+  margin-bottom: 0;
+  margin-right: 15px;
+}
+
+.main-content.grid-mode #applyFilters {
+  margin-left: 10px;
+  padding: 6px 15px;
+}
+
+/* Filter groups scrollbar in grid mode */
+.main-content.grid-mode .filter-groups::-webkit-scrollbar {
+  height: 4px;
+}
+
+.main-content.grid-mode .filter-groups::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 10px;
+}
+
+.main-content.grid-mode .filter-groups::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+  border-radius: 10px;
+}
+
+/* === LIST MODE SPECIFIC STYLES === */
+.main-content.list-mode .sidebar {
+  position: sticky;
+  top: 20px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+.main-content.list-mode .sidebar-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: #f8f9fa;
+  padding-top: 5px;
+  margin-top: -5px;
+}
+
+.main-content.list-mode .filters-container {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.main-content.list-mode .filter-section {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.main-content.list-mode .filter-content {
+  position: static;
+  width: 100%;
+  box-shadow: none;
+  border: 1px solid #e9ecef;
+  margin-top: 5px;
+  border-radius: 8px;
+}
+
+.main-content.list-mode #applyFilters {
+  margin-left: 0;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.main-content.list-mode .sort-container {
+  margin-bottom: 15px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.main-content.list-mode .sort-container select {
+  flex-grow: 1;
+}
+
+/* === FILTER CONTAINER STYLES === */
+.filters-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.filter-groups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
+
+/* Sort container */
+.sort-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.sort-container label {
+  font-size: 14px;
+  color: #495057;
+  white-space: nowrap;
+}
+
+.sort-container select {
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  font-size: 14px;
+  background-color: #ffffff;
+  cursor: pointer;
+  color: #2d4059;
+  transition: all 0.2s ease;
+  font-family: "Inter", sans-serif;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  min-width: 180px;
+}
+
+.sort-container select:hover {
+  border-color: #2d4059;
+}
+
+.sort-container select:focus {
+  outline: none;
+  border-color: #2d4059;
+  box-shadow: 0 0 0 2px rgba(45, 64, 89, 0.2);
+}
+
+/* === FILTER SECTION STYLES === */
+.filter-section {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  width: auto;
+}
+
+/* === FILTER CONTENT STYLING === */
+.filter-content {
+  display: none;
+  padding: 12px;
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1050;
+  transition: opacity 0.2s ease;
+}
+
+/* List mode - static positioning inside sidebar */
+.main-content.list-mode .filter-content {
+  position: static;
+  width: 100%;
+  box-shadow: none;
+  border: 1px solid #e9ecef;
+  margin-top: 5px;
+  border-radius: 8px;
+}
+
+/* Grid mode - fixed positioning for visibility across the page */
+.main-content.grid-mode .filter-content {
+  position: fixed;
+  min-width: 200px;
+  width: auto;
+}
+
+/* Make scrollbar less obtrusive for dropdowns */
+.filter-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.filter-content::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+  border-radius: 5px;
+}
+
+.filter-content::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+  border-radius: 5px;
+}
+
+/* Filter content styling - make labels more readable */
+.filter-content label {
+  display: flex;
+  align-items: center;
+  padding: 6px 4px;
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.filter-content label:hover {
+  background-color: #f0f2f5;
+}
+
+.filter-content input[type="checkbox"] {
+  margin-right: 8px;
+  cursor: pointer;
+  accent-color: #2d4059;
+}
+
+/* Ensure filter sections can be positioned properly */
+.filter-section {
+  position: relative;
+}
+
+.filter-title {
+  background-color: #2d4059;
+  color: white;
+  padding: 8px 15px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 120px;
+  height: 36px; /* Consistent height */
+}
+
+.filter-title .filter-arrow {
+  margin-left: 8px;
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.filter-title:hover {
+  background-color: #213145;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* === FILTER CONTENT STYLING === */
+.filter-content {
+  display: none;
+  padding: 12px;
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1050;
+}
+
+/* Position differently based on view mode */
+.main-content.grid-mode .filter-content {
+  position: absolute;
+  min-width: 200px;
+  width: auto;
+}
+
+.main-content.list-mode .filter-content {
+  position: static;
+  margin-top: 5px;
+  box-shadow: none;
+}
+
+.filter-content label {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #495057;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.filter-content label:hover {
+  color: #2d4059;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  padding-left: 5px;
+}
+
+.filter-content input[type="checkbox"] {
+  margin-right: 8px;
+  cursor: pointer;
+  accent-color: #2d4059;
+}
+
+/* === COLOR DOT STYLING === */
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Color definitions */
+.red { background-color: red; }
+.orange { background-color: orange; }
+.yellow { background-color: yellow; }
+.green { background-color: green; }
+.blue { background-color: blue; }
+.black { background-color: black; }
+.white { 
+  background-color: white;
+  border: 1px solid #ccc;
+}
+.beige { background-color: beige; }
+.grey { background-color: grey; }
+
+/* === PRICE RANGE STYLES === */
+.range-container {
+  padding: 5px;
+  width: 100%;
+}
+
+.price-inputs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 10px;
+}
+
+.price-inputs input {
+  width: 45%;
+  padding: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.price-inputs input:focus {
+  outline: none;
+  border-color: #2d4059;
+}
+
+.price-inputs span {
+  color: #6c757d;
+  font-weight: 600;
+}
+
+.price-values {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #6c757d;
+  margin-bottom: 8px;
+}
+
+.price-display {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2d4059;
+  text-align: center;
+  margin-top: 12px;
+  background-color: #f8f9fa;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+#priceRange {
+  width: 100%;
+  margin: 10px 0;
+  accent-color: #2d4059;
+  height: 6px;
+}
+
+/* === APPLY FILTERS BUTTON === */
+#applyFilters {
+  height: 36px;
+  padding: 0 15px;
+  font-size: 14px;
+  border-radius: 6px;
+  background-color: #2d4059;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+  box-shadow: 0 2px 5px rgba(45, 64, 89, 0.2);
+}
+
+#applyFilters:hover {
+  background-color: #213145;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(45, 64, 89, 0.3);
+}
+
+#applyFilters:active {
+  transform: translateY(0);
+}
+
+/* === SCROLLBAR STYLING === */
+.sidebar::-webkit-scrollbar,
+.filter-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track,
+.filter-content::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+.filter-content::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+  border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover,
+.filter-content::-webkit-scrollbar-thumb:hover {
+  background-color: #a8a8a8;
+}
+
+/* === RESPONSIVE STYLING === */
+@media (max-width: 768px) {
+  .filter-content {
+    position: static !important;
+    width: 100% !important;
+    margin-top: 5px;
+    box-shadow: none;
+  }
+  
+  .filter-section {
+    width: 100%;
+  }
+  
+  .filter-title {
+    width: 100%;
+  }
+
+  .main-content.grid-mode .filter-groups {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+  
+  .main-content.grid-mode .filter-section {
+    margin-bottom: 10px;
+  }
+  
+  .main-content.grid-mode .sort-container,
+  .main-content.grid-mode #applyFilters {
+    margin-top: 10px;
+  }
+}

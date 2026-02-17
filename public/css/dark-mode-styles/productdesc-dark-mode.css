@@ -1,0 +1,123 @@
+/* Dark mode styles for product description page */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #e1e8ff;
+}
+
+/* Product container styles */
+.dark-mode .product-page-container {
+  background-color: #1a1a1a;
+}
+
+.dark-mode #product-image {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  border: 1px solid #34495e;
+}
+
+.dark-mode #zoom-result {
+  border-color: #34495e;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  background-color: #2c3e50;
+}
+
+/* Product info styles */
+.dark-mode .product-title {
+  color: #e1e8ff;
+}
+
+.dark-mode .product-price {
+  color: #8ca9f2;
+  background-color: rgba(140, 169, 242, 0.1);
+}
+
+.dark-mode .product-description {
+  color: #e1e8ff;
+}
+
+/* Button styles */
+.dark-mode .add-button {
+  background-color: #8ca9f2;
+  color: #1a1a1a;
+  box-shadow: 0 4px 6px rgba(140, 169, 242, 0.3);
+}
+
+.dark-mode .add-button:hover {
+  background-color: #6384e4;
+  box-shadow: 0 6px 8px rgba(140, 169, 242, 0.4);
+}
+
+/* Reviews section styles */
+.dark-mode .reviews-section {
+  border-top: 2px solid #34495e;
+}
+
+.dark-mode .reviews-header {
+  color: #8ca9f2;
+}
+
+.dark-mode .review {
+  background-color: #2c3e50;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .review-user {
+  color: #8ca9f2;
+}
+
+.dark-mode .review-rating {
+  color: #ffcc00;
+}
+
+.dark-mode .no-reviews {
+  color: #999;
+}
+
+/* Review form styles */
+.dark-mode .review-section {
+  background-color: #2c3e50;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.dark-mode .review-section h3 {
+  color: #8ca9f2;
+}
+
+.dark-mode .rating input + label {
+  color: #444;
+}
+
+.dark-mode .rating:hover input + label:hover,
+.dark-mode .rating:hover input + label:hover ~ label,
+.dark-mode .rating input:checked ~ label {
+  color: #ffcc00;
+}
+
+.dark-mode .review-form textarea {
+  background-color: #34495e;
+  color: #e1e8ff;
+  border: 1px solid #8ca9f2;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.dark-mode .review-form textarea:focus {
+  border-color: #6384e4;
+  box-shadow: 0 0 0 3px rgba(99, 132, 228, 0.2);
+}
+
+.dark-mode .review-form button {
+  background-color: #8ca9f2;
+  color: #1a1a1a;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dark-mode .review-form button:hover {
+  background-color: #6384e4;
+  transform: translateY(-2px);
+}

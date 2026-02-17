@@ -1,0 +1,46 @@
+.dark-mode body {
+    background: #1a1a1a;
+    color: #e1e8ff;
+}
+
+.dark-mode .product-section {
+    background-color: #2c3e50;
+    border-color: #34495e;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .product-info {
+    background: #2c3e50;
+}
+
+.dark-mode .product-title {
+    color: #e1e8ff;
+}
+
+.dark-mode .product-price {
+    color: #8ca9f2;
+}
+
+.dark-mode .sort-section {
+    background: #2c3e50;
+    color: #e1e8ff;
+}
+
+.dark-mode .sort-section select {
+    background: #34495e;
+    color: #e1e8ff;
+    border-color: #8ca9f2;
+}
+
+.dark-mode .view-button,
+.dark-mode .add-button {
+    background: #8ca9f2;
+    color: #1a1a1a;
+    border-color: #8ca9f2;
+}
+
+.dark-mode .view-button:hover,
+.dark-mode .add-button:hover {
+    background: #34495e;
+    color: #8ca9f2;
+}

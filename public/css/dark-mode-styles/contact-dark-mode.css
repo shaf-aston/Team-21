@@ -1,0 +1,59 @@
+body.dark-mode {
+    background-color: #1a1a1a;
+}
+
+.dark-mode .contact-page .container {
+    background-color: #2d4059;
+    color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Mail icon container */
+.dark-mode .contact-page .mail-icon-container {
+    background-color: #1a2a3a;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .contact-page .mail-icon-container img {
+    filter: invert(1);
+}
+
+/* Form elements */
+.dark-mode .contact-page h2 {
+    color: #f9f9f9;
+}
+
+.dark-mode .contact-page label {
+    color: #f9f9f9;
+}
+
+.dark-mode .contact-page input[type="text"],
+.dark-mode .contact-page input[type="email"],
+.dark-mode .contact-page textarea,
+.dark-mode .contact-page select {
+    background-color: #1a2a3a;
+    color: #f9f9f9;
+    border: 1px solid #555;
+}
+
+.dark-mode .contact-page input[type="text"]:focus,
+.dark-mode .contact-page input[type="email"]:focus,
+.dark-mode .contact-page textarea:focus,
+.dark-mode .contact-page select:focus {
+    border-color: #f9f9f9;
+    box-shadow: 0 0 5px rgba(249, 249, 249, 0.5);
+}
+
+.dark-mode .contact-page input[type="submit"] {
+    background-color: #f9f9f9;
+    color: #2d4059;
+}
+
+.dark-mode .contact-page input[type="submit"]:hover {
+    background-color: #ccc;
+}
+
+/* Error messages */
+.dark-mode .contact-page .error {
+    color: #ff6b6b;
+}

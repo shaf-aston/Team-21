@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon/favicon.ico') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
+  <title>Top Deals</title>
+
+  <link rel="stylesheet" href="{{asset('css/Home.css')}}">
+  <link rel="stylesheet" href="{{asset('css/Footer.css')}}">
+  <link rel="stylesheet" href="{{ asset('css/dark-mode-styles/home-dark-mode.css') }}">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body style="padding-top: 7.5rem">
+  <main>
+    @include('components.navbar')
+<x-splashscreen/>
+    <!-- Top Deals Banner Section -->
+    <section class="top-deals-banner">
+      <!-- Call To Action Banner -->
+      <div class="cta-banner">
+        <img class="cta-banner__image" src="{{asset('images/BigCTA.svg')}}" alt="Laptop Image" />
+        <div class="cta-banner__content">
+          <span class="cta-banner__title">Performance and Portability<br />All in one.</span>
+          <span class="cta-banner__description"><br />Discover deals on new products</span>
+        </div>
+        <div class="cta-banner__gradient"></div>
+        <div class="cta-banner__shop-now">
+          <a href="{{url('/products')}}">Shop Now</a>
+        </div>
+      </div>
+
+      <!-- New Deals Section -->
+      <a href="{{url('Laptops')}}">
+        <div class="new-deals-banner">
+          <img class="new-deals-banner__image" src="{{asset('images/NewDeals.svg')}}" alt="Promotional Image" />
+          <div class="new-deals-banner__content">
+            <span class="new-deals-banner__subtitle">NEW IN</span>
+            <span class="new-deals-banner__title">Laptops</span>
+          </div>
+        </div>
+      </a>
+    </section>
+
+    <!-- Top Categories Section -->
+    <section class="top-categories-section">
+      <div class="section-header">
+        <div class="section-header__title-wrapper">
+          <h2 class="section-header__title">Shop From <span class="highlight">Categories</span></h2>
+          <div class="section-header__title-underline"></div>
+        </div>
+        <a href="{{url('/products')}}" class="view-all-link">
+          View All
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M9 18l6-6-6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="categories-grid">
+        <ul class="categories-grid__list">
+
+          <li class="category-item">
+            <a href="{{url('Laptops')}}" class="category-item__link">
+              <div class="category-item__icon-wrapper">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/b85459064d1db8872cefa35ea0cb75b96611485a1034eab15cc15c903be0b1fb"
+                  alt="Laptop category" class="category-item__icon" />
+              </div>
+              <span class="category-item__label">Laptops</span>
+            </a>
+          </li>
+
+          <li class="category-item">
+            <a href="{{url('Accessories')}}" class="category-item__link">
+              <div class="category-item__icon-wrapper">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/3d114d2700b095d1f92bbc9b95c57495e85029199addbf0145d81ecd56b6a580"
+                  alt="Accessories category" class="category-item__icon" />
+              </div>
+              <span class="category-item__label">Accessories</span>
+            </a>
+          </li>
+
+          <li class="category-item">
+            <a href="{{url('Phones')}}" class="category-item__link">
+              <div class="category-item__icon-wrapper">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9df3deee2522870205eae632db86bcd0b4a51397fe4d6092b3a1ec1f52de2daf"
+                  alt="Mobile phones category" class="category-item__icon" />
+              </div>
+              <span class="category-item__label">Phones</span>
+            </a>
+          </li>
+
+          <li class="category-item">
+            <a href="{{url('Smartwatches')}}" class="category-item__link">
+              <div class="category-item__icon-wrapper">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a8059aabbd907429b9b6314b4ba2b571f35b511efb624789dc7395c92463cfc7"
+                  alt="Smartwatches category" class="category-item__icon" />
+              </div>
+              <span class="category-item__label">Smartwatches</span>
+            </a>
+          </li>
+
+          <li class="category-item">
+            <a href="{{url('Tablets')}}" class="category-item__link">
+              <div class="category-item__icon-wrapper">
+                <img src="{{asset('images/Lenovo.svg')}}" alt="Headphones category"
+                  class="category-item__icon" />
+              </div>
+              <span class="category-item__label">Tablets</span>
+            </a>
+          </li>
+
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- Top Electronic Brands Carousel Section -->
+    <section class="top-brands-section">
+      <div class="section-header">
+        <div class="section-header__title-wrapper">
+          <h2 class="section-header__title">Top Electronic <span class="highlight">Brands</span></h2>
+          <div class="section-header__title-underline"></div>
+        </div>
+      </div>
+
+      <div id="brandCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <!-- First slide -->
+          <div class="carousel-item active">
+            <div class="row justify-content-center">
+              <div class="col-md-4">
+                <div class="brand-card">
+                  <img src="{{ asset('Images/samsung_logo.jpg') }}" alt="Samsung">
+                  <h3>Samsung</h3>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="brand-card">
+                  <img src="{{ asset('images/apple_logo.png') }}" alt="Apple">
+                  <h3>Apple</h3>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="brand-card">
+                  <img src="{{ asset('images/dell_logo.png') }}" alt="Dell">
+                  <h3>Dell</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Second slide -->
+          <div class="carousel-item">
+            <div class="row justify-content-center">
+              <div class="col-md-4">
+                <div class="brand-card">
+                  <img src="{{ asset('images/sony_logo.png') }}" alt="Sony">
+                  <h3>Sony</h3>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="brand-card">
+                  <img src="{{ asset('images/alienware_logo.png') }}" alt="Alienware">
+                  <h3>Alienware</h3>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="brand-card">
+                  <img src="{{ asset('images/playstation_logo.png') }}" alt="PlayStation">
+                  <h3>PlayStation</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Third slide -->
+          <div class="carousel-item">
+            <div class="row justify-content-center">
+              <div class="col-md-4">
+                <div class="brand-card">
+                  <img src="{{ asset('images/drdre_logo.png') }}" alt="Dr. Dre">
+                  <h3>Dr. Dre</h3>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="brand-card">
+                  <img src="{{ asset('images/oneplus_logo.png') }}" alt="OnePlus">
+                  <h3>OnePlus</h3>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="brand-card">
+                  <img src="{{ asset('images/asus_logo.png') }}" alt="Asus">
+                  <h3>Asus</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#brandCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#brandCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- Popular Products Section -->
+    <section class="popular-products-section">
+      <div class="section-header">
+        <div class="section-header__title-wrapper">
+          <h2 class="section-header__title">Popular <span class="highlight">Right Now</span></h2>
+          <div class="section-header__title-underline"></div>
+        </div>
+      </div>
+      <div id="popularProductsCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        @php
+            // Get the top 6 products sorted by popularity
+            $sortedProducts = $popularproducts->sortByDesc('popularityranking')->take(6)->values();
+            $chunks = [$sortedProducts->slice(0, 3), $sortedProducts->slice(3, 3)]; // First slide (3), Second slide (3)
+            $first = true;
+        @endphp
+
+        @foreach($chunks as $chunk)
+            <div class="carousel-item {{ $first ? 'active' : '' }}">
+                <div class="row justify-content-center">
+                    @foreach($chunk as $product)
+                        <div class="col-md-4">
+                            <div class="product-card">
+                                <div class="product-card__image-placeholder">
+                                    <img src="Images/{{$product->img_id}}.jpg" alt="{{ $product->product_name }}">
+                                </div>
+                                <h3 class="product-card__title">{{ $product->product_name }}</h3>
+                                <p class="product-card__price">£{{ $product->product_price }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            @php $first = false; @endphp
+        @endforeach
+    </div>
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#popularProductsCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#popularProductsCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+
+
+    @include('components.Footer')
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      try {
+        const brandItems = document.querySelector('.brand-carousel__items');
+        const leftBtn = document.querySelector('.brand-carousel__button--left');
+        const rightBtn = document.querySelector('.brand-carousel__button--right');
+        const items = document.querySelectorAll('.brand-carousel__item');
+        const visibleCount = 3;
+        let currentIndex = 0;
+
+        // Set initial styles
+        brandItems.style.display = 'flex';
+        brandItems.style.transition = 'transform 0.6s ease'; // Adjust the speed here
+
+        // Calculate item width based on container
+        const containerWidth = brandItems.parentElement.offsetWidth - 80; // Account for padding
+        const itemWidth = (containerWidth / visibleCount) - 40; // Account for gap
+
+        // Set width for each item
+        items.forEach(item => {
+          item.style.minWidth = `${itemWidth}px`;
+          item.style.marginRight = '40px'; // Match the gap
+        });
+
+        function showItems(index) {
+          if (index < 0) {
+            currentIndex = items.length - visibleCount;
+          } else if (index >= items.length) {
+            currentIndex = 0;
+          } else {
+            currentIndex = index;
+          }
+          const moveAmount = (itemWidth + 40) * currentIndex; // Include gap in calculation
+          brandItems.style.transform = `translateX(-${moveAmount}px)`;
+        }
+
+        leftBtn.addEventListener('click', () => {
+          showItems(currentIndex - 1);
+        });
+
+        rightBtn.addEventListener('click', () => {
+          showItems(currentIndex + 1);
+        });
+
+        // Initialize
+        showItems(currentIndex);
+
+        // Update on window resize
+        window.addEventListener('resize', () => {
+          const newContainerWidth = brandItems.parentElement.offsetWidth - 80;
+          const newItemWidth = (newContainerWidth / visibleCount) - 40;
+
+          items.forEach(item => {
+            item.style.minWidth = `${newItemWidth}px`;
+          });
+
+          showItems(currentIndex);
+        });
+
+      } catch (e) {
+        console.error("Carousel error:", e);
+      }
+    });
+  </script>
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Update images when dark mode state
+    function updateImagesForDarkMode() {
+      const isDarkMode = document.body.classList.contains('dark-mode');
+
+      // Update brand logos
+      const brandImages = {
+        'samsung_logo.jpg': 'samsung_dark_mode.png',
+        'apple_logo.png': 'apple_dark_mode.png',
+        // 'dell_logo.png': 'dell_dark_mode.jpg',
+        'sony_logo.png': 'sony_dark_mode.png',
+        'alienware_logo.png': 'alienware_dark_mode.png',
+        'playstation_logo.png': 'playstation_dark_mode.png',
+        'drdre_logo.png': 'drdre_dark_mode.png',
+        // 'oneplus_logo.png': 'oneplus_dark_mode.png',
+        // 'asus_logo.png': 'asus_dark_mode.png'
+      };
+
+      // Select all brand carousel images
+      document.querySelectorAll('.brand-carousel__item img').forEach(img => {
+        const src = img.src;
+        const filename = src.substring(src.lastIndexOf('/') + 1);
+
+        if (isDarkMode && brandImages[filename]) {
+          // Switch to dark mode image
+          img.src = src.replace(filename, brandImages[filename]);
+        } else if (!isDarkMode) {
+          // Switch back to light mode image
+          for (const [light, dark] of Object.entries(brandImages)) {
+            if (filename === dark) {
+              img.src = src.replace(dark, light);
+              break;
+            }
+          }
+        }
+      });
+    }
+
+    // Call once on page load to set correct state
+    updateImagesForDarkMode();
+
+    // Listen for dark mode changes
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.attributeName === 'class' &&
+          mutation.target === document.body) {
+          updateImagesForDarkMode();
+        }
+      });
+    });
+
+    // Start observing <body> for class changes
+    observer.observe(document.body, {
+      attributes: true
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Popular Products Carousel
+    try {
+      const productItems = document.querySelector('.popular-products-carousel__items');
+      const leftBtn = document.querySelector('.popular-products-carousel__button--left');
+      const rightBtn = document.querySelector('.popular-products-carousel__button--right');
+      const items = document.querySelectorAll('.product-card');
+      const visibleCount = 3;
+      let currentIndex = 0;
+
+      // Set initial styles
+      productItems.style.display = 'flex';
+      productItems.style.transition = 'transform 0.6s ease';
+
+      // Calculate item width based on container
+      const containerWidth = productItems.parentElement.offsetWidth - 80;
+      const itemWidth = (containerWidth / visibleCount) - 40;
+
+      // Set width for each item
+      items.forEach(item => {
+        item.style.minWidth = `${itemWidth}px`;
+        item.style.marginRight = '40px';
+      });
+
+      function showItems(index) {
+        // Allow scrolling to the last item before resetting
+        if (index < 0) {
+          currentIndex = items.length - visibleCount;
+        } else if (index > items.length - visibleCount) {
+          // Only reset when trying to go past the last item
+          currentIndex = 0;
+        } else {
+          currentIndex = index;
+        }
+
+        const moveAmount = (itemWidth + 40) * currentIndex;
+        productItems.style.transform = `translateX(-${moveAmount}px)`;
+      }
+
+      leftBtn.addEventListener('click', () => {
+        showItems(currentIndex - 1);
+      });
+
+      rightBtn.addEventListener('click', () => {
+        showItems(currentIndex + 1);
+      });
+
+      // Initialize
+      showItems(currentIndex);
+
+      // Update on window resize
+      window.addEventListener('resize', () => {
+        const newContainerWidth = productItems.parentElement.offsetWidth - 80;
+        const newItemWidth = (newContainerWidth / visibleCount) - 40;
+
+        items.forEach(item => {
+          item.style.minWidth = `${newItemWidth}px`;
+        });
+
+        showItems(currentIndex);
+      });
+
+    } catch (e) {
+      console.error("Popular Products Carousel error:", e);
+    }
+  });
+</script>
+
+</html>

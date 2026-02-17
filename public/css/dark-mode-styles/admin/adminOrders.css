@@ -1,0 +1,87 @@
+[data-theme="dark"] {
+    /* Container */
+    .container {
+        background-color: #1a1a1a;
+        color: #ffffff;
+    }
+
+    /* Headers */
+    h2,
+    h3 {
+        color: #ffffff;
+    }
+
+    /* Tables */
+    .table {
+        background-color: #2d2d2d;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .table th {
+        background-color: #363636;
+        color: #ffffff;
+        border-bottom: 1px solid #404040;
+    }
+
+    .table td {
+        border-bottom: 1px solid #404040;
+        color: #e0e0e0;
+    }
+
+    .table-bordered {
+        border: 1px solid #404040;
+    }
+
+    /* Buttons */
+    .btn-primary {
+        background-color: #0056b3;
+    }
+
+    .btn-primary:hover {
+        background-color: #003d80;
+    }
+
+    .btn-warning {
+        background-color: #856404;
+        color: #ffffff;
+    }
+
+    .btn-warning:hover {
+        background-color: #533f03;
+    }
+
+    .btn-info {
+        background-color: #117a8b;
+    }
+
+    .btn-info:hover {
+        background-color: #0c5460;
+    }
+
+    /* Status colors - adjusted for dark mode */
+    .status-pending {
+        color: #ffd640;
+    }
+
+    .status-processing {
+        color: #45cadd;
+    }
+
+    .status-completed {
+        color: #34ce57;
+    }
+
+    .status-cancelled {
+        color: #ff4b5a;
+    }
+
+    /* Debug section */
+    .debug-info {
+        background-color: #2d2d2d;
+        color: #e0e0e0;
+    }
+
+    pre {
+        color: #e0e0e0;
+    }
+}
